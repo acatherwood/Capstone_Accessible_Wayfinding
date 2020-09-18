@@ -1,4 +1,5 @@
-# vue-phaser3
+# vue-phaser3 
+### FROM https://github.com/Sun0fABeach/vue-phaser3 (we need to give credit)
 
 #### Webpack boilerplate that integrates Phaser 3 into a Vue project.
 
