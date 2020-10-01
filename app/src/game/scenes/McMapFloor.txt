@@ -1,0 +1,107 @@
+class McMapFloor extends phaser.Scene{
+	
+	constructor ()
+    {
+        super();
+
+        this.count = 0;
+    }
+
+    preload ()
+    {
+    	//assets load here
+    }
+
+    Game.create = function(){
+        Game.map = Game.scene.make.tilemap({ key: 'map'});
+        var tiles = Game.map.addTilesetImage('tiles', 'tileset'); // only applies if we add tiles to the map
+        Game.map.createStaticLayer(0, tiles, 0,0);
+        Game.finder = new EasyStar.js();
+
+
+        var grid = [];      //pre-made easystar utility to setup grid that will be used by the Easystar functions
+            for(var y = 0; y < Game.map.height; y++){
+                var col = [];
+                for(var x = 0; x < Game.map.width; x++){
+                    // In each cell we store the ID of the tile, which corresponds
+                    // to its index in the tileset of the map ("ID" field in Tiled)
+                    col.push(Game.getTileID(x,y));
+                }
+                grid.push(col);
+            }
+        Game.finder.setGrid(grid);
+
+
+        var tileset = Game.map.tilesets[0];
+        var properties = tileset.tileProperties;
+        var acceptableTiles = [];
+
+        
+        for(var i = tileset.firstgid-1; i < tiles.total; i++){ // iterates to find which tiles are clear
+            if(!properties.hasOwnProperty(i)) {
+                acceptableTiles.push(i+1);
+                continue;
+            }
+            if(!properties[i].collide) acceptableTiles.push(i+1);
+        }
+    Game.finder.setAcceptableTiles(acceptableTiles);
+};
+
+    
+};
+
+    Game.getTileID = function(x,y){ //gets x y coord into usable tile ID
+            var tile = Game.map.getTileAt(x, y);
+            return tile.index;
+    };
+
+    Game.checkCollision = function(x,y){ //checks for collision
+        var tile = Game.map.getTileAt(x, y);
+        return tile.properties.collide == true;
+    };
+
+    Game.drawPathGuide =  function(path){ //creates array of all points on walking path
+        var walkRoute =[];
+            for(var i = 0; i < path.length-1; i++){    
+                tweens.push({
+                    var ex = path[i+1].x;
+                    var ey = path[i+1].y;
+                });
+            }
+            drawPath(walkRoute);
+            moveCharacter(walkRoute);
+        };
+
+    Game.drawPath = function(points[]){ //iterates through the array and add lines where the movement was
+        Graphics.clear();
+        
+        //var points = [700, 300, 800, 500 ];
+
+        for (i = 0; i < points.length; i++){
+            var line = new Phaser.Geom.Line(points);
+
+            var graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
+
+        graphics.strokeLineShape(line);}
+
+    }
+
+    Game.moveCharacter = function(path){
+
+        //itterate through the points on the path and go there with tweens
+
+    };
+
+    //on button push which is drawn from bootstrap parts of site
+    Game.theWholeMovementDealie = function(startCoord, endCoords){
+
+        player.despawn;
+        player.spawn(startCoords);
+        
+
+        //easystar pathfinding functions go here
+
+
+    }
+
+}
