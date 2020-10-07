@@ -13,6 +13,7 @@
    
 
           <Container />
+          <Navigation />
   </div>
 </template>
 
@@ -20,11 +21,13 @@
 
 import Header from './components/Header.vue'
 import Container from './components/Container.vue'
+import Navigation from './components/Navigation.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
+    Navigation,
     Container
   },
 }
@@ -51,4 +54,5 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>

@@ -1,3 +1,5 @@
+
+<!--
 <template>
         <div class="cui-example">
         <div class="ui-bordered p-4 mb-4">
@@ -7,3 +9,4 @@
         </div>
         </div> 
 </template>
+--!>
