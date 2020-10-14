@@ -1,14 +1,18 @@
 <template>
+<div>
   <div :id="containerId" v-if="downloaded" > 
-    Hello
   </div>
   <div class="placeholder" v-else>
     Downloading ...
   </div>
+</div>
 </template>
 
 
 <script>
+
+
+
 export default {
   name: 'Game',
   data() {

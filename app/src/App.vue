@@ -1,12 +1,37 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <header>
+      <Header />
+    </header>
+
+    
+
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    </div> -->
+   
+
+          <Container />
+          <Navigation />
   </div>
 </template>
+
+<script>
+
+import Header from './components/Header.vue'
+import Container from './components/Container.vue'
+import Navigation from './components/Navigation.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    Navigation,
+    Container
+  },
+}
+</script>
 
 <style>
 #app {
@@ -29,4 +54,5 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
