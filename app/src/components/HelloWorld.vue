@@ -2,7 +2,7 @@
   <div class="hello">
     <SuccessConfirmation />
     <h1>{{ msg }}</h1>
-    <p> Let's go!!!!!</p>
+    <p> Let's go do things!!!!!</p>
   </div>
 </template>
 
