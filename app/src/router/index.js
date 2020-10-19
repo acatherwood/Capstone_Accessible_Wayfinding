@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,7 +20,18 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/About.vue')
     }
-  }
+  },
+  {
+    path: '/',
+    name: 'Schedule',
+    component: Home
+  },
+  {
+    path: '/',
+    name: 'Settings',
+    component: Home
+  },
+
 ]
 
 const router = new VueRouter({
