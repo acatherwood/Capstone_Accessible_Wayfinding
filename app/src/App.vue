@@ -1,30 +1,23 @@
 <template>
-  <div id="app">
-    <header>
-      <Header />
-    </header>
-
-    
-
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-   
-
-          <Container />
-  </div>
+<div id="app">
+  <Header/>>
+  <SideNav/>
+  <Container />
+  
+</div>
 </template>
 
 <script>
 
 import Header from './components/Header.vue'
+import SideNav from './components/SideNav.vue'
 import Container from './components/Container.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
+    SideNav,
     Container
   },
 }
@@ -32,23 +25,28 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+   width: 500px; 
 }
 
-#nav {
-  padding: 30px;
+.content {
+  margin-left: 185px;
+  top: 50px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    width: 190px;
+    z-index: 1000;
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #eee;
+    padding-left: 0;
+    padding-right: 0;
+    min-height: calc(100vh - 56px);
+    transition: all 0.3s;
 }
 </style>

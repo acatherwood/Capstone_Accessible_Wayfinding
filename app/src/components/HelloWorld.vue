@@ -3,6 +3,7 @@
     <SuccessConfirmation />
     <h1>{{ msg }}</h1>
     <p> Let's go!!!</p>
+
   </div>
 </template>
 
