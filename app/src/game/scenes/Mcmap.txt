@@ -1,0 +1,30 @@
+class McMap extends phaser.Scene{
+	
+	constructor ()
+    {
+        super();
+
+        this.count = 0;
+    }
+
+    preload ()
+    {
+    	//assets load here
+    }
+
+    create(){
+    	this.createFloor(floorG);
+    	this.createFloor(floor1);
+    	this.createFloor(floor2);
+    	this.createFloor(floor3);
+    	const floorButton = this.add.geom(//floor text + button itself);
+    		.setInteractive(); 
+    		.on('pointerDown', () => this.changeFloor());//try to make this one object but if not repeat per floor
+
+    }
+
+    function changeFloor(){
+    	camera.set(//whereever it needs to be);
+
+    }
+}
