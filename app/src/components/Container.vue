@@ -19,8 +19,10 @@ export default {
 
 <style scoped>
 .center{
-    margin-top: 300px;
+    width: 800px;
+    margin-top: 100px;
     margin-left: 400px;  
+    padding-bottom: 100px;
 }
 
 </style>

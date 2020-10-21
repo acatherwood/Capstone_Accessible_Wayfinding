@@ -9,7 +9,7 @@ function launch(containerId) {
     scale: {
         mode: Phaser.Scale.RESIZE,
         parent: containerId,
-        width: '100%',
+        width: 800,
         height: 800
     },
     physics: {
