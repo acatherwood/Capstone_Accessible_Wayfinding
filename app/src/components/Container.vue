@@ -20,7 +20,9 @@ export default {
 <style scoped>
 .center{
     margin-top: 300px;
-    margin-left: 400px;  
+    margin-left: 450px;  
+    width: 100%;
+    height: 100%;
 }
 
 </style>
