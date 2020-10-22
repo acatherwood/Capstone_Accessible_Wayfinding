@@ -1,16 +1,36 @@
 <template>
 <div>
-  <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
-  <a href="javascript:void(0)" id="menu-toggle" v-b-toggle="'sidebar-fifi-toggle'"><span class="navbar-toggler-icon mb-1 mr-sm-1" aria-hidden="true"></span></a>
-    <b-navbar-brand href="index.html">brand
-    </b-navbar-brand>
-    
-    <b-nav-form>
-      <b-form-input type="text" class="mb-1 mr-sm-1 mb-sm-0" placeholder="Username"></b-form-input>
-      <b-form-input type="password" class="mb-1 mr-sm-1 mb-sm-0" placeholder="Password"></b-form-input>
-      <b-button type="submit" variant="danger" class="my-2 my-sm-0">Login</b-button>
-    </b-nav-form> 
+  <b-navbar toggleable="" type="dark" variant="danger" fixed="top">
 
+  <a href="javascript:void(0)" id="menu-toggle" v-b-toggle="'sidebar-fifi-toggle'">
+    <span class="navbar-toggler-icon" aria-hidden="true"></span></a>
+    <b-navbar-brand href="index.html" class="hidden-xs">Accessible Wayfinding: McMappen Edition</b-navbar-brand>
+    
+     <div class="ml-auto mr-3">
+      <b-button-group>
+        <a href="#" class="btn btn-danger" role="button">Register</a>
+        <a href="#" class="btn btn-danger" role="button">Login</a>
+      </b-button-group>
+    </div>
   </b-navbar>
+
 </div>
 </template>
+
+<style scoped>
+
+.navbar-brand {
+  font-size: 15px;
+  margin: 0px;
+}
+
+.btn-danger {
+    color: #fff;
+}
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open>.dropdown-toggle.btn-danger {
+    color: #fff;
+    background-color: #4d464700;
+    border-color: #4d464700;
+}
+</style>
+
