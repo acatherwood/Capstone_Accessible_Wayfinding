@@ -27,7 +27,7 @@
 
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open>.dropdown-toggle.btn-danger {
     color: #fff !important;
-    background-color: #00000017 !important;
+    background-color: #00000010 !important;
     border-color: #00000000 !important;
     outline: none !important;
     box-shadow: none !important;
