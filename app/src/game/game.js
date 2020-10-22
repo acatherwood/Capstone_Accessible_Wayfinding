@@ -9,9 +9,10 @@ function launch(containerId) {
     scale: {
         mode: Phaser.Scale.RESIZE,
         parent: containerId,
-        width: 800,
+        width: '100%',
         height: 800
     },
+    
     physics: {
       default: 'arcade',
       arcade: {
