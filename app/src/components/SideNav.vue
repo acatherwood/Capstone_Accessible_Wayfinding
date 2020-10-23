@@ -14,7 +14,7 @@
             <li id="directions" ><input type="button" name="directions" value="Directions"/></li>
             <input type="text" class="textInput" value="From.." hidden/>
             <input type="text" class="textInput" value="From.." hidden/>
-            <li><b-link :to="{name:'about'}"> Directions</b-link></li>
+            <li><b-link href="About">Link</b-link>
             <li><b-link :to="{name:'contact'}">Schedule</b-link></li>
             <li><b-link :to="{name:'contact'}"> Settings </b-link></li>
             <!--add logic for: if logged in/ logout-->
