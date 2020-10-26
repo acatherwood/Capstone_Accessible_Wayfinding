@@ -1,9 +1,8 @@
 <template>
 <div id="app">
   <Header/>>
-  <SideNav/>
   <Container />
-  
+  <SideNav/>
 </div>
 </template>
 
