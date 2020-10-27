@@ -4,8 +4,7 @@ import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import firebase from 'firebase';
-import firebaseui from 'firebaseui';
-import 'firebaseui/dist/firebaseui.css';
+
 
 firebase.initializeApp(firebaseConfig);
 

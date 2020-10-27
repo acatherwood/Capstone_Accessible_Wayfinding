@@ -1,15 +1,15 @@
 <template>
-    <div>
-        Profile
-    </div>
+  <div class='Profile'>
+    Profile
+  </div>
 </template>
 
+
 <script>
-export default {
-    
-}
+
 </script>
 
-<style lang="scss" scoped>
+
+<style lang="scss">
 
 </style>
