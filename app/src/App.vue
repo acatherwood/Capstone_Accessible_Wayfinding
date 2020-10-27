@@ -7,11 +7,7 @@
   <SideNav/>
   <Container />
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/Login">Login</router-link> |
-      <router-link to="/Register">Register</router-link> |
-      <router-link to="/Secret">Secret</router-link>
+      <navbar></navbar>
     </div>
     <router-view/>
   </div>
@@ -23,21 +19,29 @@
 import Header from './components/Header.vue'
 import SideNav from './components/SideNav.vue'
 import Container from './components/Container.vue'
+import navbar from "./components/Navbar"
 
 export default {
   name: 'App',
   components: {
     Header,
     SideNav,
-    Container
+    Container,
+    navbar
   },
 }
+
 </script>
 
 <style>
 #app {
-   width: 500px; 
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
+
 
 .content {
   margin-left: 185px;

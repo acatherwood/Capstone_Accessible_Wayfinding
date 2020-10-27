@@ -5,9 +5,7 @@ import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import firebase from 'firebase';
-
-
-firebase.initializeApp(firebaseConfig);
+import store from "./store";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -21,12 +19,20 @@ const firebaseConfig = {
   measurementId: "G-2T9D31CF99"
 };
 
+
+firebase.initializeApp(firebaseConfig);
+
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch("fetchUser", user);
+});
+
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 new Vue({
   router,
+<<<<<<< HEAD
   render: h => h(App),
   el: '#app',
   mounted() {
@@ -56,3 +62,8 @@ new Vue({
 //     })
 //   }
 // })
+=======
+  store,
+  render: h => h(App)
+}).$mount('#app')
+>>>>>>> wip - firebase auth -- functioning, register/login
