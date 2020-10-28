@@ -1,7 +1,7 @@
 import { Scene } from 'phaser'
 import floor1iconBTN from '@/game/assets/Floor_1.png'
 import FloorMapIcon from '@/game/assets/McM1.jpg'
-import map from '@/game/assets/map.json'
+import map from '@/game/assets/floor01.json'
 import tiles from '@/game/assets/gridtiles.png'
 
 
@@ -19,6 +19,8 @@ export default class BootScene extends Scene {
   }
 
   create () {
-    this.scene.start('PlayScene')
+    this.scene.start('PlayScene');
+    map.setCollisionBetween(1, 999, true, 'map');
+    this.game.add.tilemapTiledJSON('map');
   }
 }
