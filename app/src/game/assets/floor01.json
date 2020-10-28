@@ -1,9 +1,9 @@
-{ "compressionlevel":-1,
+{ "compressionlevel":0,
  "height":23,
  "infinite":false,
  "layers":[
         {
-         "id":4,
+         "id":6,
          "image":"..\/Floor plan jpgs for tiled use\/MCMICKEN-01 Floor Plan jpg cropped.jpg",
          "name":"Image Layer 1",
          "opacity":1,
@@ -15,7 +15,7 @@
         {
          "color":"#00aaff",
          "draworder":"topdown",
-         "id":6,
+         "id":4,
          "name":"Object Layer 1",
          "objects":[
                 {
@@ -9614,7 +9614,7 @@
                  "x":952.444,
                  "y":443.778
                 }],
-         "opacity":1,
+         "opacity":2,
          "tintcolor":"#0dbbfa",
          "type":"objectgroup",
          "visible":true,
