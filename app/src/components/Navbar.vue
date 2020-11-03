@@ -1,7 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+  <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
+      <a href="javascript:void(0)" id="menu-toggle" v-b-toggle="'sidebar-fifi-toggle'"><span class="navbar-toggler-icon mb-1 mr-sm-1" aria-hidden="true"></span></a>
+    <b-navbar-brand href="index.html">brand
+    </b-navbar-brand>
     <div class="container">
-      <router-link to="/" class="navbar-brand">Vue Firebase Auth</router-link>
+      <router-link to="/" class="navbar-brand">Accessible Wayfinding</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -33,7 +36,7 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </b-navbar>
 </template>
 <script>
 import { mapGetters } from "vuex";

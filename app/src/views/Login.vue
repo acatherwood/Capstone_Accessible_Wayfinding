@@ -72,6 +72,7 @@ export default {
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(data => {
           this.$router.replace({ name: "profile" });
+          window.location.href = "/"
         })
         .catch(err => {
           this.error = err.message;

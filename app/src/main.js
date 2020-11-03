@@ -32,7 +32,7 @@ Vue.use(IconsPlugin)
 
 new Vue({
   router,
-<<<<<<< HEAD
+  store,
   render: h => h(App),
   el: '#app',
   mounted() {
@@ -48,22 +48,3 @@ new Vue({
   }
 })
 
-// new Vue({
-// 	el: '#app',
-//   mounted() {
-//     this.$root.$on('bv::collapse::state', (collapseId, isJustShown) => {
-//       if (isJustShown == false) {
-//         console.log('navbar false:', isJustShown)
-//       }
-//       if (isJustShown == true) {
-//         console.log('navbar true:', isJustShown)
-
-//       }
-//     })
-//   }
-// })
-=======
-  store,
-  render: h => h(App)
-}).$mount('#app')
->>>>>>> wip - firebase auth -- functioning, register/login

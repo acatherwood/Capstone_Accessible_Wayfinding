@@ -2,10 +2,10 @@
 
 
   <div id="app">
-    
-  <Header/>>
-  <SideNav/>
-  <Container />
+    <div>
+      <SideNav/>
+
+    </div>
     <div id="nav">
       <navbar></navbar>
     </div>
@@ -15,19 +15,15 @@
 </template>
 
 <script>
-
-import Header from './components/Header.vue'
 import SideNav from './components/SideNav.vue'
-import Container from './components/Container.vue'
 import navbar from "./components/Navbar"
+
 
 export default {
   name: 'App',
   components: {
-    Header,
-    SideNav,
-    Container,
-    navbar
+    navbar,
+    SideNav
   },
 }
 

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import login from '../views/login.vue'
-import register from '../views/register.vue'
-import profile from '../views/profile.vue'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import Profile from '../views/Profile.vue'
 
 
 Vue.use(VueRouter)
@@ -16,18 +16,18 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'login',
-    component: login
+    name: 'Login',
+    component: Login
   },
   {
     path: '/register',
-    name: 'register',
-    component: register
+    name: 'Register',
+    component: Register
   },
   {
     path: '/profile',
     name: 'profile',
-    component: profile
+    component: Profile
   },
   {
     path: '/about',

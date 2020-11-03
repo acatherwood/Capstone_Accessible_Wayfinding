@@ -95,6 +95,7 @@ export default {
               displayName: this.form.name
             })
             .then(() => {});
+            window.location.href = "/"
         })
         .catch(err => {
           this.error = err.message;
