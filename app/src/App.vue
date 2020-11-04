@@ -5,9 +5,6 @@
       <navbar></navbar>
       <SideNav/>
     </div>
-    <div id="side">
-      <SideNav/>
-    </div>
     <router-view/>
   </div>
 
@@ -47,7 +44,7 @@ export default {
 
 .sidebar {
     position: fixed;
-    top: 51px;
+    top: 150px;
     bottom: 0;
     left: 0;
     width: 190px;
