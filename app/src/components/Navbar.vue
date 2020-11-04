@@ -1,29 +1,19 @@
 <template>
   <b-navbar id="header" toggleable="lg" type="dark" variant="danger" fixed="top">
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-        <a href="javascript:void(0)" role="button" data-toggle="collapse" data-target="#submenu1"><i class="navbar-toggler-icon"></i></a>
+    
          <b-navbar-brand href="index.html"><i class="fab fa-accessible-icon fa-3x" style="color: #fff"></i></b-navbar-brand>
-    <div class="mx-auto d-block">
+
+    <div class="brand">
         <router-link to="/" class = "nav-link">
         <img src="../assets/McMappenLogo.png" class="img-fluid" alt="Header Logo"> 
      </router-link>
       </div>
 
-    <div class="container">
+    <div class="container d-flex">
       <!-- <router-link to="/" class="navbar-brand">Accessible Wayfinding</router-link> -->
       
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
         <ul class="navbar-nav mr-auto"></ul>
         <ul class="navbar-nav ml-auto">
           <template v-if="user.loggedIn">
@@ -41,7 +31,7 @@
             </li>
           </template>
         </ul>
-      </div>
+       <a href="javascript:void(0)" role="button" data-toggle="collapse" data-target="#submenu1"><i class="navbar-toggler-icon"></i></a>
     </div>
   </b-navbar>
 </template>
@@ -71,6 +61,13 @@ export default {
 </script>
 
 <style scoped>
+
+.nav-item{
+   font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  position: relative;
+}
+
 .btn {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
@@ -88,6 +85,13 @@ export default {
     outline: none !important;
     box-shadow: none !important;
 }
+
+.brand {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+}
+
 @media screen and (max-width:480px) {  
   .img-fluid img {
     display: none;
