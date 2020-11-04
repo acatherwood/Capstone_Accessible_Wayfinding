@@ -5,6 +5,9 @@
       <navbar></navbar>
       <SideNav/>
     </div>
+    <div id="side">
+      <SideNav/>
+    </div>
     <router-view/>
   </div>
 
@@ -12,7 +15,7 @@
 
 <script>
 import SideNav from './components/SideNav.vue'
-import navbar from "./components/Navbar"
+import navbar from "./components/Navbar.vue"
 
 
 export default {
@@ -44,7 +47,7 @@ export default {
 
 .sidebar {
     position: fixed;
-    top: 150px;
+    top: 51px;
     bottom: 0;
     left: 0;
     width: 190px;
@@ -55,6 +58,7 @@ export default {
     border-right: 1px solid #eee;
     padding-left: 0;
     padding-right: 0;
+    padding-top: 75px;
     min-height: calc(100vh - 56px);
     transition: all 0.3s;
 }
