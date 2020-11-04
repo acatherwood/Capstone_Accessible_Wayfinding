@@ -1,8 +1,5 @@
 <template>
-  <div>
-  <b-collapse visible id="sidebar-fifi-toggle">
-    
-    <div class="sidebar bg-white scrollable-menu">
+    <div class="sidebar bg-white scrollable-menu dropdown-menu-left">
       <ul class="list-unstyled">
         <li>
         <a href="javascript:void(0)" role="button" data-toggle="collapse" data-target="#submenu1"><i class="fa fa-fw fa-address-card"></i> MENU 1</a>
@@ -14,6 +11,5 @@
         </li>
       </ul>
     </div>
-  </b-collapse> 
-  </div>
+
 </template>

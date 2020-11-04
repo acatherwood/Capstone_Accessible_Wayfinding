@@ -1,32 +1,44 @@
 <template>
-<div id="app">
-  <Header/>>
-  <SideNav/>
-  <Container />
-  
-</div>
+  <div id="app">
+
+    <div id="nav">
+      <navbar></navbar>
+      <SideNav/>
+    </div>
+    <div id="side">
+      <SideNav/>
+    </div>
+    <router-view/>
+  </div>
+
 </template>
 
 <script>
-
-import Header from './components/Header.vue'
 import SideNav from './components/SideNav.vue'
-import Container from './components/Container.vue'
+import navbar from "./components/Navbar"
+
 
 export default {
   name: 'App',
   components: {
-    Header,
-    SideNav,
-    Container
+    navbar,
+    SideNav
   },
 }
+
 </script>
 
-<style>
+<style scoped>
+
+
 #app {
-   width: 500px; 
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
+
 
 .content {
   margin-left: 185px;
