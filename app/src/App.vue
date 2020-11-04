@@ -1,13 +1,12 @@
 <template>
-
-
   <div id="app">
-    <div>
-      <SideNav/>
 
-    </div>
     <div id="nav">
       <navbar></navbar>
+      <SideNav/>
+    </div>
+    <div id="side">
+      <SideNav/>
     </div>
     <router-view/>
   </div>
@@ -29,7 +28,9 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
