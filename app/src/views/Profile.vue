@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header">Dashboard</div>
           <div class="card-body">
-            <div v-if="user" class="alert alert-success" role="alert">You are logged in!</div>
+            <div v-if="user" class="alert alert-danger" role="alert">You are logged in!</div>
           </div>
         </div>
       </div>
@@ -24,3 +24,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.container{
+  padding-top: 100px;
+}
+</style>
