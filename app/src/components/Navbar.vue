@@ -2,7 +2,7 @@
   <b-navbar id="header" toggleable="lg" type="dark" variant="danger" fixed="top">
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     
-         <b-navbar-brand href="index.html"><i class="fab fa-accessible-icon fa-3x" style="color: #fff"></i></b-navbar-brand>
+         <b-navbar-brand><i class="fab fa-accessible-icon fa-3x" style="color: #fff"></i></b-navbar-brand>
 
     <div class="brand">
         <router-link to="/" class = "nav-link">
@@ -12,7 +12,6 @@
 
     <div class="container-fluid d-flex justify-content-end">
       <!-- <router-link to="/" class="navbar-brand">Accessible Wayfinding</router-link> -->
-      
       
         <b-button-group>
           <template v-if="user.loggedIn">
@@ -28,10 +27,16 @@
             </li>
           </template>
 
-        <b-button-group class="btn btn-danger">
-          <a href="javascript:void(0)" id="menu-toggle" v-b-toggle="'sidebar-fifi-toggle'">
-          <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i></a>
-        </b-button-group>
+        <div class="dropdown">
+  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i></a>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
         </b-button-group>
 
 

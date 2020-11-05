@@ -39,7 +39,6 @@ export default {
   color: #2c3e50;
 }
 
-
 .content {
   margin-left: 185px;
   top: 50px;

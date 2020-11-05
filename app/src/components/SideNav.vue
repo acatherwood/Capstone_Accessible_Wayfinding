@@ -1,5 +1,7 @@
+<!--
 <template>
-    <div class="sidebar bg-white scrollable-menu dropdown-menu-left">
+
+    <div class="sidebar bg-white scrollable-menu dropdown-menu-right">
       <ul class="list-unstyled">
         <li>
           <ul id="submenu1" class="list-unstyled collapse show">
