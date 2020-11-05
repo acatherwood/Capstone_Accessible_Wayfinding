@@ -16,7 +16,7 @@
       
         <b-button-group>
           <template v-if="user.loggedIn">
-            <a class="nav-link btn btn-danger" @click.prevent="signOut">Sign out</a>
+            <a class="nav-link btn btn-danger" @click.prevent="signOut">Sign Out</a>
           </template>
 
           <template v-else>
