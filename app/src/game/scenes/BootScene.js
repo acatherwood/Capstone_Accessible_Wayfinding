@@ -1,7 +1,7 @@
 import { Scene } from 'phaser'
 import floor1iconBTN from '@/game/assets/Floor_1.png'
 import FloorMapIcon from '@/game/assets/McM1.jpg'
-import map from '@/game/assets/Floor01TileLayer.json'
+import map from '@/game/assets/maptwo.json'
 import tiles from '@/game/assets/gridtiles.png'
 
 
