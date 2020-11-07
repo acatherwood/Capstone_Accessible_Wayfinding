@@ -15,7 +15,7 @@
       
         <b-button-group>
           <template v-if="user.loggedIn">
-            <a class="nav-link btn btn-danger" @click.prevent="signOut">Sign Out</a>
+            <a class="nav-item btn btn-danger" @click.prevent="signOut">Sign Out</a>
           </template>
 
           <template v-else>
@@ -26,7 +26,8 @@
               <router-link to="register" class="btn btn-danger">Register</router-link>
             </li>
           </template>
-
+ </b-button-group>
+ <b-button-group>
         <div class="dropdown">
           <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i>
@@ -71,18 +72,21 @@ export default {
 
 <style scoped>
 
+.dropdown {
+  font-size: 25px;
+}
+
 .nav-item {
   list-style: none;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
   color: #fff;
-  height: 20px;
 }
 
 .btn {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  overflow: hidden;
+ 
 }
 .navbar-menu {
   font-family: Arial, Helvetica, sans-serif;
