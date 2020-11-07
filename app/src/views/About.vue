@@ -25,7 +25,6 @@
 <style scoped>
 .container-fluid{
   padding-top: 100px;
-  max-width: 65%;
-  min-width: 50%;
+  max-width: 50%;
 }
 </style>
