@@ -20,6 +20,7 @@
             <input type="text" class="textInput" value="To.." />
             </div>
  
+ 
             <li><b-link :to="{name:'contact'}">Schedule</b-link></li>
             <li><b-link :to="{name:'contact'}"> Settings </b-link></li>
             <!--add logic for: if logged in/ logout-->
