@@ -5,6 +5,7 @@ import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
@@ -26,6 +27,7 @@ new Vue({
   }
 })
 
+
 // new Vue({
 // 	el: '#app',
 //   mounted() {
@@ -40,3 +42,4 @@ new Vue({
 //     })
 //   }
 // })
+

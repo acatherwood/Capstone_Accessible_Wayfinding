@@ -5,6 +5,7 @@
   <div class="placeholder" v-else>
     Downloading ...
   </div>
+  
 </div>
 </template>
 

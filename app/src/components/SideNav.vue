@@ -1,3 +1,4 @@
+
 <template>
   <div>
   <b-collapse visible id="sidebar-fifi-toggle">
@@ -10,11 +11,15 @@
         <li>
         
           <ul id="submenu1" class="list-unstyled collapse show">
+            
             <li><b-link :to="{name:'home'}"> Home</b-link></li>
-            <li id="directions" ><input type="button" name="directions" value="Directions"/></li>
-            <input type="text" class="textInput" value="From.." hidden/>
-            <input type="text" class="textInput" value="From.." hidden/>
-            <li><b-link :to="{name:'about'}"> Directions</b-link></li>
+            <li style="padding-bottom: 10px !important"><b-link :to="{name:'about'}" v-on:click="displaySearch" > Directions</b-link></li>
+           <div aria-disabled="true" id="search-box" >
+             
+            <input type="text" class="textInput" value="From.." />
+            <input type="text" class="textInput" value="To.." />
+            </div>
+ 
             <li><b-link :to="{name:'contact'}">Schedule</b-link></li>
             <li><b-link :to="{name:'contact'}"> Settings </b-link></li>
             <!--add logic for: if logged in/ logout-->
@@ -24,23 +29,44 @@
     </div>
   </b-collapse> 
   </div>
+  
 </template>
 
 
 <script src="https://unpkg.com/vue@2.4.2"></script>
+
 <script>
-/*new Vue({
-  el: '#submenu1',
+export default {
+  name: 'SideNav',
+  props: {
+    msg: String
+  },
   methods:{
-    show: function(){
+    displaySearch: function(event){
       alert("test")
+      var block = document.getElementById("search-box")
+      block.style.visibility = "visible"
+      /*change code to dynamically add div with textboxes*/
+
+
+
+      var newDiv = document.createElement('div')
+      
     }
   }
-})
-*/
+}
 </script>
-
 <style scoped>
+#search-box{
+  visibility: hidden;
+}
+.textInput{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 75%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 .sidebar {
   background: #464646;
    text-align: center;
@@ -48,7 +74,7 @@
 
 li{
 text-decoration: none;
-padding-bottom: 25px;
+padding-bottom: 15px;
 border-width: 10px;
 border:black;
 }
