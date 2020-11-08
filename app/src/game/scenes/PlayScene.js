@@ -1,5 +1,5 @@
 import { Scene } from 'phaser'
-
+import EasyStar from 'easystarjs'
 
 export default class PlayScene extends Scene {
   constructor () {
@@ -7,6 +7,8 @@ export default class PlayScene extends Scene {
   }
 
   create () {
+    var easystar = new EasyStar.js();
+    
     this.add.image(400, 300, 'sky')
 
     const bomb = this.physics.add.image(400, 200, 'bomb')

@@ -15,16 +15,17 @@
     </div>
   </div>
 </template>
-
-
-<script>
-
-</script>
-
-
 <style scoped>
 .container-fluid{
   padding-top: 100px;
   max-width: 50%;
 }
 </style>
+
+
+export default {
+  name: 'Map',
+    components: {
+    Game
+}
+}

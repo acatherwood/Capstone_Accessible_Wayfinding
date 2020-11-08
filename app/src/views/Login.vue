@@ -40,8 +40,9 @@
               </div>
 
               <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-5">
-                  <button type="submit" class="btn btn-danger">Login</button>
+                <div class="col-md-8 offset-md-4">
+                  <button type="submit" class="btn btn-primary">Login</button>
+                  <button @click="submitGoogle" class="btn btn-primary">Sign in with Google</button>
                 </div>
               </div>
             </form>
@@ -77,7 +78,18 @@ export default {
         .catch(err => {
           this.error = err.message;
         });
+    },
+    submitGoogle(){
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithRedirect(provider);
     }
+  },
+  mounted(){
+    //'set timeout - loads before the user is logged in
+    if (this.$store.state.user.loggedIn && this.$route.name == 'Login'){
+      this.$router.push({name: 'Home'})
+    }
+  
   }
 };
 </script>
