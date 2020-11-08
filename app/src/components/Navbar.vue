@@ -1,4 +1,6 @@
 <template>
+
+<body>
   <b-navbar id="header" toggleable="lg" type="dark" variant="danger" fixed="top">
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     
@@ -26,26 +28,46 @@
               <router-link to="register" class="btn btn-danger">Register</router-link>
             </li>
           </template>
- </b-button-group>
- <b-button-group>
-        <div class="dropdown">
-          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i>
-          </button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Directions
-              
-            </a>
-            <a class="dropdown-item" href="About">About Us</a>
-            <a class="dropdown-item" href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Report Issues</a>
-          </div>
-          </div>
         </b-button-group>
 
-
-
+        <b-button-group>
+          <div class="dropdown">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#directions" data-toggle="modal" data-target="#directions">Directions</a>
+              <a class="dropdown-item" href="About">About Us</a>
+              <a class="dropdown-item" href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Report Issues</a>
+            </div>
+          </div>
+        </b-button-group>
     </div>
-  </b-navbar>
+  </b-navbar>  
+
+                  <div class="modal" id="directions">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title"></h5>
+                          <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="list-group">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h6>Directions</h6>
+
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+</body>
 </template>
 
 <script>
@@ -73,6 +95,10 @@ export default {
 </script>
 
 <style scoped>
+
+.modal-backdrop {
+  display: none;
+}
 
 .dropdown {
   font-size: 25px;
