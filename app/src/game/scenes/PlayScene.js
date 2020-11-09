@@ -26,7 +26,7 @@ export default class PlayScene extends Scene {
 
     var camera = Game.scene.cameras.main;
 
-    //camera = cameras.main;
+    camera = this.cameras.main;
     camera.setBounds(0, 0, 20*32, 20*32);
 
     var phaserGuy = this.add.image(32,32,'phaserguy');
@@ -104,7 +104,7 @@ getTileID = function(x,y){
 };
 
 handleClick = function(pointer){
-    var x = camera.scrollX + pointer.x;
+    var x = Game.scene.camera.scrollX + pointer.x;
     var y = camera.scrollY + pointer.y;
     var toX = Math.floor(x/32);
     var toY = Math.floor(y/32);
