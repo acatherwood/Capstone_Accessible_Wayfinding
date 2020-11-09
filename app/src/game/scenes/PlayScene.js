@@ -18,7 +18,9 @@ export default class PlayScene extends Scene {
     Game.scene = this; // Handy reference to the scene (alternative to `this` binding)
     this.load.image('tileset', tileset);
     this.load.tilemapTiledJSON('map', map);
-    this.load.image('phaserguy', dude); }
+    this.load.image('phaserguy', dude); 
+  }
+  
 
   create = function(){
     // Handles the clicks on the map to make the character move
@@ -33,6 +35,8 @@ export default class PlayScene extends Scene {
     phaserGuy.setDepth(1);
     phaserGuy.setOrigin(0,0.5);
     camera.startFollow(phaserGuy);
+    // Handles the clicks on the map to make the character move
+    //this.input.on('pointerup',this.handleClick);
     this.player = phaserGuy;
 
     // Display map
@@ -104,28 +108,31 @@ getTileID = function(x,y){
 };
 
 handleClick = function(pointer){
-    var x = Game.scene.camera.scrollX + pointer.x;
-    var y = camera.scrollY + pointer.y;
+    console.log(pointer)
+    var x = pointer.camera.scrollX + pointer.x;
+    var y = pointer.camera.scrollY + pointer.y;
     var toX = Math.floor(x/32);
     var toY = Math.floor(y/32);
-    var fromX = Math.floor(this.player.x/32);
-    var fromY = Math.floor(this.player.y/32);
+    // var fromX = Math.floor(this.player.x/32);
+    // var fromY = Math.floor(this.player.y/32);
+    var fromX = Math.floor(this.scene.player.x/32);
+    var fromY = Math.floor(this.scene.player.y/32);
     console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');
-
-    this.finder.findPath(fromX, fromY, toX, toY, function( path ) {
+    Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
         if (path === null) {
             console.warn("Path was not found.");
         } else {
             console.log(path);
-            this.moveCharacter(path);
+            Game.scene.moveCharacter(path);
         }
     });
-    this.finder.calculate(); // don't forget, otherwise nothing happens
+    this.scene.finder.calculate(); // don't forget, otherwise nothing happens
 };
 
 moveCharacter = function(path){
     // Sets up a list of tweens, one for each tile to walk, that will be chained by the timeline
     var tweens = [];
+    
     for(var i = 0; i < path.length-1; i++){
         var ex = path[i+1].x;
         var ey = path[i+1].y;
@@ -135,8 +142,7 @@ moveCharacter = function(path){
             y: {value: ey*this.map.tileHeight, duration: 200}
         });
     }
-
-    this.scene.tweens.timeline({
+    Game.scene.tweens.timeline({
         tweens: tweens
     });
 };
