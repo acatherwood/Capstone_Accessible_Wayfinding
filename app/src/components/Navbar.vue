@@ -1,50 +1,75 @@
 <template>
+
+<body>
   <b-navbar id="header" toggleable="lg" type="dark" variant="danger" fixed="top">
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-        <a href="javascript:void(0)" role="button" data-toggle="collapse" data-target="#submenu1"><i class="navbar-toggler-icon"></i></a>
-         <b-navbar-brand href="index.html"><i class="fab fa-accessible-icon fa-3x" style="color: #fff"></i></b-navbar-brand>
-    <div class="mx-auto d-block">
+    
+         <b-navbar-brand><i class="fab fa-accessible-icon fa-3x" style="color: #fff"></i></b-navbar-brand>
+
+    <div class="brand">
         <router-link to="/" class = "nav-link">
-        <img src="../assets/McMappenLogo.png" class="img-fluid" alt="Header Logo"> 
+        <img src="../assets/McMappingLogo.png" class="img-fluid" alt="Header Logo"> 
      </router-link>
       </div>
 
-    <div class="container">
+    <div class="container-fluid d-flex justify-content-end">
       <!-- <router-link to="/" class="navbar-brand">Accessible Wayfinding</router-link> -->
       
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto"></ul>
-        <ul class="navbar-nav ml-auto">
+        <b-button-group>
           <template v-if="user.loggedIn">
-            <div class="nav-item">{{user.data.displayName}}</div>
-            <li class="nav-item">
-              <a class="nav-link" @click.prevent="signOut">Sign out</a>
-            </li>
+            <a class="nav-item btn btn-danger" @click.prevent="signOut">Sign Out</a>
           </template>
+
           <template v-else>
             <li class="nav-item">
-              <router-link to="login" class="nav-link">Login</router-link>
+              <router-link to="login" class="btn btn-danger">Login</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="register" class="nav-link">Register</router-link>
+              <router-link to="register" class="btn btn-danger">Register</router-link>
             </li>
           </template>
-        </ul>
-      </div>
+        </b-button-group>
+
+        <b-button-group>
+          <div class="dropdown">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#directions" data-toggle="modal" data-target="#directions">Directions</a>
+              <a class="dropdown-item" href="About">About Us</a>
+              <a class="dropdown-item" href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Report Issues</a>
+            </div>
+          </div>
+        </b-button-group>
     </div>
-  </b-navbar>
+  </b-navbar>  
+
+                  <div class="modal" id="directions">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title"></h5>
+                          <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="list-group">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h6>Directions</h6>
+
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+</body>
 </template>
+
 <script>
 import { mapGetters } from "vuex";
 import firebase from "firebase";
@@ -61,9 +86,8 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.replace({
-            name: "home"
-          });
+          this.$router.replace({name: "home" });
+            window.location.href = "/"
         });
     }
   }
@@ -71,9 +95,26 @@ export default {
 </script>
 
 <style scoped>
+
+.modal-backdrop {
+  display: none;
+}
+
+.dropdown {
+  font-size: 25px;
+}
+
+.nav-item {
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  color: #fff;
+}
+
 .btn {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
+ 
 }
 .navbar-menu {
   font-family: Arial, Helvetica, sans-serif;
@@ -87,7 +128,21 @@ export default {
     border-color: #00000000 !important;
     outline: none !important;
     box-shadow: none !important;
+    list-style-type: none !important;
 }
+
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #dc3545;
+}
+
+.brand {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+}
+
 @media screen and (max-width:480px) {  
   .img-fluid img {
     display: none;
