@@ -22,10 +22,3 @@
 }
 </style>
 
-
-export default {
-  name: 'Map',
-    components: {
-    Game
-}
-}
