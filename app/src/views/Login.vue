@@ -40,9 +40,10 @@
               </div>
 
               <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-5">
+                <div class="col-md-7 offset-md-4">
+                  <button @click="submitGoogle" class="btn btn-danger m-2"><i class="fab fa-google mr-2"></i>Sign in with Google</button>
                   <button type="submit" class="btn btn-danger">Login</button>
-                  <button @click="submitGoogle" class="btn btn-danger">Sign in with Google</button>
+                  
                 </div>
               </div>
             </form>
@@ -81,7 +82,23 @@ export default {
     },
     submitGoogle(){
       var provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithRedirect(provider);
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      window.location.href = "/"
+      // ...
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
     }
   },
   mounted(){
