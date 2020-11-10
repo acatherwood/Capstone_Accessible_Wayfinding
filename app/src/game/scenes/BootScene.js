@@ -4,8 +4,8 @@ import { Scene } from 'phaser'
 // import thudMp3 from '@/game/assets/thud.mp3'
 // import thudOgg from '@/game/assets/thud.ogg'
 
-import tileset from '@/game/assets/gridtiles.png'
-import map from '@/game/assets/map.json'
+import tileset from '@/game/assets/bw.png'
+import map from '@/game/assets/floor.json'
 import dude from '@/game/assets/phaserguy.png'
 
 
