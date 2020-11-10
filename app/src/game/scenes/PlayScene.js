@@ -2,8 +2,8 @@ import { Scene } from 'phaser'
 import EasyStar from 'easystarjs'
 
 
-import tileset from '@/game/assets/gridtiles.png'
-import map from '@/game/assets/map.json'
+import tileset from '@/game/assets/bw.png'
+import map from '@/game/assets/floor.json'
 import dude from '@/game/assets/phaserguy.png'
 
 
@@ -27,11 +27,11 @@ export default class PlayScene extends Scene {
     this.input.on('pointerup',this.handleClick);
 
     var camera = Game.scene.cameras.main;
-
+    var graphics;
     camera = this.cameras.main;
-    camera.setBounds(0, 0, 20*32, 20*32);
+    camera.setBounds(0, 0, 90*8, 270*8);
 
-    var phaserGuy = this.add.image(32,32,'phaserguy');
+    var phaserGuy = this.add.image(8,8,'phaserguy').setScale(0.5);
     phaserGuy.setDepth(1);
     phaserGuy.setOrigin(0,0.5);
     camera.startFollow(phaserGuy);
@@ -94,7 +94,7 @@ update = function(){
     var pointerTileY = this.map.worldToTileY(worldPoint.y);
     this.marker.x = this.map.tileToWorldX(pointerTileX);
     this.marker.y = this.map.tileToWorldY(pointerTileY);
-    this.marker.setVisible(!this.checkCollision(pointerTileX,pointerTileY));
+    this.marker.setVisible(true);
 };
 
 checkCollision = function(x,y){
@@ -111,12 +111,12 @@ handleClick = function(pointer){
     console.log(pointer)
     var x = pointer.camera.scrollX + pointer.x;
     var y = pointer.camera.scrollY + pointer.y;
-    var toX = Math.floor(x/32);
-    var toY = Math.floor(y/32);
+    var toX = Math.floor(x/8);
+    var toY = Math.floor(y/8);
     // var fromX = Math.floor(this.player.x/32);
     // var fromY = Math.floor(this.player.y/32);
-    var fromX = Math.floor(this.scene.player.x/32);
-    var fromY = Math.floor(this.scene.player.y/32);
+    var fromX = Math.floor(this.scene.player.x/8);
+    var fromY = Math.floor(this.scene.player.y/8);
     console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');
     Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
         if (path === null) {
@@ -136,14 +136,34 @@ moveCharacter = function(path){
     for(var i = 0; i < path.length-1; i++){
         var ex = path[i+1].x;
         var ey = path[i+1].y;
+
+        //Game.graphics.clear();// not sure what to actually clear with
+        var line = new Phaser.Geom.Line( (path[i].x*8),(path[i].y*8),  (path[i+1].x*8),(path[i+1].y*8));
+
+        Game.graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
+
+        Game.graphics.strokeLineShape(line);
         tweens.push({
             targets: this.player,
-            x: {value: ex*this.map.tileWidth, duration: 200},
-            y: {value: ey*this.map.tileHeight, duration: 200}
+            x: {value: ex*this.map.tileWidth, duration: 100},
+            y: {value: ey*this.map.tileHeight, duration: 100}
         });
     }
     Game.scene.tweens.timeline({
         tweens: tweens
     });
 };
+
+/*drawPath = function(){ //iterates through the array and add lines where the movement was
+    Graphics.clear();
+    
+
+    for (i = 0; i < points.length; i++){
+        var line = new Phaser.Geom.Line(ex, ey);
+
+        var graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
+
+    graphics.strokeLineShape(line);}
+
+};*/
 }
