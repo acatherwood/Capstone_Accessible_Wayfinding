@@ -1,77 +1,61 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Register</div>
-          <div class="card-body">
-            <div v-if="error" class="alert alert-danger">{{error}}</div>
-            <form action="#" @submit.prevent="submit">
+<div>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 
-              <!-- // allow for the individual to add a name to their account
-              <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-
-                <div class="col-md-6">
-                  <input
-                    id="name"
-                    type="name"
-                    class="form-control"
-                    name="name"
-                    value
-                    required
-                    autofocus
-                    v-model="form.name"
-                  />
+ <div class="login-form">
+   <div v-if="error" class="alert alert-danger">{{error}}</div>
+    <form action="#" @submit.prevent="submit">
+        <h2 class="text-center">Register</h2>
+        <div class="form-group">
+        	<div class="input-group">                
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <span class="fa fa-user"></span>
+                    </span>                    
                 </div>
-              </div>
-              -->
-
-              <div class="form-group row">
-                <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
-
-                <div class="col-md-6">
-                  <input
+                <input  
                     id="email"
                     type="email"
                     class="form-control"
                     name="email"
+                    placeholder="Email"
                     value
                     required
                     autofocus
-                    v-model="form.email"
-                  />
+                    v-model="form.email">
+            </div>
+        </div>
+		<div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                    </span>                    
                 </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-                <div class="col-md-6">
-                  <input
+                <input 
                     id="password"
                     type="password"
                     class="form-control"
                     name="password"
+                    placeholder="Password"
                     required
-                    v-model="form.password"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row mb-0">
-                <div class="col-md-7 offset-md-4">
-                  <button @click="submitGoogle" class="btn btn-danger m-2"><i class="fab fa-google mr-2"></i>Register with Google</button>
-                  <button type="submit" class="btn btn-danger">Register</button>
-                </div>
-              </div>
-            </form>
-          </div>
+                    v-model="form.password">
+            </div>
+        </div>        
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark btn-block login-btn">Register</button>
+        </div> 
+        	<div class="or-seperator"><i>or</i></div>
+                <div class="text-center social-btn">
+            <!-- <button @click="submitFacebook" class="btn btn-primary btn-block"><i class="fab fa-facebook"></i> Sign in with <b>Facebook</b></button> -->
+			      <button @click="submitGoogle" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Sign in with <b>Google</b></button>
         </div>
-      </div>
-    </div>
-  </div>
+    </form>
+    <div class="hint-text">Already have an account? <a href="Login" class="text-dark">Login Now!</a></div>
+</div>
+</div>
 </template>
+
 
 
 <script>
@@ -130,7 +114,61 @@ export default {
 </script>
 
 <style scoped>
-.container{
-  padding-top: 100px;
+
+
+.login-form {
+    width: 340px;
+    margin: 30px auto;
+  	font-size: 15px;
+    padding-top: 100px;
+}
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+.login-form h2 {
+    margin: 0 0 15px;
+}
+.login-form .hint-text {
+    color: #777;
+    padding-bottom: 15px;
+    text-align: center;
+  	font-size: 13px; 
+}
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+.login-btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
+.or-seperator {
+    margin: 20px 0 10px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+.or-seperator i {
+    padding: 0 10px;
+    background: #f7f7f7;
+    position: relative;
+    top: -11px;
+    z-index: 1;
+}
+.social-btn .btn {
+    margin: 10px 0;
+    font-size: 15px;
+    text-align: left; 
+    line-height: 24px;       
+}
+.social-btn .btn i {
+    float: left;
+    margin: 4px 15px  0 5px;
+    min-width: 15px;
+}
+.input-group-addon .fa{
+    font-size: 18px;
 }
 </style>

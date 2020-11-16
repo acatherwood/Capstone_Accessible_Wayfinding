@@ -1,20 +1,12 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Dashboard</div>
-          <div class="card-body">
-            <div v-if="user" class="alert alert-danger" role="alert">You are logged in!</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="profilecontainer">
+    <Container />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from "vuex"
+
 export default {
   computed: {
     // map `this.user` to `this.$store.getters.user`
@@ -25,8 +17,18 @@ export default {
 };
 </script>
 
-<style scoped>
-.container{
-  padding-top: 100px;
+<script>
+import Container from '../components/Container'
+
+export default {
+  name: 'App',
+  components: {
+    Container
+  },
 }
+
+</script>
+
+<style scoped>
+
 </style>
