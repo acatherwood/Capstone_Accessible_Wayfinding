@@ -16,8 +16,9 @@
             <li style="padding-bottom: 10px !important"><b-link :to="{name:'about'}" v-on:click="displaySearch" > Directions</b-link></li>
            <div aria-disabled="true" id="search-box" >
              
-            <input type="text" class="textInput" value="From.." />
-            <input type="text" class="textInput" value="To.." />
+            <input type="text" class="textInput" id="To" value="From.." />
+            <input type="text" class="textInput" id="From" value="To.." />
+            <input type="button" value="Enter" v-on:click="storeInput">
             </div>
  
  
@@ -44,15 +45,20 @@ export default {
   },
   methods:{
     displaySearch: function(event){
-      alert("test")
       var block = document.getElementById("search-box")
       block.style.visibility = "visible"
+      
       /*change code to dynamically add div with textboxes*/
-
-
-
       var newDiv = document.createElement('div')
       
+    },
+
+    storeInput: function(event){
+
+      var inputTo = document.getElementById("To").value;
+      alert(inputTo);
+      var inputFrom = document.getElementById("From").value;
+      alert(inputFrom);
     }
   }
 }
