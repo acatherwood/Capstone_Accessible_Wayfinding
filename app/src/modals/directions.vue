@@ -1,5 +1,6 @@
 
  <template>
+
     <div class="modal" id="directions">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -8,15 +9,19 @@
         <button class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-        <div class="list-group">
-            <div class="d-flex w-100 justify-content-between">
-            <h6>Directions</h6>
+        <label for="directions">From:</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Where are you?" aria-label="Where are you?" aria-describedby="basic-addon2">
+        </div>
 
-            </div>
+        <label for="directions">To:</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Where are you going?" aria-label="Where are you going?" aria-describedby="basic-addon2">
         </div>
+        </div>
+
         <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
     </div>
     </div>
