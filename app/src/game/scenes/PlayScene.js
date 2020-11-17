@@ -1,13 +1,13 @@
 import { Scene } from 'phaser'
 import EasyStar from 'easystarjs'
 
-
 import tileset from '@/game/assets/bw.png'
 import map from '@/game/assets/floor.json'
 import dude from '@/game/assets/phaserguy.png'
 
 
 var Game = {};
+var canWalk = true;
 
 export default class PlayScene extends Scene {
   constructor () {
@@ -23,6 +23,56 @@ export default class PlayScene extends Scene {
   
 
   create = function(){
+
+
+    var demosWindow = this.add.image(0, 0, 'demosWindow').setOrigin(0);
+    var floor0icon = this.add.image(32, 30, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05);
+    var floor1icon = this.add.image(32, 80, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05);
+    var floor2icon = this.add.image(32, 130, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05);
+    var floor3icon = this.add.image(32, 180, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05);
+    var demosContainer = this.add.container(32, 70, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon ]);
+    demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
+
+    this.input.setDraggable(demosContainer);
+
+    demosContainer.on('drag', function (pointer, dragX, dragY) {
+
+        this.x = dragX;
+        this.y = dragY;
+
+    });
+
+    floor3icon.on('pointerup', function () {
+        canWalk = false;
+        phaserGuy.setPosition(55*8, 80*8);
+       
+
+    }, this);
+      
+    floor2icon.on('pointerup', function () {
+        canWalk = false;
+        phaserGuy.setPosition(5*8, 5*8);
+        
+
+    }, this);
+
+    floor1icon.on('pointerup', function () {
+        canWalk = false;
+        phaserGuy.setPosition(127*8, 47*8);
+       
+
+    }, this);
+
+
+    floor0icon.on('pointerup', function () {
+        canWalk = false;
+        phaserGuy.setPosition(208*8, 46*8);
+       
+
+    }, this);
+    demosContainer.setDepth(1);
+    demosContainer.setScrollFactor(0);
+
     // Handles the clicks on the map to make the character move
     this.input.on('pointerup',this.handleClick);
 
@@ -108,25 +158,29 @@ getTileID = function(x,y){
 };
 
 handleClick = function(pointer){
-    console.log(pointer)
-    var x = pointer.camera.scrollX + pointer.x;
-    var y = pointer.camera.scrollY + pointer.y;
-    var toX = Math.floor(x/8);
-    var toY = Math.floor(y/8);
-    // var fromX = Math.floor(this.player.x/32);
-    // var fromY = Math.floor(this.player.y/32);
-    var fromX = Math.floor(this.scene.player.x/8);
-    var fromY = Math.floor(this.scene.player.y/8);
-    console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');
-    Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
-        if (path === null) {
-            console.warn("Path was not found.");
-        } else {
-            console.log(path);
-            Game.scene.moveCharacter(path);
-        }
-    });
-    this.scene.finder.calculate(); // don't forget, otherwise nothing happens
+    console.log(canWalk);
+    if (canWalk === false){//prevents UI clicks from moving character
+        canWalk = true;
+
+    }else{
+        var x = pointer.camera.scrollX + pointer.x;
+        var y = pointer.camera.scrollY + pointer.y;
+        var toX = Math.floor(x/8);
+        var toY = Math.floor(y/8);
+        var fromX = Math.floor(this.scene.player.x/8);
+        var fromY = Math.floor(this.scene.player.y/8);
+        console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
+        Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
+            if (path === null) {
+                console.warn("Path was not found.");
+            } else {
+                console.log(path);
+                Game.scene.moveCharacter(path);
+                console.log(path.length);
+            }
+        });
+        this.scene.finder.calculate(); // don't forget, otherwise nothing happens
+    }
 };
 
 moveCharacter = function(path){
@@ -145,25 +199,16 @@ moveCharacter = function(path){
         Game.graphics.strokeLineShape(line);
         tweens.push({
             targets: this.player,
-            x: {value: ex*this.map.tileWidth, duration: 100},
-            y: {value: ey*this.map.tileHeight, duration: 100}
+            x: {value: ex*this.map.tileWidth, duration: 50},
+            y: {value: ey*this.map.tileHeight, duration: 50}
         });
     }
     Game.scene.tweens.timeline({
         tweens: tweens
     });
+    
 };
 
-/*drawPath = function(){ //iterates through the array and add lines where the movement was
-    Graphics.clear();
-    
 
-    for (i = 0; i < points.length; i++){
-        var line = new Phaser.Geom.Line(ex, ey);
 
-        var graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
-
-    graphics.strokeLineShape(line);}
-
-};*/
 }
