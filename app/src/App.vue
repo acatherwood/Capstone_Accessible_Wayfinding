@@ -3,10 +3,6 @@
 
     <div id="nav">
       <navbar></navbar>
-      <SideNav/>
-    </div>
-    <div id="side">
-      <SideNav/>
     </div>
     <router-view/>
   </div>
@@ -14,15 +10,13 @@
 </template>
 
 <script>
-import SideNav from './components/SideNav.vue'
 import navbar from "./components/Navbar.vue"
 
 
 export default {
   name: 'App',
   components: {
-    navbar,
-    SideNav
+    navbar
   },
 }
 

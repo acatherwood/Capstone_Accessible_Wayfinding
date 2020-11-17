@@ -9,19 +9,18 @@
         <button class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-        <label for="directions">From:</label>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Where are you?" aria-label="Where are you?" aria-describedby="basic-addon2">
+            <input type="text" class="form-control"  id="To" value="To.." placeholder="Where are you?" aria-label="Where are you?" aria-describedby="basic-addon2">
         </div>
-
-        <label for="directions">To:</label>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Where are you going?" aria-label="Where are you going?" aria-describedby="basic-addon2">
+            <input type="text" class="form-control"   id="From" value="From.." placeholder="Where are you going?" aria-label="Where are you going?" aria-describedby="basic-addon2">
         </div>
         </div>
 
         <div class="modal-footer">
-        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-secondary" value="Enter" v-on:click="storeInput" data-dismiss="modal">Enter</button>
+
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
     </div>
     </div>
@@ -30,7 +29,24 @@
 </template>
 
 <script>
-        export default {
-            name: 'modal'
-        };
+    export default {
+        name: 'modal',
+ 
+        methods:{
+            displaySearch: function(event){
+            var block = document.getElementById("search-box")
+            block.style.visibility = "visible"
+            
+            /*change code to dynamically add div with textboxes*/
+            var newDiv = document.createElement('div')
+            
+            },
+            storeInput: function(event){
+            var inputTo = document.getElementById("To").value;
+            alert(inputTo);
+            var inputFrom = document.getElementById("From").value;
+            alert(inputFrom);
+            }
+        }
+    }
     </script>
