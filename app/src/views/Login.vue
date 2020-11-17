@@ -79,7 +79,7 @@ export default {
         .auth()
       .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(data => {
-          this.$router.replace({ name: "profile" });
+          this.$router.replace({ name: "Profile" });
         })
         .catch(err => {
           this.error = err.message;
@@ -92,7 +92,7 @@ export default {
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      window.location.href = "/"
+      window.location.href = "Profile"
       // ...
       }).catch(function(error) {
         // Handle Errors here.
@@ -113,7 +113,7 @@ export default {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        window.location.href = "/"
+        window.location.href = "Profile"
         // ...
       }).catch(function(error) {
         // Handle Errors here.
