@@ -5,7 +5,7 @@
  <div class="login-form">
    <div v-if="error" class="alert alert-danger">{{error}}</div>
     <form action="#" @submit.prevent="submit">
-        <h2 class="text-center">Sign in</h2>
+        <h2 class="text-center">Register</h2>
         <div class="form-group">
         	<div class="input-group">                
                 <div class="input-group-prepend">
@@ -43,22 +43,20 @@
             </div>
         </div>        
         <div class="form-group">
-            <button type="submit" class="btn btn-dark btn-block login-btn">Sign in</button>
-        </div>
-        <div class="clearfix">
-            <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-            <a href="#" class="float-right text-dark">Forgot Password?</a>
-        </div>  
+            <button type="submit" class="btn btn-dark btn-block login-btn">Register</button>
+        </div> 
         	<div class="or-seperator"><i>or</i></div>
                 <div class="text-center social-btn">
             <!-- <button @click="submitFacebook" class="btn btn-primary btn-block"><i class="fab fa-facebook"></i> Sign in with <b>Facebook</b></button> -->
 			      <button @click="submitGoogle" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Sign in with <b>Google</b></button>
         </div>
     </form>
-    <div class="hint-text">Don't have an account? <a href="Register" class="text-dark">Register Now!</a></div>
+    <div class="hint-text">Already have an account? <a href="Login" class="text-dark">Login Now!</a></div>
 </div>
 </div>
 </template>
+
+
 
 <script>
 import firebase from "firebase";
@@ -67,6 +65,7 @@ export default {
   data() {
     return {
       form: {
+        name: "",
         email: "",
         password: ""
       },
@@ -77,22 +76,27 @@ export default {
     submit() {
       firebase
         .auth()
-      .signInWithEmailAndPassword(this.form.email, this.form.password)
+        .createUserWithEmailAndPassword(this.form.email, this.form.password)
         .then(data => {
-          this.$router.replace({ name: "Profile" });
+          data.user
+            .updateProfile({
+              displayName: this.form.name
+            })
+            .then(() => {});
+            window.location.href = "/"
         })
         .catch(err => {
           this.error = err.message;
         });
     },
-    submitGoogle(){
+      submitGoogle(){
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      window.location.href = "Profile"
+      window.location.href = "/"
       // ...
       }).catch(function(error) {
         // Handle Errors here.
@@ -105,45 +109,6 @@ export default {
         // ...
       });
     },
-
-    submitFacebook(){
-      var provider = new firebase.auth.FacebookAuthProvider();
-      firebase.auth().signInWithPopup(provider).then(function(result) {
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        window.location.href = "Profile"
-        // ...
-      }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-      });
-    }
-  },
-      passwordReset(){
-        var auth = firebase.auth();
-    var emailAddress = "user@example.com";
-
-    auth.sendPasswordResetEmail(emailAddress).then(function() {
-      // Email sent.
-    }).catch(function(error) {
-      // An error happened.
-    })
-    },
-
-  mounted(){
-    //'set timeout - loads before the user is logged in
-    if (this.$store.state.user.loggedIn && this.$route.name == 'Login'){
-      this.$router.push({name: 'Home'})
-    }
-  
   }
 };
 </script>

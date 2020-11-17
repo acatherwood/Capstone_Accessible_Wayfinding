@@ -1,14 +1,14 @@
 <template>
-  <Register />
+  <Signin />
 </template>
 
 <script>
-import Register from '../components/Register'
+import Signin from '../components/Signin'
 
 export default {
   name: 'App',
   components: {
-    Register
+    Signin
   },
 }
 

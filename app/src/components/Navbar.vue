@@ -22,7 +22,7 @@
 
           <template v-else>
             <li class="nav-item">
-              <router-link to="login" class="btn btn-danger">Sign in</router-link>
+              <router-link to="Signin" class="btn btn-danger">Sign in</router-link>
             </li>
             <li class="nav-item">
               <router-link to="register" class="btn btn-danger">Register</router-link>
