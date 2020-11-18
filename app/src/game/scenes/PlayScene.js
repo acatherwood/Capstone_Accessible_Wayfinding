@@ -5,6 +5,8 @@ import EasyStar from 'easystarjs'
 import tileset from '@/game/assets/bw.png'
 import map from '@/game/assets/floor.json'
 import dude from '@/game/assets/phaserguy.png'
+import elevator from '@/game/assets/elevator2.png'
+import restroom from '@/game/assets/restroom2.png'
 
 
 var Game = {};
@@ -19,6 +21,8 @@ export default class PlayScene extends Scene {
     this.load.image('tileset', tileset);
     this.load.tilemapTiledJSON('map', map);
     this.load.image('phaserguy', dude); 
+    this.load.image('elevator', elevator);
+    this.load.image('restroom', restroom);
   }
   
 
@@ -38,6 +42,11 @@ export default class PlayScene extends Scene {
     // Handles the clicks on the map to make the character move
     //this.input.on('pointerup',this.handleClick);
     this.player = phaserGuy;
+
+    //loads elevator icon
+    var elevatorIcon = this.add.image(521,330, 'elevator').setScale(1.5);
+    elevatorIcon.setDepth(1);
+    //elevator.setOrigin(0,0.5);
 
     // Display map
     this.map = this.make.tilemap({ key: 'map'});
