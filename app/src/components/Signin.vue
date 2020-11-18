@@ -79,7 +79,7 @@ export default {
         .auth()
       .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(data => {
-          this.$router.replace({ name: "Profileview" });
+          this.$router.replace({ name: "profile" });
         })
         .catch(err => {
           this.error = err.message;
@@ -92,7 +92,7 @@ export default {
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      window.location.href = "Profileview"
+      window.location.href = "profile"
       // ...
       }).catch(function(error) {
         // Handle Errors here.
@@ -113,7 +113,7 @@ export default {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        window.location.href = "Profileview"
+        window.location.href = "profile"
         // ...
       }).catch(function(error) {
         // Handle Errors here.
@@ -141,7 +141,7 @@ export default {
   mounted(){
     //'set timeout - loads before the user is logged in
     if (this.$store.state.user.loggedIn && this.$route.name == 'Signin'){
-      this.$router.push({name: 'Profileview'})
+      this.$router.push({name: 'Profile'})
     }
   
   }
