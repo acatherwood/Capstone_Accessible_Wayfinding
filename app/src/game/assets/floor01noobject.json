@@ -1,0 +1,53 @@
+{ "compressionlevel":-1,
+ "height":92,
+ "infinite":false,
+ "layers":[
+        {
+         "id":4,
+         "image":"..\/Floor plan jpgs for tiled use\/MCMICKEN-01 Floor Plan jpg cropped.jpg",
+         "name":"Image Layer 1",
+         "opacity":1,
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "compression":"zlib",
+         "data":"eJztmglu3DgQRd33v5yPNAgCAxlDImslv6jXwEMcN1Ws9Wvz99fX1zcAAACE+EzY7d+pzPK+i915AfoN\/l+zyPdXv\/8MvruzR83ew24tQCNiNYuuGWmExxY1ew9q9VXzRxE0AlaiVl81fxRBI2AlavVV80cRBY2IrIFnojaTav4ogkbAStRmUs0fRdAIWInaTKr5o4h1Zq+eFfz+2fJuCY14N2ozqeaPIitmFo2Af2urVF81fxTpzE\/0PQU1Oxe1mVTzRxHF\/Cj6BHW1Vaqvmj+KrL72517j3ajNpJo\/isyeNY5yOMrt6JjofvB81Oqr5o8ilhx53l9k32tQs7NRq6+aP4pErv0zfy\/Bvca7UZtJNX8UQSNgJWozqeaPIpH8oBEQRW0m1fxRJPIMMaMRVp925wV6UJtJNX8UWX2vUeUTPBO1mVTzR5EdzyN49\/le1Oqr5o8iPLOElajNpJo\/ilTmp2r+qdm5qM2kmj+KRJ8XRP5+yrofNTsXtZlU80eRyucDXEeApbZK9VXzRxHV9xqn8\/b4vTmp6vVdez8ZS35+r7k75ur3kfzv7tWunvdqxKl5UZtTNCKfn0qNiOxXcWzXd5F8WzSiuo6RnGb8HO23SyMyffVmKvvRqhHRc8opGrGyJpGaZW3O9rP0SQdoRG3eqnLtuQb5+Xxu1qMR8WN2asTvn9GINey8V7Tk+nOzFo2oWeM95gkakb3GjBzbOSe78epxRkOv5rxDX34+aES9XXWNyMZosTvqyVM1ovP3O\/z++cz6a1Sbz2TtyFakN6viz+63UyOsNfm++K4ihpndjjpG9l\/NUzViFM\/Px3sdURGDtd+76vZ7jfV8ZdU\/z\/xa466+jsjkGY2wx9uhEStmREUjdsXftV+nr2iEb3+V+qERtX6tir9rv6yv1muQUQzeaxzL9c+dr7vyikb09531WrjLv6doRPZcW7m+UyMi+6ERtnjv8p3V8pl9j+1ZXjM6d+VPJp\/VvfVGjYj0bWQ\/NCJXg1lsT9aI0RqrrW6NmPX\/Cl+qta5TI0Z9Z8ltxl5HPnZQ5dPq2LIa4T1X7NCIWT97cpT1pepYr62K64gVffkGjfDS3TueXHr0PXOd481Nl31rH1Xu0bXemzdLvT052j1Hu\/1GI8b91TXDaETPXhaNuPu\/6hxFa7taIyIzdLd+l99P5IQYlHlqP6r1xcmxqUO+zoFaAgD85Un3SQBPgbkCgFN56vOIE7T3hBigvpZqfWF9rzH7fte7pqs4KvyveKcXOWZFTqtiqIqvwuasbqv6sSquHVpgmTXPjMxmdqXfM99P0ghvnkc2sjFUxVdhc1a3Vf3o8c+SWwWiM2LpxdU16ezn6vmK2LnrMUuOPP28KqeVNmd9u6MfZ\/5ZcqtAlT+Zvq+0YYnN6kskZ1ffRX83899aE4uf1r2reswba7T+mX7K6FR1vnYS8SdSM0sOPbmu7BGv\/axfd+t2acTVuooYK2Ot1ghrTJ6+juan+vhqdvhj7b8Kjdjpv9eG5dyemRFPDN0a0VmDyL5RjbDkXSFf3blW9G2nRlTsGdWIn3+98Xs0oiL3CnleoREdfaiQ36w\/q2Lo0ohO\/yttoxG5Gl6dxyP3nDOqewKN2H+vgUb4NMI6J7OZ9NrL1nDXvUbWBhqhoRGWnhytiZyPLHuPbFlzY1mfuY6I5Du6zyqd33E+qcy9mj+rNCLrQ2XPZv2q8EVFIzpjrK6HFTRi7E+ETFxVGhHxM7o\/GrEmxqp6jOrfUfd\/97T2YYXfK4hqhPea2Zqzj8MGGmH35USNyPRZBx2zpMQfvzKfCs229ExFj6ARaEQHK2doB2hEvM8zx6tqxK4YPTYrztMzLfHYQCPq4ruri0f7sxox6+erPuian1E+orMVOd56Dr7Sm4gmW+q94jriam3kWgSNqItvpUY8HW8Ovd+fjqcnM\/34Fo3wkInvLveemlT3iCIVGnJqbqpj7NKILk1TB41Yl2c0Yk2MnRqxO09KtfEen6nJGzRiFnfl2idSrRG\/10dtnN6D2Xpl1lbYeANejdjtr3KORuvpx56aZO69Kmy8ATTCHnumn+hHeCpoBACMQCMAYAQaAQAj0AgAGIFGAMAINAIARqARADACjQCAEWgEAIxAIwBgBBoBACPQCAAYgUYAwAg0AgAAAAAAAAAAAAAAAN7Af0y5960=",
+         "encoding":"base64",
+         "height":92,
+         "id":7,
+         "name":"Trying a tile layer",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":265,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":8,
+ "nextobjectid":259,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.4.2",
+ "tileheight":8,
+ "tilesets":[
+        {
+         "columns":32,
+         "firstgid":1,
+         "image":"bw.png",
+         "imageheight":256,
+         "imagewidth":256,
+         "margin":0,
+         "name":"BlackAndWhiteTileSet3",
+         "spacing":0,
+         "tilecount":1024,
+         "tileheight":8,
+         "tilewidth":8
+        }],
+ "tilewidth":8,
+ "type":"map",
+ "version":1.4,
+ "width":265
+}
