@@ -55,7 +55,7 @@
 			      <button @click="submitGoogle" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Sign in with <b>Google</b></button>
         </div>
     </form>
-    <div class="hint-text">Don't have an account? <a href="Register" class="text-dark">Register Now!</a></div>
+    <div class="hint-text">Don't have an account? <a href="Register" class="text-dark">Register now!</a></div>
 </div>
 </div>
 </template>
