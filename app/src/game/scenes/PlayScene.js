@@ -194,7 +194,7 @@ moveCharacter = function(path){
         //Game.graphics.clear();// not sure what to actually clear with
         var line = new Phaser.Geom.Line( (path[i].x*8),(path[i].y*8),  (path[i+1].x*8),(path[i+1].y*8));
 
-        Game.graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
+        Game.graphics = this.add.graphics({ lineStyle: { width: 8, color: 0x0000FF } });//change line width and color here
 
         Game.graphics.strokeLineShape(line);
         tweens.push({
