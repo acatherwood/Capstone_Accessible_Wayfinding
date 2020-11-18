@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Signin from '../views/Signin.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
+import Forgotpw from '../views/Forgotpw.vue'
 
 
 Vue.use(VueRouter)
@@ -15,7 +16,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/Signin',
+    path: '/signin',
     name: 'Signin',
     component: Signin
   },
@@ -28,6 +29,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: Profile
+  },
+  {
+    path: '/forgotpw',
+    name: 'Forgotpw',
+    component: Forgotpw
   },
   {
     path: '/about',

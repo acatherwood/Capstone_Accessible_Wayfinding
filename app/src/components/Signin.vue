@@ -47,7 +47,7 @@
         </div>
         <div class="clearfix">
             <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-            <a href="#" class="float-right text-dark">Forgot Password?</a>
+            <a href="Forgotpw" class="float-right text-dark">Forgot Password?</a>
         </div>  
         	<div class="or-seperator"><i>or</i></div>
                 <div class="text-center social-btn">
