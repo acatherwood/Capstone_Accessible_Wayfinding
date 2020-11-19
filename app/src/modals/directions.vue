@@ -10,7 +10,16 @@
         </div>
         <div class="modal-body">
         <div class="input-group mb-3">
-            <input type="text" class="form-control"  id="To" value="To.." placeholder="Where are you?" aria-label="Where are you?" aria-describedby="basic-addon2">
+            <input 
+                type="text" 
+                v-model="inputTo"
+                @keyup.enter="submit"
+                class="form-control"  
+                id="To" 
+                value="To.." 
+                placeholder="Where are you?" 
+                aria-label="Where are you?" 
+                aria-describedby="basic-addon2">
         </div>
         <div class="input-group mb-3">
             <input type="text" class="form-control"   id="From" value="From.." placeholder="Where are you going?" aria-label="Where are you going?" aria-describedby="basic-addon2">
@@ -22,6 +31,7 @@
 
             <button class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
+    
     </div>
     </div>
     </div>
@@ -31,7 +41,11 @@
 <script>
     export default {
         name: 'modal',
- 
+        data(){
+            return {
+                inputTo: ""
+            };
+        },
         methods:{
             displaySearch: function(event){
             var block = document.getElementById("search-box")
@@ -41,12 +55,15 @@
             var newDiv = document.createElement('div')
             
             },
-            storeInput: function(event){
-            var inputTo = document.getElementById("To").value;
-            alert(inputTo);
-            var inputFrom = document.getElementById("From").value;
-            alert(inputFrom);
-            }
+            storeInput(event) {
+                var inputTo = document.getElementById("To").value;
+            // alert(inputTo);
+                var inputFrom = document.getElementById("From").value;
+            // alert(inputFrom);
+                // update the state
+            this.$store.commit('SET_DIRECTIONS', { from: inputFrom, to: inputTo });
+            },
+       
         }
     }
     </script>

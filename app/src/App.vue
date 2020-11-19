@@ -5,20 +5,34 @@
       <navbar></navbar>
     </div>
     <router-view/>
+    <div>
+      <directions @inputData="updateMessage" />
+    </div>
   </div>
 
 </template>
 
 <script>
 import navbar from "./components/Navbar.vue"
-
+import directions from "@/modals/directions.vue"
 
 export default {
   name: 'App',
   components: {
-    navbar
+    navbar,
+    directions
   },
-}
+  data: function() {
+    return {
+      childData: ""
+    };
+  },
+  methods: {
+    updateMessage(variable) {
+      this.childData= variable;
+    }
+  }
+};
 
 </script>
 

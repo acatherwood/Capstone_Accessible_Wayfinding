@@ -5,12 +5,17 @@
   <div class="placeholder" v-else>
     Downloading ...
   </div>
+   <div>
+     <p>show directions</p>
+    <label>From</label> {{ showFromLocation }}
+    <label>To</label> {{ showToLocation }}
+   </div>
 </div>
 </template>
 
 
-<script>
 
+<script>
 
 
 export default {
@@ -31,6 +36,14 @@ export default {
   },
   destroyed() {
     this.gameInstance.destroy(false)
+  },
+  computed: {
+    showFromLocation(){
+      return this.$store.state.directions.from 
+    },
+     showToLocation(){
+      return this.$store.state.directions.to 
+    }
   }
 }
 </script>
