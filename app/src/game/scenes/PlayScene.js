@@ -1,14 +1,9 @@
 import { Scene } from 'phaser'
 import EasyStar from 'easystarjs'
 
-import tileset from '@/game/assets/bw.png'
-import map from '@/game/assets/floor.json'
-import dude from '@/game/assets/phaserguy.png'
-import moveBTN from '@/game/assets/MoveBTN.png'
-
-
 var Game = {};
 var canWalk = -1;
+
 export default class PlayScene extends Scene {
   constructor () {
     super({ key: 'PlayScene' })
@@ -16,17 +11,11 @@ export default class PlayScene extends Scene {
 
   preload () {
     Game.scene = this; // Handy reference to the scene (alternative to `this` binding)
-    this.load.image('tileset', tileset);
-    this.load.tilemapTiledJSON('map', map);
-    this.load.image('phaserguy', dude); 
-    this.load.image('moveBTN', moveBTN); 
 
   }
   
 
   create = function(){
-
-
     var demosWindow = this.add.image(0, 0, 'demosWindow').setOrigin(0);
     var floor0icon = this.add.sprite(0, 200, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);;
     var floor1icon = this.add.sprite(0, 30, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);;
@@ -71,10 +60,9 @@ export default class PlayScene extends Scene {
     // Handles the clicks on the map to make the character move
     this.input.on('pointerup',this.handleClick);
     var camera = Game.scene.cameras.main;
-    var graphics;
     camera = this.cameras.main;
     camera.setBounds(0, 0, 90*8, 470*8);
-    var phaserGuy = this.add.image(8,8,'phaserguy').setScale(0.5);
+    var phaserGuy = this.add.image(8,8,'dude').setScale(0.5);
     phaserGuy.setDepth(1);
     phaserGuy.setOrigin(0,0.5);
     camera.startFollow(phaserGuy);
@@ -154,7 +142,7 @@ handleClick = function(pointer){
     if(canWalk === 1){
         var x = pointer.camera.scrollX + pointer.x;
         var y = pointer.camera.scrollY + pointer.y;
-        ///pointer.camera.setZoom(2);
+        //pointer.camera.setZoom(.8);
         var toX = Math.floor(x/8);
         var toY = Math.floor(y/8);
         var fromX = Math.floor(this.scene.player.x/8);
