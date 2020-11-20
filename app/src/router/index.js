@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
+import Signin from '../views/Signin.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
+import Forgotpw from '../views/Forgotpw.vue'
 
 
 Vue.use(VueRouter)
@@ -15,9 +16,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: '/signin',
+    name: 'Signin',
+    component: Signin
   },
   {
     path: '/register',
@@ -28,6 +29,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: Profile
+  },
+  {
+    path: '/forgotpw',
+    name: 'Forgotpw',
+    component: Forgotpw
   },
   {
     path: '/about',

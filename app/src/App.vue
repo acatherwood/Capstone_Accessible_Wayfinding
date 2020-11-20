@@ -3,26 +3,21 @@
 
     <div id="nav">
       <navbar></navbar>
-      <SideNav/>
     </div>
-    <div id="side">
-      <SideNav/>
-    </div>
+  
     <router-view/>
   </div>
 
 </template>
 
 <script>
-import SideNav from './components/SideNav.vue'
 import navbar from "./components/Navbar.vue"
 
 
 export default {
   name: 'App',
   components: {
-    navbar,
-    SideNav
+    navbar
   },
 }
 
@@ -44,21 +39,7 @@ export default {
   top: 50px;
 }
 
-.sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    width: 190px;
-    z-index: 1000;
-    padding: 5px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-right: 1px solid #eee;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 75px;
-    min-height: calc(100vh - 56px);
-    transition: all 0.3s;
+.container{
+  padding-top: 100px;
 }
 </style>

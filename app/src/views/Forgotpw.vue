@@ -1,14 +1,14 @@
 <template>
-  <Register />
+  <Forgotpw />
 </template>
 
 <script>
-import Register from '../components/Register'
+import Forgotpw from '../components/Forgotpw'
 
 export default {
   name: 'App',
   components: {
-    Register
+    Forgotpw
   },
 }
 
