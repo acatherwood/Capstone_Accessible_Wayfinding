@@ -6,7 +6,12 @@ export default new Vuex.Store({
     user: {
       loggedIn: false,
       data: null
-    }
+    },
+    // add the directions hash to store the from/to values
+    directions: {
+      from: '',
+      to: '',
+    },
   },
   getters: {
     user(state){
@@ -19,7 +24,12 @@ export default new Vuex.Store({
     },
     SET_USER(state, data) {
       state.user.data = data;
-    }
+    },
+    // this is the mutation that takes the data and updates the state
+    SET_DIRECTIONS(state, data) {
+    	state.directions.from = data.from;
+      state.directions.to = data.to;
+    },
   },
   actions: {
     fetchUser({ commit }, user) {

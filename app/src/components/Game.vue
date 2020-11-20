@@ -5,12 +5,17 @@
   <div class="placeholder" v-else>
     Downloading ...
   </div>
+   <div>
+     <p>show directions</p>
+    <label>From</label> {{ showFromLocation }}
+    <label>To</label> {{ showToLocation }}
+   </div>
 </div>
 </template>
 
 
-<script>
 
+<script>
 
 
 export default {
@@ -31,6 +36,27 @@ export default {
   },
   destroyed() {
     this.gameInstance.destroy(false)
+  },
+  // watch will allow us to look at a reactive property 
+  // (showFromLocation and showToLocation) and then run some 
+  // code any time that data changes
+  // this just takes the values and pushes them onto the 'window' object 
+  // which is accessible anywhere in the application
+  watch: {
+    showFromLocation() {
+      window.showFromLocation = this.showFromLocation;
+    },
+    showToLocation() {
+      window.showToLocation = this.showToLocation;
+    },
+  },
+  computed: {
+    showFromLocation(){
+      return this.$store.state.directions.from 
+    },
+     showToLocation(){
+      return this.$store.state.directions.to 
+    }
   }
 }
 </script>
