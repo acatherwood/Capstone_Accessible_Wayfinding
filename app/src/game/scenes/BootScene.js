@@ -1,12 +1,10 @@
 import { Scene } from 'phaser'
-// import sky from '@/game/assets/sky.png'
-// import bomb from '@/game/assets/bomb.png'
-// import thudMp3 from '@/game/assets/thud.mp3'
-// import thudOgg from '@/game/assets/thud.ogg'
-
-import tileset from '@/game/assets/bw.png'
-import map from '@/game/assets/floor.json'
+import floor1iconBTN from '@/game/assets/Floor_1.png'
+import FloorMapIcon from '@/game/assets/McM1.jpg'
+///import map from '@/game/assets/map.json'
+import tiles from '@/game/assets/bw.png'
 import dude from '@/game/assets/phaserguy.png'
+import map from '@/game/assets/floor.json'
 
 
 export default class BootScene extends Scene {
@@ -14,11 +12,17 @@ export default class BootScene extends Scene {
     super({ key: 'BootScene' })
   }
 
-  preload () {
-    //this.scene = this; // Handy reference to the scene (alternative to `this` binding)
-    this.load.image('tileset', tileset);
-    this.load.tilemapTiledJSON('map', map);
-    this.load.image('phaserguy', dude); }
+  preload ()
+  {
+      this.load.image('floor1icon', floor1iconBTN);
+      this.load.tilemapTiledJSON('map', map);
+      console.warn(map);
+      this.load.image('floorMap', FloorMapIcon);
+      this.load.image('tileSet', tiles);
+
+      //replace when appropriate
+      this.load.image('dude', dude);
+  }
 
   create () {
     this.scene.start('PlayScene')
