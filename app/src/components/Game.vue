@@ -37,6 +37,19 @@ export default {
   destroyed() {
     this.gameInstance.destroy(false)
   },
+  // watch will allow us to look at a reactive property 
+  // (showFromLocation and showToLocation) and then run some 
+  // code any time that data changes
+  // this just takes the values and pushes them onto the 'window' object 
+  // which is accessible anywhere in the application
+  watch: {
+    showFromLocation() {
+      window.showFromLocation = this.showFromLocation;
+    },
+    showToLocation() {
+      window.showToLocation = this.showToLocation;
+    },
+  },
   computed: {
     showFromLocation(){
       return this.$store.state.directions.from 
