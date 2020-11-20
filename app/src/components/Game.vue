@@ -5,12 +5,25 @@
   <div class="placeholder" v-else>
     Downloading ...
   </div>
-   <div>
-     <p>show directions</p>
-    <label>From</label> {{ showFromLocation }}
-    <label>To</label> {{ showToLocation }}
-   </div>
+
+     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+      <div class="card-header bg-danger">Directions</div>
+      <div class="card-body text-center">
+          <div class="row justify-content-center">
+      <div class="from mx-auto">
+    <label>From: </label> {{ showFromLocation }}
+      </div>
+      <div class="to mx-auto">
+    <label>To: </label> {{ showToLocation }}
+      </div>
+    </div>
+      </div>
+    </div>
+
+
+
 </div>
+
 </template>
 
 
@@ -62,9 +75,15 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style scoped>
 .placeholder {
   font-size: 2rem;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.card {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
 }
 </style>
