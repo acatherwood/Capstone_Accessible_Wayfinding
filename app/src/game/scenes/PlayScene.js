@@ -4,11 +4,11 @@ import EasyStar from 'easystarjs'
 import tileset from '@/game/assets/bw.png'
 import map from '@/game/assets/floor.json'
 import dude from '@/game/assets/phaserguy.png'
+import moveBTN from '@/game/assets/MoveBTN.png'
 
 
 var Game = {};
-var canWalk = true;
-
+var canWalk = -1;
 export default class PlayScene extends Scene {
   constructor () {
     super({ key: 'PlayScene' })
@@ -19,6 +19,8 @@ export default class PlayScene extends Scene {
     this.load.image('tileset', tileset);
     this.load.tilemapTiledJSON('map', map);
     this.load.image('phaserguy', dude); 
+    this.load.image('moveBTN', moveBTN); 
+
   }
   
 
@@ -26,61 +28,52 @@ export default class PlayScene extends Scene {
 
 
     var demosWindow = this.add.image(0, 0, 'demosWindow').setOrigin(0);
-    var floor0icon = this.add.image(32, 30, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05);
-    var floor1icon = this.add.image(32, 80, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05);
-    var floor2icon = this.add.image(32, 130, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05);
-    var floor3icon = this.add.image(32, 180, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05);
+    var floor0icon = this.add.sprite(0, 200, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);;
+    var floor1icon = this.add.sprite(0, 30, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);;
+    var floor2icon = this.add.sprite(0, 90, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);;
+    var floor3icon = this.add.sprite(0, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);;
     var demosContainer = this.add.container(32, 70, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon ]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
-
+    
     this.input.setDraggable(demosContainer);
 
     demosContainer.on('drag', function (pointer, dragX, dragY) {
-
         this.x = dragX;
         this.y = dragY;
 
+      });
+
+    floor3icon.on('pointerdown', function () {
+        phaserGuy.setPosition(133*8, 337*8);
+
+    });
+      
+    floor2icon.on('pointerdown', function () {
+        phaserGuy.setPosition(141*8, 196*8);
+
+
     });
 
-    floor3icon.on('pointerup', function () {
-        canWalk = false;
-        phaserGuy.setPosition(55*8, 80*8);
-       
-
-    }, this);
-      
-    floor2icon.on('pointerup', function () {
-        canWalk = false;
-        phaserGuy.setPosition(5*8, 5*8);
-        
-
-    }, this);
-
-    floor1icon.on('pointerup', function () {
-        canWalk = false;
+    floor1icon.on('pointerdown', function () {
         phaserGuy.setPosition(127*8, 47*8);
-       
-
-    }, this);
 
 
-    floor0icon.on('pointerup', function () {
-        canWalk = false;
-        phaserGuy.setPosition(208*8, 46*8);
-       
+    });
 
-    }, this);
+
+    floor0icon.on('pointerdown', function () {
+       canWalk *= -1;
+
+    });
     demosContainer.setDepth(1);
     demosContainer.setScrollFactor(0);
 
     // Handles the clicks on the map to make the character move
     this.input.on('pointerup',this.handleClick);
-
     var camera = Game.scene.cameras.main;
     var graphics;
     camera = this.cameras.main;
-    camera.setBounds(0, 0, 90*8, 270*8);
-
+    camera.setBounds(0, 0, 90*8, 470*8);
     var phaserGuy = this.add.image(8,8,'phaserguy').setScale(0.5);
     phaserGuy.setDepth(1);
     phaserGuy.setOrigin(0,0.5);
@@ -158,13 +151,10 @@ getTileID = function(x,y){
 };
 
 handleClick = function(pointer){
-    console.log(canWalk);
-    if (canWalk === false){//prevents UI clicks from moving character
-        canWalk = true;
-
-    }else{
+    if(canWalk === 1){
         var x = pointer.camera.scrollX + pointer.x;
         var y = pointer.camera.scrollY + pointer.y;
+        ///pointer.camera.setZoom(2);
         var toX = Math.floor(x/8);
         var toY = Math.floor(y/8);
         var fromX = Math.floor(this.scene.player.x/8);
