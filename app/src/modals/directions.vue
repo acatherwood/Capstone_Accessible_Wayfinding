@@ -22,7 +22,11 @@
                 aria-describedby="basic-addon2">
         </div>
         <div class="input-group mb-3">
-            <input type="text" class="form-control"   id="From" value="From.." placeholder="Where are you going?" aria-label="Where are you going?" aria-describedby="basic-addon2">
+            <input type="text" class="form-control"   
+            id="From"
+            placeholder="Where are you going?" 
+            aria-label="Where are you going?" 
+            aria-describedby="basic-addon2">
         </div>
         </div>
 
