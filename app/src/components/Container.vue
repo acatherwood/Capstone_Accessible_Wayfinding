@@ -22,8 +22,9 @@ export default {
   transform: translateX(-50%);
   left: 50%;
   position: relative;
-  padding-top: 60px;
+  padding-top: 100px;
 }
+
 
 
 </style>
