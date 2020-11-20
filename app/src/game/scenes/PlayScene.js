@@ -5,6 +5,8 @@ import EasyStar from 'easystarjs'
 import tileset from '@/game/assets/bw.png'
 import map from '@/game/assets/floor.json'
 import dude from '@/game/assets/phaserguy.png'
+import elevator from '@/game/assets/elevator2.png'
+import restroom from '@/game/assets/restroom2.png'
 
 
 var Game = {};
@@ -19,6 +21,8 @@ export default class PlayScene extends Scene {
     this.load.image('tileset', tileset);
     this.load.tilemapTiledJSON('map', map);
     this.load.image('phaserguy', dude); 
+    this.load.image('elevator', elevator);
+    this.load.image('restroom', restroom);
   }
   
 
@@ -30,7 +34,7 @@ export default class PlayScene extends Scene {
     var camera = Game.scene.cameras.main;
     var graphics;
     camera = this.cameras.main;
-    camera.setBounds(0, 0, 90*8, 270*8);
+    camera.setBounds(0, 0, 90*8, 400*8);
 
     var phaserGuy = this.add.image(8,8,'phaserguy').setScale(0.5);
     phaserGuy.setDepth(1);
@@ -39,6 +43,23 @@ export default class PlayScene extends Scene {
     // Handles the clicks on the map to make the character move
     //this.input.on('pointerup',this.handleClick);
     this.player = phaserGuy;
+
+    //loads elevator icon one and two
+    var elevatorIcon = this.add.image(521,330, 'elevator').setScale(1.5);
+    elevatorIcon.setDepth(1);
+    
+    var elevatorIconTwo = this.add.image(1510,330,'elevator').setScale(1.5);
+    elevatorIconTwo.setDepth(1);
+
+    //load restroom icon one, two, three, four and five
+    var restroom1 =this.add.image(225,420,'restroom').setScale(1);
+    restroom1.setDepth(1);
+
+    var restroom2=this.add.image(1125,435,'restroom').setScale(1);
+    restroom2.setDepth(1);
+
+    var restroom3=this.add.image(1520,280,'restroom').setScale(1);
+    restroom3.setDepth(1);
 
     // Display map
     this.map = this.make.tilemap({ key: 'map'});
