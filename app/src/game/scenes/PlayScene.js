@@ -1,15 +1,8 @@
 import { Scene } from 'phaser'
 import EasyStar from 'easystarjs'
 
-
-import tileset from '@/game/assets/bw.png'
-import map from '@/game/assets/floor.json'
-import dude from '@/game/assets/phaserguy.png'
-import elevator from '@/game/assets/elevator2.png'
-import restroom from '@/game/assets/restroom2.png'
-
-
 var Game = {};
+var canWalk = -1;
 
 export default class PlayScene extends Scene {
   constructor () {
@@ -18,48 +11,67 @@ export default class PlayScene extends Scene {
 
   preload () {
     Game.scene = this; // Handy reference to the scene (alternative to `this` binding)
-    this.load.image('tileset', tileset);
-    this.load.tilemapTiledJSON('map', map);
-    this.load.image('phaserguy', dude); 
-    this.load.image('elevator', elevator);
-    this.load.image('restroom', restroom);
+
   }
   
 
   create = function(){
-  
+    var demosWindow = this.add.image(0, 0, 'demosWindow').setOrigin(0);
+    var floor0icon = this.add.sprite(0, 200, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
+    var floor3icon = this.add.sprite(0, 30, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
+    var floor2icon = this.add.sprite(0, 90, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
+    var johnRouteIcon = this.add.sprite(55, 150, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
+    var floor1icon = this.add.sprite(0, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
+    var demosContainer = this.add.container(32, 70, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
+    demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
+    
+    this.input.setDraggable(demosContainer);
+
+    demosContainer.on('drag', function (pointer, dragX, dragY) {
+        this.x = dragX;
+        this.y = dragY;
+
+      });
+
+    floor3icon.on('pointerdown', function () {
+        phaserGuy.setPosition(133*8, 337*8);
+
+    });
+      
+    floor2icon.on('pointerdown', function () {
+        phaserGuy.setPosition(141*8, 196*8);
+
+
+    });
+
+    floor1icon.on('pointerdown', function () {
+        phaserGuy.setPosition(127*8, 47*8);
+
+
+    });
+
+
+    floor0icon.on('pointerdown', function () {
+       canWalk *= -1;
+
+    });
+
+    johnRouteIcon.on('pointerdown', this.walkToPoint );
+    demosContainer.setDepth(1);
+    demosContainer.setScrollFactor(0);
+    
     // Handles the clicks on the map to make the character move
     this.input.on('pointerup',this.handleClick);
-
     var camera = Game.scene.cameras.main;
-    var graphics;
     camera = this.cameras.main;
-    camera.setBounds(0, 0, 90*8, 400*8);
-
-    var phaserGuy = this.add.image(8,8,'phaserguy').setScale(0.5);
-    phaserGuy.setDepth(1);
+    camera.setBounds(0, 0, 280*8, 470*8);
+    var phaserGuy = this.add.image(8,8,'dude').setScale(0.5);
+    phaserGuy.setDepth(2);
     phaserGuy.setOrigin(0,0.5);
     camera.startFollow(phaserGuy);
     // Handles the clicks on the map to make the character move
     //this.input.on('pointerup',this.handleClick);
     this.player = phaserGuy;
-
-    //loads elevator icon one and two
-    var elevatorIcon = this.add.image(521,330, 'elevator').setScale(1.5);
-    elevatorIcon.setDepth(1);
-    
-    var elevatorIconTwo = this.add.image(1510,330,'elevator').setScale(1.5);
-    elevatorIconTwo.setDepth(1);
-
-    //load restroom icon one, two, three, four and five
-    var restroom1 =this.add.image(225,420,'restroom').setScale(1);
-    restroom1.setDepth(1);
-
-    var restroom2=this.add.image(1125,435,'restroom').setScale(1);
-    restroom2.setDepth(1);
-
-    var restroom3=this.add.image(1520,280,'restroom').setScale(1);
-    restroom3.setDepth(1);
 
     // Display map
     this.map = this.make.tilemap({ key: 'map'});
@@ -130,28 +142,49 @@ getTileID = function(x,y){
 };
 
 handleClick = function(pointer){
-    //debug purposes only, this shows we are getting the variables from the directions modal
-    //into phaser
-    alert(window.showToLocation)
-    alert(window.showFromLocation)
-    var x = pointer.camera.scrollX + pointer.x;
-    var y = pointer.camera.scrollY + pointer.y;
-    var toX = Math.floor(x/8);
-    var toY = Math.floor(y/8);
-    // var fromX = Math.floor(this.player.x/32);
-    // var fromY = Math.floor(this.player.y/32);
+    //pointer.camera.setZoom(.8);
+    if(canWalk === 1){
+        var x = pointer.camera.scrollX + pointer.x;
+        var y = pointer.camera.scrollY + pointer.y;
+        
+        var toX = Math.floor(x/8);
+        var toY = Math.floor(y/8);
+        var fromX = Math.floor(this.scene.player.x/8);
+        var fromY = Math.floor(this.scene.player.y/8);
+        console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
+        Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
+            if (path === null) {
+                console.warn("Path was not found.");
+            } else {
+                console.log(path);
+                Game.scene.moveCharacter(path);
+                console.log(path.length);
+            }
+        });
+        this.scene.finder.calculate(); // don't forget, otherwise nothing happens
+    }
+};
+
+walkToPoint = function(pointer){
+    if(Number.isInteger(parseInt(window.showFromLocation)) && Number.isInteger(parseInt(window.showToLocation))){
+    var toX = Math.floor(parseInt(window.showFromLocation));
+    var toY = Math.floor(parseInt(window.showToLocation));
     var fromX = Math.floor(this.scene.player.x/8);
     var fromY = Math.floor(this.scene.player.y/8);
-    console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');
+    console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
     Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
         if (path === null) {
             console.warn("Path was not found.");
         } else {
             console.log(path);
             Game.scene.moveCharacter(path);
+            console.log(path.length);
         }
     });
     this.scene.finder.calculate(); // don't forget, otherwise nothing happens
+}else{
+    alert('You need to enter two integers')
+}
 };
 
 moveCharacter = function(path){
@@ -165,30 +198,21 @@ moveCharacter = function(path){
         //Game.graphics.clear();// not sure what to actually clear with
         var line = new Phaser.Geom.Line( (path[i].x*8),(path[i].y*8),  (path[i+1].x*8),(path[i+1].y*8));
 
-        Game.graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
+        Game.graphics = this.add.graphics({ lineStyle: { width: 8, color: 0x0000FF } });//change line width and color here
 
         Game.graphics.strokeLineShape(line);
         tweens.push({
             targets: this.player,
-            x: {value: ex*this.map.tileWidth, duration: 100},
-            y: {value: ey*this.map.tileHeight, duration: 100}
+            x: {value: ex*this.map.tileWidth, duration: 50},
+            y: {value: ey*this.map.tileHeight, duration: 50}
         });
     }
     Game.scene.tweens.timeline({
         tweens: tweens
     });
+    
 };
 
-/*drawPath = function(){ //iterates through the array and add lines where the movement was
-    Graphics.clear();
-    
 
-    for (i = 0; i < points.length; i++){
-        var line = new Phaser.Geom.Line(ex, ey);
 
-        var graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
-
-    graphics.strokeLineShape(line);}
-
-};*/
 }
