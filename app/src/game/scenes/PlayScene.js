@@ -33,7 +33,9 @@ export default class PlayScene extends Scene {
     var camera = Game.scene.cameras.main;
     var graphics;
     camera = this.cameras.main;
-    camera.setBounds(0, 0, 90*8, 400*8);
+    camera.setBounds(0, 0, 3000, 4708);
+    
+
 
     var phaserGuy = this.add.image(8,8,'phaserguy').setScale(0.5);
     phaserGuy.setDepth(1);
@@ -59,6 +61,12 @@ export default class PlayScene extends Scene {
 
     var restroom3=this.add.image(1520,280,'restroom').setScale(1);
     restroom3.setDepth(1);
+
+    var restroom4=this.add.image(1708,298,'restroom').setScale(1);
+    restroom4.setDepth(1);
+
+    var restroom5=this.add.image(1817,435,'restroom').setScale(1);
+    restroom5.setDepth(1);
 
     // Display map
     this.map = this.make.tilemap({ key: 'map'});
