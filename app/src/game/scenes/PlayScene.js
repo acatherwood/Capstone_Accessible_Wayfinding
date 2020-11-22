@@ -132,8 +132,8 @@ getTileID = function(x,y){
 handleClick = function(pointer){
     //debug purposes only, this shows we are getting the variables from the directions modal
     //into phaser
-    alert(window.showToLocation)
-    alert(window.showFromLocation)
+    // alert(window.showToLocation)
+    // alert(window.showFromLocation)
     var x = pointer.camera.scrollX + pointer.x;
     var y = pointer.camera.scrollY + pointer.y;
     var toX = Math.floor(x/8);

@@ -117,9 +117,11 @@ export default {
     },
     storeInput(event) {
       var inputTo = document.getElementById("To").value;
-      alert(inputTo);
+      //debug only
+      //alert(inputTo);
       var inputFrom = document.getElementById("From").value;
-      alert(inputFrom);
+      //debug only
+      //alert(inputFrom);
       // update the state
       this.$store.commit("SET_DIRECTIONS", { from: inputFrom, to: inputTo });
     },
