@@ -10,6 +10,15 @@
         </div>
         <div class="modal-body">
         <div class="input-group mb-3">
+            <div class="input-group mb-3">
+                <input type="text" 
+                v-model="inputFrom"
+                class="form-control"   
+                id="From"
+                placeholder="Where are you?" 
+                aria-label="Where are you?" 
+                aria-describedby="basic-addon2">
+            </div>
             <input 
                 type="text" 
                 v-model="inputTo"
@@ -17,16 +26,9 @@
                 class="form-control"  
                 id="To" 
                 value="To.." 
-                placeholder="Where are you?" 
-                aria-label="Where are you?" 
+                placeholder="Where are you going?" 
+                aria-label="Where are you going?" 
                 aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control"   
-            id="From"
-            placeholder="Where are you going?" 
-            aria-label="Where are you going?" 
-            aria-describedby="basic-addon2">
         </div>
         </div>
 
@@ -60,11 +62,12 @@
             
             },
             storeInput(event) {
-                var inputTo = document.getElementById("To").value;
-            // alert(inputTo);
-                var inputFrom = document.getElementById("From").value;
+                            var inputFrom = document.getElementById("From").value;
             // alert(inputFrom);
                 // update the state
+                var inputTo = document.getElementById("To").value;
+            // alert(inputTo);
+    
             this.$store.commit('SET_DIRECTIONS', { from: inputFrom, to: inputTo });
             },
        

@@ -11,10 +11,10 @@
       <div class="card-body text-center">
           <div class="row justify-content-center">
       <div class="from mx-auto">
-    <label>From: </label> {{ showFromLocation }}
+        <label>From: </label> {{ showFromLocation }}
       </div>
       <div class="to mx-auto">
-    <label>To: </label> {{ showToLocation }}
+      <label>To: </label> {{ showToLocation }}
       </div>
     </div>
       </div>
@@ -79,8 +79,8 @@ export default {
 }
 
 .card {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
+  transform: translateX(-50%);
+  left: 50%;
+  position: relative;
 }
 </style>
