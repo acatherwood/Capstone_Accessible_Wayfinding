@@ -9,24 +9,32 @@
         <button class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-        <div class="input-group mb-3">
-            <input 
-                type="text" 
-                v-model="inputTo"
-                @keyup.enter="submit"
-                class="form-control"  
-                id="To" 
-                value="To.." 
-                placeholder="Where are you?" 
-                aria-label="Where are you?" 
-                aria-describedby="basic-addon2">
+
+        <div >
+            <label>To</label>
+                <b-form-select id="To" 
+                name="routeSelect" v-model="testCollection">
+                <option v-for="item in testCollection" 
+                v-bind:key="item.value" 
+                v-bind:value="item.room"> {{ item }} </option>
+            
+                </b-form-select>
         </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control"   
-            id="From"
-            placeholder="Where are you going?" 
-            aria-label="Where are you going?" 
-            aria-describedby="basic-addon2">
+        <div >
+            <label>From</label>
+            <b-form-select 
+                type="text" 
+                class="form-control"  
+                id="From" 
+                v-model="selected" :options="options"></b-form-select>
+        </div>
+
+
+        <div>
+            <h1>System List</h1>
+            <ul>
+            <li :key="item.key" v-for="item in testCollection">{{item}}</li>
+            </ul>
         </div>
         </div>
 
@@ -43,12 +51,36 @@
 </template>
 
 <script>
+import firebase from 'firebase';
+
     export default {
         name: 'modal',
         data(){
             return {
-                inputTo: ""
+                    testCollection: [],
+       
+                    selected: null,
+                    options: [
+                    { value: null, text: 'Please select an option' },
+                    { value: 'a', text: 'Option A' },
+                    { value: 'b', text: 'Option B' }
+                    ],
+                  
+                    inputTo: ""
             };
+        },
+        mounted() {
+            const db = firebase.firestore();
+            db
+            .collection('floors')
+            .get()
+            .then(snap => {
+                const testCollection = [];
+                snap.forEach(doc => {
+                testCollection.push({ [doc.id]: doc.data() });
+                });
+                this.testCollection = testCollection;
+            });
         },
         methods:{
             displaySearch: function(event){
