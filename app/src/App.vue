@@ -23,16 +23,11 @@ export default {
     navbar,
     directions
   },
-  // data: function() {
-  //   return {
-  //     childData: ""
-  //   };
-  // },
-  // methods: {
-  //   updateMessage(variable) {
-  //     this.childData= variable;
-  //   }
-  // }
+  methods: {
+    updateMessage(variable) {
+      this.childData= variable;
+    }
+  }
 };
 
 </script>
