@@ -3,7 +3,7 @@ import EasyStar from 'easystarjs'
 
 var Game = {};
 var canWalk = -1;
-
+var bathroomCoords = [[225, 420], [1125, 435] , [1520,280]]
 export default class PlayScene extends Scene {
   constructor () {
     super({ key: 'PlayScene' })
@@ -31,15 +31,15 @@ export default class PlayScene extends Scene {
 
     var restroom3=this.add.image(1520,280,'restroom').setScale(1);
 
-    
+
     restroom3.setDepth(1);
-    var demosWindow = this.add.image(0, 0, 'demosWindow').setOrigin(0);
-    var floor0icon = this.add.sprite(0, 200, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
-    var floor3icon = this.add.sprite(0, 30, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var floor2icon = this.add.sprite(0, 90, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var johnRouteIcon = this.add.sprite(55, 150, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
-    var floor1icon = this.add.sprite(0, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var demosContainer = this.add.container(32, 70, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
+    var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
+    var floor0icon = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
+    var floor3icon = this.add.sprite(15, 30, 'floor3icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
+    var floor2icon = this.add.sprite(15, 90, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
+    var johnRouteIcon = this.add.sprite(40, 220, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
+    var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
+    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
     this.input.setDraggable(demosContainer);
@@ -73,7 +73,7 @@ export default class PlayScene extends Scene {
 
     });
 
-    johnRouteIcon.on('pointerdown', this.walkToPoint );
+    johnRouteIcon.on('pointerdown', this.routeToRestroom );
     demosContainer.setDepth(1);
     demosContainer.setScrollFactor(0);
     
@@ -137,99 +137,133 @@ export default class PlayScene extends Scene {
     this.finder.setAcceptableTiles(acceptableTiles);
 };
 
-update = function(){
-    var worldPoint = this.input.activePointer.positionToCamera(Game.scene.cameras.main);
+    update = function(){
+        var worldPoint = this.input.activePointer.positionToCamera(Game.scene.cameras.main);
 
-    // Rounds down to nearest tile
-    var pointerTileX = this.map.worldToTileX(worldPoint.x);
-    var pointerTileY = this.map.worldToTileY(worldPoint.y);
-    this.marker.x = this.map.tileToWorldX(pointerTileX);
-    this.marker.y = this.map.tileToWorldY(pointerTileY);
-    this.marker.setVisible(true);
-};
+        // Rounds down to nearest tile
+        var pointerTileX = this.map.worldToTileX(worldPoint.x);
+        var pointerTileY = this.map.worldToTileY(worldPoint.y);
+        this.marker.x = this.map.tileToWorldX(pointerTileX);
+        this.marker.y = this.map.tileToWorldY(pointerTileY);
+        this.marker.setVisible(true);
+    };
 
-checkCollision = function(x,y){
-    var tile = this.map.getTileAt(x, y);
-    return tile.properties.collide == true;
-};
+    checkCollision = function(x,y){
+        var tile = this.map.getTileAt(x, y);
+        return tile.properties.collide == true;
+    };
 
-getTileID = function(x,y){
-    var tile = this.map.getTileAt(x, y);
-    return tile.index;
-};
+    getTileID = function(x,y){
+        var tile = this.map.getTileAt(x, y);
+        return tile.index;
+    };
 
-handleClick = function(pointer){
-    //pointer.camera.setZoom(.8);
-    if(canWalk === 1){
-        var x = pointer.camera.scrollX + pointer.x;
-        var y = pointer.camera.scrollY + pointer.y;
-        
-        var toX = Math.floor(x/8);
-        var toY = Math.floor(y/8);
-        var fromX = Math.floor(this.scene.player.x/8);
-        var fromY = Math.floor(this.scene.player.y/8);
-        console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
-        Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
-            if (path === null) {
-                console.warn("Path was not found.");
-            } else {
-                console.log(path);
-                Game.scene.moveCharacter(path);
-                console.log(path.length);
-            }
-        });
-        this.scene.finder.calculate(); // don't forget, otherwise nothing happens
-    }
-};
-
-walkToPoint = function(pointer){
-    if(Number.isInteger(parseInt(window.showFromLocation)) && Number.isInteger(parseInt(window.showToLocation))){
-    var toX = Math.floor(parseInt(window.showFromLocation));
-    var toY = Math.floor(parseInt(window.showToLocation));
-    var fromX = Math.floor(this.scene.player.x/8);
-    var fromY = Math.floor(this.scene.player.y/8);
-    console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
-    Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
-        if (path === null) {
-            console.warn("Path was not found.");
-        } else {
-            console.log(path);
-            Game.scene.moveCharacter(path);
-            console.log(path.length);
+    handleClick = function(pointer){
+        //pointer.camera.setZoom(.8);
+        if(canWalk === 1){
+            var x = pointer.camera.scrollX + pointer.x;
+            var y = pointer.camera.scrollY + pointer.y;
+            
+            var toX = Math.floor(x/8);
+            var toY = Math.floor(y/8);
+            var fromX = Math.floor(this.scene.player.x/8);
+            var fromY = Math.floor(this.scene.player.y/8);
+            console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
+            Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
+                if (path === null) {
+                    console.warn("Path was not found.");
+                } else {
+                    console.log(path);
+                    Game.scene.moveCharacter(path);
+                    console.log(path.length);
+                }
+            });
+            this.scene.finder.calculate(); // don't forget, otherwise nothing happens
         }
-    });
-    this.scene.finder.calculate(); // don't forget, otherwise nothing happens
-}else{
-    alert('You need to enter two integers')
-}
-};
+    };
 
-moveCharacter = function(path){
-    // Sets up a list of tweens, one for each tile to walk, that will be chained by the timeline
-    var tweens = [];
-    
-    for(var i = 0; i < path.length-1; i++){
-        var ex = path[i+1].x;
-        var ey = path[i+1].y;
+    routeToRestroom = function(pointer){
+    var fromData = window.showFromLocation.split(',');
+    var toData = window.showToLocation.split(',');
+    var nearestElevator = [[0,0], [64,40] , [64,188] , [64, 299]];
+    var tweenNumbers;
+  
+        if (parseInt(fromData[0]) === parseInt(toData[0])){
+            var toX = Math.floor(parseInt(toData[1])/8);
+            var toY = Math.floor(parseInt(toData[2])/8);
+            var fromX = Math.floor(parseInt(fromData[1])/8);
+            var fromY = Math.floor(parseInt(fromData[2])/8);
+            console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
+            Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
+                if (path === null) {
+                    console.warn("Path was not found.");
+                } else {
+                    console.log(path);
+                    Game.scene.moveCharacter(path);
+                    console.log(path.length);
+                }
+            });
+            this.scene.finder.calculate();
+        }else{
+            var toX = Math.floor(nearestElevator[parseInt(fromData[0])][0]);
+            var toY = Math.floor(nearestElevator[parseInt(fromData[0])][1]);
+            var fromX = Math.floor(parseInt(fromData[1])/8);
+            var fromY = Math.floor(parseInt(fromData[2])/8);
+            console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
+            Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
+                if (path === null) {
+                    console.warn("Path was not found.");
+                } else {
+                    console.log(path);
+                    tweenNumbers = path;
+                    console.log(path.length);
+                }
+            })
+            alert(nearestElevator[parseInt(fromData[0])][0] +" , "+nearestElevator[parseInt(fromData[0])][1] );
+            var fromX2 = Math.floor(nearestElevator[parseInt(toData[0])][0]);
+            var fromY2 = Math.floor(nearestElevator[parseInt(toData[0])][1]);
+            var toX2 = Math.floor(384/8);
+            var toY2 = Math.floor(1296/8);
+            console.log('going from ('+fromX2+','+fromY2+') to ('+toX2+','+toY2+')');//debugging and for map design
+            Game.scene.finder.findPath(fromX2, fromY2, toX2, toY2, function( path2 ) {
+                if (path2 === null) {
+                    console.warn("Path was not found.");
+                } else {
+                    console.log(path2);
+                    tweenNumbers = tweenNumbers.concat(path2);
+                    Game.scene.moveCharacter(tweenNumbers);
+                }
+            });
+            this.scene.finder.calculate();
+        }
+    };
 
-        //Game.graphics.clear();// not sure what to actually clear with
-        var line = new Phaser.Geom.Line( (path[i].x*8),(path[i].y*8),  (path[i+1].x*8),(path[i+1].y*8));
 
-        Game.graphics = this.add.graphics({ lineStyle: { width: 8, color: 0x0000FF } });//change line width and color here
+    moveCharacter = function(path){
+        // Sets up a list of tweens, one for each tile to walk, that will be chained by the timeline
+        var tweens = [];
+        ///Game.scene.graphics.clear();// not sure what to actually clear with
+        for(var i = 0; i < path.length-1; i++){
+            var ex = path[i+1].x;
+            var ey = path[i+1].y;
 
-        Game.graphics.strokeLineShape(line);
-        tweens.push({
-            targets: this.player,
-            x: {value: ex*this.map.tileWidth, duration: 50},
-            y: {value: ey*this.map.tileHeight, duration: 50}
+            
+            if(path[i+1].y - path[i].y < 100 ){
+                var line = new Phaser.Geom.Line( (path[i].x*8),(path[i].y*8),  (path[i+1].x*8),(path[i+1].y*8));
+
+                Game.graphics = this.add.graphics({ lineStyle: { width: 8, color: 0x0000FF } });//change line width and color here
+                Game.graphics.strokeLineShape(line);
+            }
+            
+            tweens.push({
+                targets: this.player,
+                x: {value: ex*this.map.tileWidth, duration: 50},
+                y: {value: ey*this.map.tileHeight, duration: 50}
+            });
+        }
+        Game.scene.tweens.timeline({
+            tweens: tweens
         });
-    }
-    Game.scene.tweens.timeline({
-        tweens: tweens
-    });
-    
-};
-
-
+    };
 
 }
