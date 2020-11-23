@@ -185,7 +185,10 @@ export default class PlayScene extends Scene {
     routeToRestroom = function(pointer){
     var fromData = window.showFromLocation.split(',');
     var toData = window.showToLocation.split(',');
-    var nearestElevator = [[0,0], [64,40] , [64,188] , [64, 299]];
+    var nearestElevator = [[0,0], [64,40] , [64,188] , [64, 329]];
+    if(parseInt(fromData[1])/8 < (127*8)){
+        nearestElevator = [[0,0], [190,40] , [205,188] , [204, 329]];
+    }
     var tweenNumbers;
   
         if (parseInt(fromData[0]) === parseInt(toData[0])){
@@ -216,14 +219,12 @@ export default class PlayScene extends Scene {
                 } else {
                     console.log(path);
                     tweenNumbers = path;
-                    console.log(path.length);
                 }
             })
-            alert(nearestElevator[parseInt(fromData[0])][0] +" , "+nearestElevator[parseInt(fromData[0])][1] );
             var fromX2 = Math.floor(nearestElevator[parseInt(toData[0])][0]);
             var fromY2 = Math.floor(nearestElevator[parseInt(toData[0])][1]);
-            var toX2 = Math.floor(384/8);
-            var toY2 = Math.floor(1296/8);
+            var toX2 = Math.floor(toData[1]/8);
+            var toY2 = Math.floor(toData[2]/8);
             console.log('going from ('+fromX2+','+fromY2+') to ('+toX2+','+toY2+')');//debugging and for map design
             Game.scene.finder.findPath(fromX2, fromY2, toX2, toY2, function( path2 ) {
                 if (path2 === null) {
@@ -248,7 +249,7 @@ export default class PlayScene extends Scene {
             var ey = path[i+1].y;
 
             
-            if(path[i+1].y - path[i].y < 100 ){
+            if(Math.abs(path[i+1].y - path[i].y) < 100 ){
                 var line = new Phaser.Geom.Line( (path[i].x*8),(path[i].y*8),  (path[i+1].x*8),(path[i+1].y*8));
 
                 Game.graphics = this.add.graphics({ lineStyle: { width: 8, color: 0x0000FF } });//change line width and color here
