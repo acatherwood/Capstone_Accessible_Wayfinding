@@ -1,7 +1,9 @@
 <template>
+
 <div class ="center">
             <Game/>
         </div>
+
 </template>
 
 <script>
@@ -18,11 +20,12 @@ export default {
 </script>
 
 <style scoped>
+
 .center{
   transform: translateX(-50%);
   left: 50%;
   position: relative;
-  padding-top: 100px;
+  padding-top: 150px;
 }
 
 

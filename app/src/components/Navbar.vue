@@ -1,7 +1,7 @@
 <template>
 
 <body>
-  <b-navbar id="header" toggleable="lg" type="dark" variant="danger" fixed="top">
+  <b-navbar id="header" toggleable="lg" type="dark" variant="danger" fixed="top" class="shadow p-3 mb-5">
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     
          <b-navbar-brand><i class="fab fa-accessible-icon fa-3x" style="color: #fff"></i></b-navbar-brand>

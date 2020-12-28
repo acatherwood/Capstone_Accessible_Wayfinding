@@ -155,7 +155,7 @@ export default {
     width: 340px;
     margin: 30px auto;
   	font-size: 15px;
-    padding-top: 100px;
+    padding-top: 150px;
 }
 .login-form form {
     margin-bottom: 15px;
