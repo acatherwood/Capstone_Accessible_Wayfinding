@@ -90,9 +90,20 @@ export default class PlayScene extends Scene {
     
     var restroom7=this.add.image(1768,2600,'restroom').setScale(1);
     restroom7.setDepth(1);
-    
+
+     
+    var restroom8=this.add.image(100,3450,'restroom').setScale(1);
+    restroom8.setDepth(1);
+
+    var restroom9=this.add.image(440,3400,'restroom').setScale(1);
+    restroom9.setDepth(1);
+
+    var restroom10=this.add.image(1475,3420,'restroom').setScale(1);
+    restroom10.setDepth(1);
+
     var demosWindow = this.add.image(0, 0, 'demosWindow').setOrigin(0);
-    var floor0icon = this.add.sprite(0, 200, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
+    var moveBTN = this.add.sprite(0, 200, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
+    var floor0icon = this.add.sprite(0, 210, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor3icon = this.add.sprite(0, 30, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor2icon = this.add.sprite(0, 90, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var johnRouteIcon = this.add.sprite(55, 150, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
@@ -125,20 +136,17 @@ export default class PlayScene extends Scene {
 
     });
 
-    floorGicon.on('pointerdown', function () {
-        var i = 0;
-        while(i < testCoords.length){
-        Game.scene.checkCollisionTester(testCoords[i]);
-        i++
-        }console.log(routeMarker1);
-    });
-
     floor0icon.on('pointerdown', function () {
-       canWalk *= -1;
+        phaserGuy.setPosition(120*8, 445*8);
 
     });
-    line = new Phaser.Geom.Line( 0,0,678,678);
-    johnRouteIcon.on('pointerdown', this.routeToRestroom );
+
+    moveBTN.on('pointerdown', function () {
+        canWalk *= -1;
+ 
+     });
+
+    johnRouteIcon.on('pointerdown', this.walkToPoint );
     demosContainer.setDepth(1);
     demosContainer.setScrollFactor(0);
     
@@ -254,7 +262,7 @@ export default class PlayScene extends Scene {
 
     getTileID = function(x,y){
         var tile = this.map.getTileAt(x, y);
-        return tile.index;
+        return tile.indexF;
     };
 
     handleClick = function(pointer){
