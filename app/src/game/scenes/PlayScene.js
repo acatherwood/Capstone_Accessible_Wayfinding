@@ -3,6 +3,8 @@ import EasyStar from 'easystarjs'
 
 var Game = {};
 var canWalk = -1;
+var TilePixelCount = 16;
+var scalerSize = 0.15;
 var bathroomCoords = [[225, 420], [1125, 435] , [1520,280]]
 export default class PlayScene extends Scene {
   constructor () {
@@ -16,17 +18,17 @@ export default class PlayScene extends Scene {
   
 
   create = function(){
-    var elevatorIcon = this.add.image(521,330, 'elevator').setScale(1.5);
+    var elevatorIcon = this.add.image(520,328, 'elevator').setScale(1.5);
     elevatorIcon.setDepth(1);
     
-    var elevatorIconTwo = this.add.image(1510,330,'elevator').setScale(1.5);
+    var elevatorIconTwo = this.add.image(1512,328,'elevator').setScale(1.5);
     elevatorIconTwo.setDepth(1);
 
     //load restroom icon one, two, three, four and five
-    var restroom1 =this.add.image(225,420,'restroom').setScale(1);
+    var restroom1 =this.add.image(224,420,'restroom').setScale(1);
     restroom1.setDepth(1);
 
-    var restroom2=this.add.image(1125,435,'restroom').setScale(1);
+    var restroom2=this.add.image(1128,436,'restroom').setScale(1);
     restroom2.setDepth(1);
 
     var restroom3=this.add.image(1520,280,'restroom').setScale(1);
@@ -77,12 +79,17 @@ export default class PlayScene extends Scene {
     demosContainer.setDepth(1);
     demosContainer.setScrollFactor(0);
     
+    var getRouteBTN = this.add.sprite(screen.width/2, 90*8 - 327*scalerSize, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(scalerSize).setScrollFactor(0);
+    getRouteBTN.on('pointerdown', this.routeToRestroom );
+    getRouteBTN.setDepth(1);
+    getRouteBTN.setScrollFactor(0);
+
     // Handles the clicks on the map to make the character move
     this.input.on('pointerup',this.handleClick);
     var camera = Game.scene.cameras.main;
     camera = this.cameras.main;
-    camera.setBounds(0, 0, 280*8, 470*8);
-    var phaserGuy = this.add.image(8,8,'dude').setScale(0.5);
+    camera.setBounds(0, 0, 280*TilePixelCount, 470*TilePixelCount);
+    var phaserGuy = this.add.image(TilePixelCount,TilePixelCount,'dude').setScale(0.5);
     phaserGuy.setDepth(2);
     phaserGuy.setOrigin(0,0.5);
     camera.startFollow(phaserGuy);
@@ -164,10 +171,10 @@ export default class PlayScene extends Scene {
             var x = pointer.camera.scrollX + pointer.x;
             var y = pointer.camera.scrollY + pointer.y;
             
-            var toX = Math.floor(x/8);
-            var toY = Math.floor(y/8);
-            var fromX = Math.floor(this.scene.player.x/8);
-            var fromY = Math.floor(this.scene.player.y/8);
+            var toX = Math.floor(x/TilePixelCount);
+            var toY = Math.floor(y/TilePixelCount);
+            var fromX = Math.floor(this.scene.player.x/TilePixelCount);
+            var fromY = Math.floor(this.scene.player.y/TilePixelCount);
             console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
             Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
                 if (path === null) {
@@ -182,20 +189,20 @@ export default class PlayScene extends Scene {
         }
     };
 
-    routeToRestroom = function(pointer){
+    routeToRestroom = function(){
     var fromData = window.showFromLocation.split(',');
     var toData = window.showToLocation.split(',');
     var nearestElevator = [[0,0], [64,40] , [64,188] , [64, 329]];
-    if(parseInt(fromData[1])/8 < (127*8)){
+    if(parseInt(fromData[1])/TilePixelCount > (127)){
         nearestElevator = [[0,0], [190,40] , [205,188] , [204, 329]];
     }
     var tweenNumbers;
   
         if (parseInt(fromData[0]) === parseInt(toData[0])){
-            var toX = Math.floor(parseInt(toData[1])/8);
-            var toY = Math.floor(parseInt(toData[2])/8);
-            var fromX = Math.floor(parseInt(fromData[1])/8);
-            var fromY = Math.floor(parseInt(fromData[2])/8);
+            var toX = Math.floor(parseInt(toData[1])/TilePixelCount);
+            var toY = Math.floor(parseInt(toData[2])/TilePixelCount);
+            var fromX = Math.floor(parseInt(fromData[1])/TilePixelCount);
+            var fromY = Math.floor(parseInt(fromData[2])/TilePixelCount);
             console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
             Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
                 if (path === null) {
@@ -210,8 +217,8 @@ export default class PlayScene extends Scene {
         }else{
             var toX = Math.floor(nearestElevator[parseInt(fromData[0])][0]);
             var toY = Math.floor(nearestElevator[parseInt(fromData[0])][1]);
-            var fromX = Math.floor(parseInt(fromData[1])/8);
-            var fromY = Math.floor(parseInt(fromData[2])/8);
+            var fromX = Math.floor(parseInt(fromData[1])/TilePixelCount);
+            var fromY = Math.floor(parseInt(fromData[2])/TilePixelCount);
             console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
             Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
                 if (path === null) {
@@ -223,8 +230,8 @@ export default class PlayScene extends Scene {
             })
             var fromX2 = Math.floor(nearestElevator[parseInt(toData[0])][0]);
             var fromY2 = Math.floor(nearestElevator[parseInt(toData[0])][1]);
-            var toX2 = Math.floor(toData[1]/8);
-            var toY2 = Math.floor(toData[2]/8);
+            var toX2 = Math.floor(toData[1]/TilePixelCount);
+            var toY2 = Math.floor(toData[2]/TilePixelCount);
             console.log('going from ('+fromX2+','+fromY2+') to ('+toX2+','+toY2+')');//debugging and for map design
             Game.scene.finder.findPath(fromX2, fromY2, toX2, toY2, function( path2 ) {
                 if (path2 === null) {
@@ -250,9 +257,9 @@ export default class PlayScene extends Scene {
 
             
             if(Math.abs(path[i+1].y - path[i].y) < 100 ){
-                var line = new Phaser.Geom.Line( (path[i].x*8),(path[i].y*8),  (path[i+1].x*8),(path[i+1].y*8));
+                var line = new Phaser.Geom.Line( (path[i].x*TilePixelCount),(path[i].y*TilePixelCount),  (path[i+1].x*TilePixelCount),(path[i+1].y*TilePixelCount));
 
-                Game.graphics = this.add.graphics({ lineStyle: { width: 8, color: 0x0000FF } });//change line width and color here
+                Game.graphics = this.add.graphics({ lineStyle: { width: TilePixelCount, color: 0x0000FF } });//change line width and color here
                 Game.graphics.strokeLineShape(line);
             }
             
