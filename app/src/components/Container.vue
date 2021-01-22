@@ -1,18 +1,30 @@
 <template>
 <div class ="center">
-            <Game/>
-        </div>
+
+    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+      <div class="card-header bg-danger">Find your route</div>
+      <div class="card-body text-center">
+          <div class="row justify-content-center">
+          <Directions/>
+          </div>
+      </div>
+    </div>
+
+  <Game/>
+</div>
 </template>
 
 <script>
 
 import Game from './Game.vue'
+import Directions from './directions.vue'
 
 
 export default {
   name: 'Map',
     components: {
-    Game
+    Game,
+    Directions
 }
 }
 </script>
@@ -22,9 +34,11 @@ export default {
   transform: translateX(-50%);
   left: 50%;
   position: relative;
-  padding-top: 100px;
+  padding-top: 150px;
 }
-
-
-
+.card {
+  transform: translateX(-50%);
+  left: 50%;
+  position: relative;
+}
 </style>

@@ -5,11 +5,6 @@
   <div class="placeholder" v-else>
     Downloading ...
   </div>
-   <div>
-     <p>show directions</p>
-    <label>From</label> {{ showFromLocation }}
-    <label>To</label> {{ showToLocation }}
-   </div>
 </div>
 </template>
 

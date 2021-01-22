@@ -15,7 +15,7 @@
 
 <script>
 import navbar from "./components/Navbar.vue"
-import directions from "@/modals/directions.vue"
+import directions from "./components/directions.vue"
 
 export default {
   name: 'App',
