@@ -2,16 +2,17 @@
  <template>
   <div id="directions">
     <div>
+      <div>
       <label>Start</label>
       <b-form-select
         type="text"
-        class="form-control"
+       
         id="From"
         v-model="selectedFrom"
         :options="options"
         v-on:change="storeInput"
       ></b-form-select>
-
+</div>
       <label>End</label>
       <b-form-select
         id="To"
