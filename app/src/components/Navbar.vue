@@ -14,12 +14,13 @@
 
     <div class="container-fluid d-flex justify-content-end">
       <!-- <router-link to="/" class="navbar-brand">Accessible Wayfinding</router-link> -->
-      
+      <div class="row">
+        <div class="col-sm">
         <b-button-group>
           <template v-if="user.loggedIn">
             <a class="nav-item btn btn-danger" @click.prevent="signOut">Sign Out</a>
           </template>
-
+        
           <template v-else>
             <li class="nav-item">
               <router-link to="Signin" class="btn btn-danger">Sign in</router-link>
@@ -29,6 +30,7 @@
             </li>
           </template>
         </b-button-group>
+        
 
         <b-button-group>
           <div class="dropdown">
@@ -42,6 +44,8 @@
             </div>
           </div>
         </b-button-group>
+        </div>
+    </div>
     </div>
   </b-navbar>  
 <Directions/>
@@ -127,9 +131,4 @@ export default {
     position: absolute;
 }
 
-@media screen and (max-width:480px) {  
-  .img-fluid img {
-    display: none;
-  }
-}
 </style>

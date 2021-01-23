@@ -6,9 +6,12 @@ import PlayScene from './scenes/PlayScene'
 function launch(containerId) {
   return new Phaser.Game({
     type: Phaser.AUTO,
-    width: '100%',
+    width: '75%',
     height: 90*8,
     parent: containerId,
+    scale: {
+      mode: Phaser.Scale.FIT,
+    },
     physics: {
       default: 'arcade',
       arcade: {
