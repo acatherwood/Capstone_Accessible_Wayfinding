@@ -36,7 +36,6 @@
               <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#directions" data-toggle="modal" data-target="#directions">Directions</a>
               <a class="dropdown-item" href="About">About Us</a>
               <a class="dropdown-item" href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Report Issues</a>
             </div>
@@ -44,20 +43,17 @@
         </b-button-group>
     </div>
   </b-navbar>  
-<Directions/>
+
 
 </body>
 </template>
 
 <script>
-import Directions from "../modals/directions.vue"
+
 
 import { mapGetters } from "vuex";
 import firebase from "firebase";
 export default {
-   components: {
-    Directions
-  },
   computed: {
     ...mapGetters({
 // map `this.user` to `this.$store.getters.user`

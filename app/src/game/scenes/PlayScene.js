@@ -46,6 +46,8 @@ export default class PlayScene extends Scene {
     
     this.input.setDraggable(demosContainer);
 
+ 
+
     demosContainer.on('drag', function (pointer, dragX, dragY) {
         this.x = dragX;
         this.y = dragY;

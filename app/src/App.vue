@@ -4,24 +4,19 @@
     <div id="nav">
       <navbar></navbar>
     </div>
-  
     <router-view/>
-    <div>
-      <directions @inputData="updateMessage" />
-    </div>
   </div>
 
 </template>
 
 <script>
 import navbar from "./components/Navbar.vue"
-import directions from "@/modals/directions.vue"
+
 
 export default {
   name: 'App',
   components: {
-    navbar,
-    directions
+    navbar
   },
   methods: {
     updateMessage(variable) {
