@@ -7,35 +7,41 @@
          <b-navbar-brand><i class="fab fa-accessible-icon fa-3x" style="color: #fff"></i></b-navbar-brand>
 
     <div class="brand">
-        <router-link to="/" class = "nav-link">
+        <router-link to="/" class="nav-link">
         <img src="../assets/McMappingLogo.png" class="img-fluid" alt="Header Logo"> 
      </router-link>
       </div>
 
 
      
-        <b-button-group>
+        <div class="btn-group">
           
-          <div class="dropdown">
-            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-bars fa-2x" style="color: #ffffff;"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <template v-if="user.loggedIn">
-            <a class="dropdown-item" @click.prevent="signOut">Sign Out</a>
+          <template v-if="user.loggedIn">
+            <a class="nav-item btn btn-danger" @click.prevent="signOut">Sign Out</a>
           </template>
 
           <template v-else>
-            <a class="dropdown-item" href="Signin">Sign in</a>
-              <a class="dropdown-item" href="Register">Register</a>
-            
+            <li class="nav-item">
+              <router-link to="Signin" class="btn btn-danger">Sign in</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="register" class="btn btn-danger">Register</router-link>
+            </li>
           </template>
+          
+          <div class="dropdown">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            
               <a class="dropdown-item" href="About">About Us</a>
               <a class="dropdown-item" href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Report Issues</a>
               
-            </div>
+            
           </div>
-        </b-button-group>
+          </div>
+        </div>
     </div>
   </b-navbar>  
 
@@ -117,5 +123,36 @@ export default {
     left: 50%;
     position: absolute;
 }
+
+@media (max-width: 768px) {
+  .btn {
+    font-size:14px;
+    padding:11px 2px;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn {
+    font-size:18px;
+    padding:8px 12px;
+  }
+}
+
+@media (min-width: 992px) {
+  .btn {
+    font-size:18px;
+    padding:8px 12px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .btn {
+    padding:10px 16px;
+    font-size:18px;
+  }
+  
+}
+
+
 
 </style>

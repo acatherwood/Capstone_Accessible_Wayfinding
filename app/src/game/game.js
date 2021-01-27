@@ -10,7 +10,7 @@ function launch(containerId) {
     scale: {
         mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
         parent: containerId,
-        width: '100%',
+        width: '80%',
         height: 90*8
     },
     

@@ -2,7 +2,7 @@
 <div class ="container-fluid">
 
     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-      <div class="card-header bg-danger">Find your route</div>
+      <div class="card-header bg-danger font-weight-bold">Find your route</div>
       <div class="card-body text-center">
           <div class="row justify-content-center">
           <Directions/>
@@ -31,7 +31,6 @@ export default {
 
 <style scoped>
 .container-fluid{
-
   padding-top: 150px;
     max-width: 100%;
 }
