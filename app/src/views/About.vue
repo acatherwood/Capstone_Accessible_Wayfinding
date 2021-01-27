@@ -16,8 +16,9 @@
   </div>
 </template>
 <style scoped>
+
 .container-fluid{
-  padding-top: 100px;
+  padding-top: 150px;
   max-width: 50%;
 }
 </style>

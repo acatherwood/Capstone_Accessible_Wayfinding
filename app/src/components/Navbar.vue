@@ -1,9 +1,9 @@
 <template>
 
 <body>
-  <b-navbar id="header" toggleable="lg" type="dark" variant="danger" fixed="top">
+  <b-navbar id="header" toggleable="lg" type="dark" variant="danger" fixed="top" class="shadow p-3 mb-5">
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    
+        <div class="container-fluid">
          <b-navbar-brand><i class="fab fa-accessible-icon fa-3x" style="color: #fff"></i></b-navbar-brand>
 
     <div class="brand">
@@ -12,32 +12,27 @@
      </router-link>
       </div>
 
-    <div class="container-fluid d-flex justify-content-end">
-      <!-- <router-link to="/" class="navbar-brand">Accessible Wayfinding</router-link> -->
-      
+
+     
         <b-button-group>
-          <template v-if="user.loggedIn">
-            <a class="nav-item btn btn-danger" @click.prevent="signOut">Sign Out</a>
+          
+          <div class="dropdown">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars fa-2x" style="color: #ffffff;"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <template v-if="user.loggedIn">
+            <a class="dropdown-item" @click.prevent="signOut">Sign Out</a>
           </template>
 
           <template v-else>
-            <li class="nav-item">
-              <router-link to="Signin" class="btn btn-danger">Sign in</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="register" class="btn btn-danger">Register</router-link>
-            </li>
+            <a class="dropdown-item" href="Signin">Sign in</a>
+              <a class="dropdown-item" href="Register">Register</a>
+            
           </template>
-        </b-button-group>
-
-        <b-button-group>
-          <div class="dropdown">
-            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-bars fa-1x" style="color: #ffffff;"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="About">About Us</a>
               <a class="dropdown-item" href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Report Issues</a>
+              
             </div>
           </div>
         </b-button-group>
@@ -123,9 +118,4 @@ export default {
     position: absolute;
 }
 
-@media screen and (max-width:480px) {  
-  .img-fluid img {
-    display: none;
-  }
-}
 </style>

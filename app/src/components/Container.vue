@@ -1,5 +1,5 @@
 <template>
-<div class ="center">
+<div class ="container-fluid">
 
     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
       <div class="card-header bg-danger">Find your route</div>
@@ -30,11 +30,10 @@ export default {
 </script>
 
 <style scoped>
-.center{
-  transform: translateX(-50%);
-  left: 50%;
-  position: relative;
+.container-fluid{
+
   padding-top: 150px;
+    max-width: 100%;
 }
 .card {
   transform: translateX(-50%);
