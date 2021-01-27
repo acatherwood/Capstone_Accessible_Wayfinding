@@ -1,7 +1,9 @@
 <template>
 
-<div class="padding">
+<div class="container-fluid">
+  <div class="padding"> 
   <Game/>
+  </div>
 </div>
 
 </template>
@@ -21,6 +23,9 @@ export default {
 
 <style scoped>
 
+.container-fluid{
+  max-width: 100%;
+}
 .padding{
   padding-top: 150px;
 }
