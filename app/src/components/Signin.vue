@@ -62,6 +62,7 @@
 
 <script>
 import firebase from "firebase";
+import { mapMutations } from 'vuex';
 
 export default {
   data() {
@@ -74,6 +75,7 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(['setCurrentUser']),
     submit() {
       firebase
         .auth()

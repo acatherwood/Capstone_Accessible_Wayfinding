@@ -2,6 +2,14 @@
  <template>
   <div id="directions">
     <div>
+      <div
+      v-for="route in savedRoutes" 
+      :key="route.from + '-' + route.to"
+      @click="selectSavedRoute(route.from, route.to)"
+      >
+      {{route.from + " to" + route.to }}
+
+      </div>
       <div>
       <label>Start</label>
       <b-form-select
@@ -12,7 +20,7 @@
         :options="options"
         v-on:change="storeInput"
       ></b-form-select>
-</div>
+    </div>
       <label>End</label>
       <b-form-select
         id="To"
@@ -22,10 +30,16 @@
         v-on:change="storeInput"
       ></b-form-select>
     </div>
+    <div>
+      <button
+        @click="saveRoute"
+      >Save Route</button>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: "modal",
   data() {
@@ -338,8 +352,15 @@ export default {
         text: `Room ${data[index].room}`,
       });
     });
+    
+  },
+  computed: {
+    savedRoutes(){
+      return this.$store.state.routes; 
+    }
   },
   methods: {
+    ...mapActions(['SET_DIRECTIONS']),
     displaySearch: function (event) {
       var block = document.getElementById("search-box");
       block.style.visibility = "visible";
@@ -356,7 +377,16 @@ export default {
      // alert(inputFrom);
       // update the state
       this.$store.commit("SET_DIRECTIONS", { from: inputFrom, to: inputTo });
+      
     },
+    saveRoute(event){
+            var inputTo = document.getElementById("To").value;
+      var inputFrom = document.getElementById("From").value;
+      this.$store.dispatch("SAVE_ROUTE", {userId: this.$store.state.user.data.email, from: inputFrom, to: inputTo })
+    },
+    selectSavedRoute(from, to){
+            this.$store.commit("SET_DIRECTIONS", { from: from, to: to });
+    }
   },
 };
 </script>
