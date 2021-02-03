@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-
+<div class="container">
     <div id="nav">
       <navbar></navbar>
     </div>
+</div>
+
     <router-view/>
   </div>
 
@@ -41,9 +43,5 @@ export default {
 .content {
   margin-left: 185px;
   top: 50px;
-}
-
-.container{
-  padding-top: 100px;
 }
 </style>

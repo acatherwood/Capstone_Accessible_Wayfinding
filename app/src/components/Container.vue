@@ -31,8 +31,8 @@ export default {
 
 <style scoped>
 .container-fluid{
-  padding-top: 150px;
     max-width: 100%;
+    padding-top: 150px;
 }
 .card {
   transform: translateX(-50%);
