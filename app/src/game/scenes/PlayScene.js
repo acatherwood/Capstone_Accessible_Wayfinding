@@ -25,13 +25,13 @@ export default class PlayScene extends Scene {
     elevatorIconTwo.setDepth(1);
 
     //load restroom icon one, two, three, four and five
-    var restroom1 =this.add.image(224,420,'restroom').setScale(1);
+    var restroom1 =this.add.image(224,420,'restroom').setScale(1.5);
     restroom1.setDepth(1);
 
-    var restroom2=this.add.image(1128,436,'restroom').setScale(1);
+    var restroom2=this.add.image(1128,436,'restroom').setScale(1.5);
     restroom2.setDepth(1);
 
-    var restroom3=this.add.image(1520,280,'restroom').setScale(1);
+    var restroom3=this.add.image(1520,280,'restroom').setScale(1.5);
 
 
     restroom3.setDepth(1);

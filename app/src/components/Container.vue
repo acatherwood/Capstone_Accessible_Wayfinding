@@ -1,14 +1,20 @@
 <template>
 <div class ="container-fluid">
 
-    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-      <div class="card-header bg-danger font-weight-bold">Find your route</div>
-      <div class="card-body text-center">
-          <div class="row justify-content-center">
-          <Directions/>
-          </div>
-      </div>
-    </div>
+
+
+<div class="mx-auto mb-3" style="max-width: 30rem">
+  <b-card no-body>
+    <b-tabs card>
+      <b-tab title="Directions" active>
+        <b-card-text><Directions/></b-card-text>
+      </b-tab>
+      <b-tab title="Saved Routes">
+        <b-card-text>Saved Routes content</b-card-text>
+      </b-tab>
+    </b-tabs>
+  </b-card>
+</div>
 
   <Game/>
 </div>
@@ -39,4 +45,5 @@ export default {
   left: 50%;
   position: relative;
 }
+
 </style>
