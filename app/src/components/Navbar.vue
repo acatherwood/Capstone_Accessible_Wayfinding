@@ -17,15 +17,15 @@
         <div class="btn-group">
           
           <template v-if="user.loggedIn">
-            <a class="nav-item btn btn-danger" @click.prevent="signOut">Sign Out</a>
+            <a class="nav-item btn btn-danger font-weight-bold" @click.prevent="signOut">Sign Out</a>
           </template>
 
           <template v-else>
             <li class="nav-item">
-              <router-link to="Signin" class="btn btn-danger">Sign in</router-link>
+              <router-link to="Signin" class="btn btn-danger font-weight-bold">Sign in</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="register" class="btn btn-danger">Register</router-link>
+              <router-link to="register" class="btn btn-danger font-weight-bold">Register</router-link>
             </li>
           </template>
           
@@ -126,8 +126,8 @@ export default {
 
 @media (max-width: 768px) {
   .btn {
-    font-size:14px;
-    padding:11px 2px;
+    font-size:12px;
+    padding:14px 2px;
   }
 }
 
@@ -152,7 +152,6 @@ export default {
   }
   
 }
-
 
 
 </style>
