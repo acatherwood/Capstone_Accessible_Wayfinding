@@ -1,8 +1,8 @@
 
  <template>
-  <div id="directions">
-<<<<<<< HEAD
-    <div>
+  <div class="container">
+
+   
       <div
       v-for="route in savedRoutes" 
       :key="route.from + '-' + route.to"
@@ -11,34 +11,32 @@
       {{route.from + " to" + route.to }}
 
       </div>
-      <div>
-=======
-    <div class="container">
-      <div class="row">
-          <div class="col">
->>>>>>> origin/UI-v3.3
-      <label>Start</label>
-      <b-form-select
-        type="text"
-       
-        id="From"
-        v-model="selectedFrom"
-        :options="options"
-        v-on:change="storeInput"
-      ></b-form-select>
-</div>
-    <div class="col">
-      <label>End</label>
-      <b-form-select
-        id="To"
-        name="routeSelect"
-        v-model="selectedTo"
-        :options="options"
-        v-on:change="storeInput"
-      ></b-form-select>
-    </div>
-    </div>
-    </div>
+    
+
+    <div class="row">
+        <div class="col">
+          <label>Start</label>
+          <b-form-select
+            type="text"
+            
+            id="From"
+            v-model="selectedFrom"
+            :options="options"
+            v-on:change="storeInput"
+          ></b-form-select>
+        </div>
+
+        <div class="col">
+          <label>End</label>
+          <b-form-select
+            id="To"
+            name="routeSelect"
+            v-model="selectedTo"
+            :options="options"
+            v-on:change="storeInput"
+          ></b-form-select>
+        </div>
+      </div>
   </div>
 </template>
 
