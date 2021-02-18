@@ -8,10 +8,10 @@ function launch(containerId) {
   return new Phaser.Game({
     type: Phaser.AUTO,
     scale: {
-        mode: Phaser.Scale.RESIZE,
+        mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
         parent: containerId,
-        width: '100%',
-        height: 90*8
+        width: '80%',
+        height: '60%'
     },
     
     physics: {

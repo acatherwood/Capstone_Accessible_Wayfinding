@@ -1,6 +1,7 @@
 
  <template>
   <div id="directions">
+<<<<<<< HEAD
     <div>
       <div
       v-for="route in savedRoutes" 
@@ -11,6 +12,11 @@
 
       </div>
       <div>
+=======
+    <div class="container">
+      <div class="row">
+          <div class="col">
+>>>>>>> origin/UI-v3.3
       <label>Start</label>
       <b-form-select
         type="text"
@@ -20,7 +26,8 @@
         :options="options"
         v-on:change="storeInput"
       ></b-form-select>
-    </div>
+</div>
+    <div class="col">
       <label>End</label>
       <b-form-select
         id="To"
@@ -30,10 +37,7 @@
         v-on:change="storeInput"
       ></b-form-select>
     </div>
-    <div>
-      <button
-        @click="saveRoute"
-      >Save Route</button>
+    </div>
     </div>
   </div>
 </template>
