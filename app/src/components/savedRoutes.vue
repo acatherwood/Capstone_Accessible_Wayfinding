@@ -1,31 +1,16 @@
 
  <template>
   <div class="container">
-
-   
-      <div
+    <div
       v-for="route in savedRoutes" 
       :key="route.from + '-' + route.to"
-      @click="selectSavedRoute(route.from, route.to)"
-      >
-      {{route.from + " to" + route.to }}
+      @click="sortRoutes(route.from, route.to)"
+    >
+      {{"Room" + route.from + " to Room" + route.to }}
 
-      </div>
-    
+    </div>
 
-    <div class="row">
-        <div class="col">
-          <label>Start</label>
-          <b-form-select
-            type="text"
-            id="From"
-            v-model="selectedFrom"
-            :options="options"
-            v-on:change="storeInput"
-          ></b-form-select>
-        </div>
-
-        <div class="col">
+    <div class="col">
           <label>End</label>
           <b-form-select
             id="To"
@@ -35,7 +20,6 @@
             v-on:change="storeInput"
           ></b-form-select>
         </div>
-      </div>
   </div>
 </template>
 
@@ -52,6 +36,7 @@ export default {
     };
   },
   mounted() {
+    
     const data = [
       { room: "101A", floor: 1, coordinate1: 120, coordinate2: 300 },
       { room: "101B", floor: 1, coordinate1: 160, coordinate2: 288 },
@@ -356,7 +341,7 @@ export default {
     
   },
   computed: {
-    savedRoutes(){
+    savedRoutes(){      
       return this.$store.state.routes; 
     }
   },
@@ -380,13 +365,13 @@ export default {
       this.$store.commit("SET_DIRECTIONS", { from: inputFrom, to: inputTo });
       
     },
-    saveRoute(event){
-            var inputTo = document.getElementById("To").value;
-      var inputFrom = document.getElementById("From").value;
-      this.$store.dispatch("SAVE_ROUTE", {userId: this.$store.state.user.data.email, from: inputFrom, to: inputTo })
-    },
     selectSavedRoute(from, to){
-            this.$store.commit("SET_DIRECTIONS", { from: from, to: to });
+        this.$store.commit("SET_DIRECTIONS", { from: from, to: to });
+    },
+    sortRoutes(from, to){
+        var a = to.split(',');
+        alert(a);
+
     }
   },
 };

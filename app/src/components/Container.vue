@@ -24,7 +24,7 @@
   <div class="card-body rounded bg-dark">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="directions" role="tabpanel" aria-labelledby="directions-tab"><Directions/></div>
-            <div class="tab-pane fade" id="savedroutes" role="tabpanel" aria-labelledby="savedroutes-tab">...</div>
+            <div class="tab-pane fade" id="savedroutes" role="tabpanel" aria-labelledby="savedroutes-tab"><SavedRoutes/></div>
         </div>
   </div>
 </div>
@@ -39,13 +39,15 @@ import { mapGetters } from "vuex";
 import firebase from "firebase";
 import Game from './Game.vue'
 import Directions from './directions.vue'
+import SavedRoutes from './savedRoutes.vue'
 
 
 export default {
   name: 'Map',
     components: {
     Game,
-    Directions
+    Directions,
+    SavedRoutes
 },
  computed: {
     ...mapGetters({
