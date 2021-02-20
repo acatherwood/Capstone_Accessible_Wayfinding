@@ -1,0 +1,21 @@
+runtime: nodejs12
+
+instance_class: F1
+
+env_variables:
+  BUCKET_NAME: "mcmicken-site"
+
+
+
+handlers:
+- url: /(.*\.(js|css|png|jpg|svg|ttf|ico|json|tmx|map))$
+  static_files: dist/\1
+  upload: dist/.*\.(js|css|png|jpg|svg|ttf)$
+
+  #catch all handler to index.html
+
+- url: /.*
+  static_files: dist/index.html
+  upload: dist/index.html
+  
+  

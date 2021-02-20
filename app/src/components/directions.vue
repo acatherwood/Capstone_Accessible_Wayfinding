@@ -2,14 +2,17 @@
  <template>
   <div id="directions">
     <div>
-      <div
+      <label>Saved</label>
+       <b-form-select type="text" id="SRoutes" v-on:change="storeInput">
+      <option
       v-for="route in savedRoutes" 
       :key="route.from + '-' + route.to"
       @click="selectSavedRoute(route.from, route.to)"
       >
-      {{route.from + " to" + route.to }}
+      {{route.from + " to " + route.to }}
 
-      </div>
+      </option>
+      </b-form-select>
       <div>
       <label>Start</label>
       <b-form-select
@@ -369,15 +372,26 @@ export default {
       var newDiv = document.createElement("div");
     },
     storeInput(event) {
+      var inputSaved = document.getElementById("SRoutes").value;
+  
       var inputTo = document.getElementById("To").value;
       //debug only
       //alert(inputTo);
       var inputFrom = document.getElementById("From").value;
       //debug only
      // alert(inputFrom);
-      // update the state
-      this.$store.commit("SET_DIRECTIONS", { from: inputFrom, to: inputTo });
-      
+      // check if input is from a saved route then update the state
+     if (inputSaved != null){
+      const savedString = inputSaved.split(' ');
+      var savedTo = savedString[2];
+      var savedFrom = savedString[0];
+      //debug only
+      //alert("SavedTo " + savedTo);
+      //alert("SavedFrom " + savedFrom);
+      this.$store.commit("SET_DIRECTIONS", { from: savedFrom, to: savedTo });
+     } else {
+        this.$store.commit("SET_DIRECTIONS", { from: inputFrom, to: inputTo });
+      }
     },
     saveRoute(event){
             var inputTo = document.getElementById("To").value;
