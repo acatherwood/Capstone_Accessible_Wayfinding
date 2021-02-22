@@ -39,21 +39,42 @@ export default class PlayScene extends Scene {
     elevatorIconSix.setDepth(1);
 
 
+    //load restroom icon one through ten
 
 
-
-
-    //load restroom icon one, two, three, four and five
-    var restroom1 =this.add.image(224,420,'restroom').setScale(1.5);
+    var restroom1 =this.add.image(225,420,'restroom').setScale(1.5);
     restroom1.setDepth(1);
 
-    var restroom2=this.add.image(1128,436,'restroom').setScale(1.5);
+    var restroom2=this.add.image(1125,435,'restroom').setScale(1.5);
     restroom2.setDepth(1);
 
     var restroom3=this.add.image(1520,280,'restroom').setScale(1.5);
-
-
     restroom3.setDepth(1);
+
+    var restroom4=this.add.image(248,1440,'restroom').setScale(1.5);
+    restroom4.setDepth(1);
+    
+    var restroom5=this.add.image(1704,1456,'restroom').setScale(1.5);
+    restroom5.setDepth(1);
+
+    var restroom6=this.add.image(320,2600,'restroom').setScale(1.5);
+    restroom6.setDepth(1);
+    
+    var restroom7=this.add.image(1768,2600,'restroom').setScale(1.5);
+    restroom7.setDepth(1);
+
+     
+    var restroom8=this.add.image(100,3450,'restroom').setScale(1.5);
+    restroom8.setDepth(1);
+
+    var restroom9=this.add.image(440,3400,'restroom').setScale(1.5);
+    restroom9.setDepth(1);
+
+    var restroom10=this.add.image(1475,3420,'restroom').setScale(1.5);
+    restroom10.setDepth(1);
+
+
+
     var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
     //var mapOverlay = this.add.image(0,0,'mapOverlay').setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
     var floor0icon = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
