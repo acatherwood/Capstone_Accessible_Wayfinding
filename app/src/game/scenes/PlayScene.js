@@ -18,11 +18,30 @@ export default class PlayScene extends Scene {
   
 
   create = function(){
-    var elevatorIcon = this.add.image(520,328, 'elevator').setScale(1.5);
+
+    //load elevator icons one through six
+    var elevatorIcon = this.add.image(521,330, 'elevator').setScale(1.5);
     elevatorIcon.setDepth(1);
     
-    var elevatorIconTwo = this.add.image(1512,328,'elevator').setScale(1.5);
+    var elevatorIconTwo = this.add.image(1510,330,'elevator').setScale(1.5);
     elevatorIconTwo.setDepth(1);
+
+    var elevatorIconThree = this.add.image(508,1512,'elevator').setScale(1.5);
+    elevatorIconThree.setDepth(1);
+
+    var elevatorIconFour = this.add.image(1642,1512,'elevator').setScale(1.5);
+    elevatorIconFour.setDepth(1);
+
+    var elevatorIconFive = this.add.image(514,2630,'elevator').setScale(1.5);
+    elevatorIconFive.setDepth(1);
+
+    var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1.5);
+    elevatorIconSix.setDepth(1);
+
+
+
+
+
 
     //load restroom icon one, two, three, four and five
     var restroom1 =this.add.image(224,420,'restroom').setScale(1.5);
