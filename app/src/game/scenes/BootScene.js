@@ -12,6 +12,7 @@ import restroom from '@/game/assets/restroom3.png'
 import restroomBTN from '@/game/assets/restroom.png'
 import btnCont from '@/game/assets/btnCont.png'
 import stairs from '@/game/assets/stairs.png'
+import mapOverlay from '@/assets/Floors 0-3 Accessible Wayfinding PNG.png'
 
 export default class BootScene extends Scene {
   constructor () {
@@ -34,6 +35,7 @@ export default class BootScene extends Scene {
       this.load.image('restroomBTN', restroomBTN);
       this.load.image('btnWindow', btnCont);
       this.load.image('stairs', stairs);
+      this.load.image('mapOverlay', mapOverlay);
   }
 
   create () {
