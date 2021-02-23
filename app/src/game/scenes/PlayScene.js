@@ -38,10 +38,11 @@ export default class PlayScene extends Scene {
     var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1);
     elevatorIconSix.setDepth(2);
 
+    var floor1PNG = this.add.image(1028,330,'floor1PNG').setScale(1);
+    floor1PNG.setDepth(1);
 
-    var mapOverlay = this.add.image (750,2500,'mapOverlay').setScale(1);
-
-    mapOverlay.setDepth(1);
+    //var mapOverlay = this.add.image (750,2500,'mapOverlay').setScale(1);
+    //mapOverlay.setDepth(1);
 
     //load restroom icon one through ten
 
@@ -80,13 +81,14 @@ export default class PlayScene extends Scene {
 
 
     var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
-    var mapOverlay = this.add.image(0,0,'mapOverlay').setOrigin(0).setInteractive().setScale(.95).setScrollFactor(0);
+   var mapOverlay = this.add.image(0,0,'mapOverlay').setOrigin(0).setInteractive().setScale(.95).setScrollFactor(0);
     var floor0icon = this.add.sprite(15, 210, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var moveBTN = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
     var floor3icon = this.add.sprite(15, 30, 'floor3icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor2icon = this.add.sprite(15, 90, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var johnRouteIcon = this.add.sprite(40, 220, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
+    var floor1PNG = this.add.sprite(0,0,'floor1PNG',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
     var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
