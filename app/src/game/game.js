@@ -14,6 +14,11 @@ function launch(containerId) {
         height: 90*8
     },
     
+    fps: {
+      target: 10,
+      forceSetTimeOut: true
+      },
+    
     physics: {
       default: 'arcade',
       arcade: {
