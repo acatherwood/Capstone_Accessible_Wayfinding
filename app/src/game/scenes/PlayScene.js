@@ -21,69 +21,69 @@ export default class PlayScene extends Scene {
 
     //load elevator icons one through six
     var elevatorIcon = this.add.image(521,330, 'elevator').setScale(1.5);
-    elevatorIcon.setDepth(1);
+    elevatorIcon.setDepth(2);
     
     var elevatorIconTwo = this.add.image(1510,330,'elevator').setScale(1.5);
-    elevatorIconTwo.setDepth(1);
+    elevatorIconTwo.setDepth(2);
 
     var elevatorIconThree = this.add.image(508,1512,'elevator').setScale(1.5);
-    elevatorIconThree.setDepth(1);
+    elevatorIconThree.setDepth(2);
 
     var elevatorIconFour = this.add.image(1642,1512,'elevator').setScale(1.5);
-    elevatorIconFour.setDepth(1);
+    elevatorIconFour.setDepth(2);
 
     var elevatorIconFive = this.add.image(514,2630,'elevator').setScale(1.5);
-    elevatorIconFive.setDepth(1);
+    elevatorIconFive.setDepth(2);
 
     var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1.5);
-    elevatorIconSix.setDepth(1);
+    elevatorIconSix.setDepth(2);
 
 
     //load restroom icon one through ten
 
 
     var restroom1 =this.add.image(225,420,'restroom').setScale(1.5);
-    restroom1.setDepth(1);
+    restroom1.setDepth(2);
 
     var restroom2=this.add.image(1125,435,'restroom').setScale(1.5);
-    restroom2.setDepth(1);
+    restroom2.setDepth(2);
 
     var restroom3=this.add.image(1520,280,'restroom').setScale(1.5);
-    restroom3.setDepth(1);
+    restroom3.setDepth(2);
 
     var restroom4=this.add.image(248,1440,'restroom').setScale(1.5);
-    restroom4.setDepth(1);
+    restroom4.setDepth(2);
     
     var restroom5=this.add.image(1704,1456,'restroom').setScale(1.5);
-    restroom5.setDepth(1);
+    restroom5.setDepth(2);
 
     var restroom6=this.add.image(320,2600,'restroom').setScale(1.5);
-    restroom6.setDepth(1);
+    restroom6.setDepth(2);
     
     var restroom7=this.add.image(1768,2600,'restroom').setScale(1.5);
-    restroom7.setDepth(1);
+    restroom7.setDepth(2);
 
      
     var restroom8=this.add.image(100,3450,'restroom').setScale(1.5);
-    restroom8.setDepth(1);
+    restroom8.setDepth(2);
 
     var restroom9=this.add.image(440,3400,'restroom').setScale(1.5);
-    restroom9.setDepth(1);
+    restroom9.setDepth(2);
 
     var restroom10=this.add.image(1475,3420,'restroom').setScale(1.5);
-    restroom10.setDepth(1);
+    restroom10.setDepth(2);
 
 
 
     var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
-    //var mapOverlay = this.add.image(0,0,'mapOverlay').setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
+    var mapOverlay = this.add.image(0,50,'mapOverlay').setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
     var floor0icon = this.add.sprite(15, 210, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    //var floor0icon = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
+    var moveBTN = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
     var floor3icon = this.add.sprite(15, 30, 'floor3icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor2icon = this.add.sprite(15, 90, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var johnRouteIcon = this.add.sprite(40, 220, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
+    var demosContainer = this.add.container(0, 0, [ demosWindow,mapOverlay, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
     this.input.setDraggable(demosContainer);
@@ -113,8 +113,12 @@ export default class PlayScene extends Scene {
 
     });
 
-
     floor0icon.on('pointerdown', function () {
+        phaserGuy.setPosition(120*8, 445*8);
+
+    });
+
+    moveBTN.on('pointerdown', function () {
        canWalk *= -1;
 
     });
@@ -125,7 +129,7 @@ export default class PlayScene extends Scene {
     
     var getRouteBTN = this.add.sprite(screen.width/2, 90*8 - 327*scalerSize, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(scalerSize).setScrollFactor(0);
     getRouteBTN.on('pointerdown', this.routeToRestroom );
-    getRouteBTN.setDepth(1);
+    getRouteBTN.setDepth(2);
     getRouteBTN.setScrollFactor(0);
 
     // Handles the clicks on the map to make the character move
