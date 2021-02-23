@@ -12,7 +12,7 @@ import restroom from '@/game/assets/restroom3.png'
 import restroomBTN from '@/game/assets/restroom.png'
 import btnCont from '@/game/assets/btnCont.png'
 import stairs from '@/game/assets/stairs.png'
-import mapOverlay from '@/assets/Floors 0-3 Accessible Wayfinding PNG.png'
+import mapOverlay from '@/game/assets/Cropped Floors 0-3 Accessible Wayfinding extra copy.png'
 
 export default class BootScene extends Scene {
   constructor () {
