@@ -20,63 +20,63 @@ export default class PlayScene extends Scene {
   create = function(){
 
     //load elevator icons one through six
-    var elevatorIcon = this.add.image(521,330, 'elevator').setScale(1.5);
+    var elevatorIcon = this.add.image(530,320, 'elevator').setScale(1);
     elevatorIcon.setDepth(2);
     
-    var elevatorIconTwo = this.add.image(1510,330,'elevator').setScale(1.5);
+    var elevatorIconTwo = this.add.image(1495,324,'elevator').setScale(1);
     elevatorIconTwo.setDepth(2);
 
-    var elevatorIconThree = this.add.image(508,1512,'elevator').setScale(1.5);
+    var elevatorIconThree = this.add.image(508,1512,'elevator').setScale(1);
     elevatorIconThree.setDepth(2);
 
-    var elevatorIconFour = this.add.image(1642,1512,'elevator').setScale(1.5);
+    var elevatorIconFour = this.add.image(1642,1512,'elevator').setScale(1);
     elevatorIconFour.setDepth(2);
 
-    var elevatorIconFive = this.add.image(514,2630,'elevator').setScale(1.5);
+    var elevatorIconFive = this.add.image(514,2630,'elevator').setScale(1);
     elevatorIconFive.setDepth(2);
 
-    var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1.5);
+    var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1);
     elevatorIconSix.setDepth(2);
 
 
     //load restroom icon one through ten
 
 
-    var restroom1 =this.add.image(225,420,'restroom').setScale(1.5);
+    var restroom1 =this.add.image(245,420,'restroom').setScale(1);
     restroom1.setDepth(2);
 
-    var restroom2=this.add.image(1125,435,'restroom').setScale(1.5);
+    var restroom2=this.add.image(1115,425,'restroom').setScale(1);
     restroom2.setDepth(2);
 
-    var restroom3=this.add.image(1520,280,'restroom').setScale(1.5);
+    var restroom3=this.add.image(1545,280,'restroom').setScale(1);
     restroom3.setDepth(2);
 
-    var restroom4=this.add.image(248,1440,'restroom').setScale(1.5);
+    var restroom4=this.add.image(248,1440,'restroom').setScale(1);
     restroom4.setDepth(2);
     
-    var restroom5=this.add.image(1704,1456,'restroom').setScale(1.5);
+    var restroom5=this.add.image(1704,1456,'restroom').setScale(1);
     restroom5.setDepth(2);
 
-    var restroom6=this.add.image(320,2600,'restroom').setScale(1.5);
+    var restroom6=this.add.image(320,2600,'restroom').setScale(1);
     restroom6.setDepth(2);
     
-    var restroom7=this.add.image(1768,2600,'restroom').setScale(1.5);
+    var restroom7=this.add.image(1768,2600,'restroom').setScale(1);
     restroom7.setDepth(2);
 
      
-    var restroom8=this.add.image(100,3450,'restroom').setScale(1.5);
+    var restroom8=this.add.image(100,3450,'restroom').setScale(1);
     restroom8.setDepth(2);
 
-    var restroom9=this.add.image(440,3400,'restroom').setScale(1.5);
+    var restroom9=this.add.image(440,3400,'restroom').setScale(1);
     restroom9.setDepth(2);
 
-    var restroom10=this.add.image(1475,3420,'restroom').setScale(1.5);
+    var restroom10=this.add.image(1475,3420,'restroom').setScale(1);
     restroom10.setDepth(2);
 
 
 
     var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
-    var mapOverlay = this.add.image(0,50,'mapOverlay').setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
+    var mapOverlay = this.add.image(0,0,'mapOverlay').setOrigin(0).setInteractive().setScale(.95).setScrollFactor(0);
     var floor0icon = this.add.sprite(15, 210, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var moveBTN = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
     var floor3icon = this.add.sprite(15, 30, 'floor3icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
