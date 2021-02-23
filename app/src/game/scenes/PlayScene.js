@@ -39,6 +39,10 @@ export default class PlayScene extends Scene {
     elevatorIconSix.setDepth(2);
 
 
+    var mapOverlay = this.add.image (750,2500,'mapOverlay').setScale(1);
+
+    mapOverlay.setDepth(1);
+
     //load restroom icon one through ten
 
 
@@ -83,7 +87,7 @@ export default class PlayScene extends Scene {
     var floor2icon = this.add.sprite(15, 90, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var johnRouteIcon = this.add.sprite(40, 220, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var demosContainer = this.add.container(0, 0, [ demosWindow,mapOverlay, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
+    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
     this.input.setDraggable(demosContainer);
