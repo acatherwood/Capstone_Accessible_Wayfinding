@@ -13,6 +13,7 @@ import restroomBTN from '@/game/assets/restroom.png'
 import btnCont from '@/game/assets/btnCont.png'
 import stairs from '@/game/assets/stairs.png'
 import mapOverlay from '@/game/assets/Cropped Floors 0-3 Accessible Wayfinding extra copy.png'
+import floor0PNG from '@/game/assets/Floor 0.png'
 import floor1PNG from '@/game/assets/Floor 1.png'
 import floor2PNG from '@/game/assets/Floor 2.png'
 import floor3PNG from '@/game/assets/Floor 3.png'
@@ -42,6 +43,7 @@ export default class BootScene extends Scene {
       this.load.image('floor1PNG',floor1PNG);
       this.load.image('floor2PNG',floor2PNG);
       this.load.image('floor3PNG',floor3PNG);
+      this.load.image('floor0PNG',floor0PNG);
   }
 
   create () {
