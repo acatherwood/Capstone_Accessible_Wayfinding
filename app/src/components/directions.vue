@@ -5,8 +5,8 @@
       <label>Saved</label>
        <b-form-select type="text" id="SRoutes" v-on:change="storeInput">
       <option
-      v-for="route in savedRoutes" 
-      :key="route.from + '-' + route.to"
+      v-for="(route, user) in savedRoutes" 
+      :key=" user.userId + route.from + '-' + route.to"
       @click="selectSavedRoute(route.from, route.to)"
       > 
       {{route.from + " to " + route.to }}

@@ -40,6 +40,7 @@ export default new Vuex.Store({
       state.directions.to = data.to;
     },
     SET_SAVED_ROUTE(state, route){
+      var userEmail = this.getters.user.data.email;
       state.routes.push(route);
     }
   },
@@ -60,11 +61,13 @@ export default new Vuex.Store({
       commit("SET_SAVED_ROUTE", route);
       firebase.firestore().collection("savedRoutes").add(route)
     },
-    RETRIEVE_ROUTES({commit}){
+    RETRIEVE_ROUTES({commit}, user){
       firebase.firestore().collection("savedRoutes").get().then((snap)=>{
         const routes = snap.docs.map((docRef) => docRef.data())
         routes.forEach((route)=> {
+          if(this.getters.user.data.email == route.userId){
           commit("SET_SAVED_ROUTE", route);
+          }
         })
       })
     }
