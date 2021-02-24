@@ -6,37 +6,6 @@ var graphics; var line;
 var canWalk = -1;
 var TilePixelCount = 16;
 var scalerSize = 0.15;
-var testCoords = [[120, 300, "101A"],
-[120, 300, "101A"],
-[160, 288, "101B"],
-[220, 300, "101C"],
-[240, 336, "101D"],
-[225, 330, "101"],
-[281, 288, "110A"],
-[281, 242, "110B "],
-[285, 182, "110C "],
-[288, 144, "110D "],
-[288, 84, "110E "],
-[341, 56, "110F "],
-[388, 65, "110G "],
-[432, 48, "110H "],
-[513, 100, "110J "],
-[512, 160, "110K "],
-[518, 222, "110M "],
-[494, 286, "110N "],
-[418, 242, "110P "],
-[418, 174, "110Q"],
-[514, 2630, "397A"],
-[1644, 2630, "397B "],
-[155, 2680, "398A "],
-[569, 2627, "398B "],
-[1594, 2624, "398C"],
-[2000, 2692, "398D "],
-[992, 2785, "399"]];
-var routeMarker1 = [[0,0]];
-var routeMarker2 = [[0,0]];
-
-
 export default class PlayScene extends Scene {
   constructor () {
     super({ key: 'PlayScene' })
@@ -49,33 +18,92 @@ export default class PlayScene extends Scene {
   
 
   create = function(){
+    //load elevator icons one through six
+    var elevatorIcon = this.add.image(530,320, 'elevator').setScale(1);
+    elevatorIcon.setDepth(2);
     
+    var elevatorIconTwo = this.add.image(1495,324,'elevator').setScale(1);
+    elevatorIconTwo.setDepth(2);
 
-    var elevatorIcon = this.add.image(520,328, 'elevator').setScale(1.5);
-    elevatorIcon.setDepth(1);
+    var elevatorIconThree = this.add.image(508,1512,'elevator').setScale(1);
+    elevatorIconThree.setDepth(2);
+
+    var elevatorIconFour = this.add.image(1642,1512,'elevator').setScale(1);
+    elevatorIconFour.setDepth(2);
+
+    var elevatorIconFive = this.add.image(514,2630,'elevator').setScale(1);
+    elevatorIconFive.setDepth(2);
+
+    var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1);
+    elevatorIconSix.setDepth(2);
+
+    var floor1PNG = this.add.image(1028,330,'floor1PNG').setScale(1);
+    floor1PNG.setDepth(1);
+
+    var floor2PNG = this.add.image(1090,1550,'floor2PNG').setScale(1);
+    floor2PNG.setDepth(1);
+
+    var floor3PNG = this.add.image(1028,2525,'floor3PNG').setScale(.9);
+    floor3PNG.setDepth(1);
+
+    var floor0PNG = this.add.image(1028,3850,'floor0PNG').setScale(1);
+    floor0PNG.setDepth(1);
+
+
+    //var mapOverlay = this.add.image (750,2500,'mapOverlay').setScale(1);
+    //mapOverlay.setDepth(1);
+
+    //load restroom icon one through ten
+
+
+    var restroom1 =this.add.image(245,420,'restroom').setScale(1);
+    restroom1.setDepth(2);
+
+    var restroom2=this.add.image(1115,425,'restroom').setScale(1);
+    restroom2.setDepth(2);
+
+    var restroom3=this.add.image(1545,280,'restroom').setScale(1);
+    restroom3.setDepth(2);
+
+    var restroom4=this.add.image(248,1440,'restroom').setScale(1);
+    restroom4.setDepth(2);
     
-    var elevatorIconTwo = this.add.image(1512,328,'elevator').setScale(1.5);
-    elevatorIconTwo.setDepth(1);
+    var restroom5=this.add.image(1704,1456,'restroom').setScale(1);
+    restroom5.setDepth(2);
+
+    var restroom6=this.add.image(320,2600,'restroom').setScale(1);
+    restroom6.setDepth(2);
+    
+    var restroom7=this.add.image(1768,2600,'restroom').setScale(1);
+    restroom7.setDepth(2);
+
+     
+    var restroom8=this.add.image(100,3450,'restroom').setScale(1);
+    restroom8.setDepth(2);
+
+    var restroom9=this.add.image(440,3400,'restroom').setScale(1);
+    restroom9.setDepth(2);
+
+    var restroom10=this.add.image(1475,3420,'restroom').setScale(1);
+    restroom10.setDepth(2);
 
 
-    var restroom1 =this.add.image(224,420,'restroom').setScale(1);
-    restroom1.setDepth(1);
 
-    var restroom2=this.add.image(1128,436,'restroom').setScale(1);
-    restroom2.setDepth(1);
-
-    var restroom3=this.add.image(1520,280,'restroom').setScale(1);
-
-
-    restroom3.setDepth(1);
     var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
-    var floor0icon = this.add.sprite(50, 340, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
+
+   var mapOverlay = this.add.image(0,0,'mapOverlay').setOrigin(0).setInteractive().setScale(.95).setScrollFactor(0);
+    var floor0icon = this.add.sprite(15, 210, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
+    var moveBTN = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
     var floor3icon = this.add.sprite(15, 30, 'floor3icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor2icon = this.add.sprite(15, 90, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floorGicon = this.add.sprite(15, 210, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var johnRouteIcon = this.add.sprite(40, 280, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, floorGicon, johnRouteIcon]);
+    var floor1PNG = this.add.sprite(0,0,'floor1PNG',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
+    var floor2PNG = this.add.image(0,0,'floor2PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
+    var floor3PNG = this.add.image(0,0,'floor3PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
+    var floor0PNG = this.add.image(0,0,'floor0PNG').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
+    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
     this.input.setDraggable(demosContainer);
@@ -87,12 +115,12 @@ export default class PlayScene extends Scene {
       });
 
     floor3icon.on('pointerdown', function () {
-        phaserGuy.setPosition(133*8, 337*8);
+        phaserGuy.setPosition(133*8, 334*8);
 
     });
       
     floor2icon.on('pointerdown', function () {
-        phaserGuy.setPosition(141*8, 196*8);
+        phaserGuy.setPosition(141*8, 205*8);
 
 
     });
@@ -103,6 +131,7 @@ export default class PlayScene extends Scene {
 
     });
 
+
     floorGicon.on('pointerdown', function () {
         var i = 0;
         while(i < testCoords.length){
@@ -112,6 +141,11 @@ export default class PlayScene extends Scene {
     });
 
     floor0icon.on('pointerdown', function () {
+        phaserGuy.setPosition(120*8, 490*8);
+
+    });
+
+    moveBTN.on('pointerdown', function () {
        canWalk *= -1;
 
     });
@@ -122,7 +156,7 @@ export default class PlayScene extends Scene {
     
     var getRouteBTN = this.add.sprite(screen.width/2, scalerSize, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(scalerSize).setScrollFactor(0);
     getRouteBTN.on('pointerdown', this.routeToRestroom );
-    getRouteBTN.setDepth(1);
+    getRouteBTN.setDepth(2);
     getRouteBTN.setScrollFactor(0);
 
 

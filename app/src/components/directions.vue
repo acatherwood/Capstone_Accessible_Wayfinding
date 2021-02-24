@@ -1,8 +1,9 @@
 
  <template>
   <div id="directions">
-    <div>
-      <div>
+    <div class="container">
+      <div class="row">
+          <div class="col">
       <label>Start</label>
       <b-form-select
         type="text"
@@ -13,6 +14,7 @@
         v-on:change="storeInput"
       ></b-form-select>
 </div>
+    <div class="col">
       <label>End</label>
       <b-form-select
         id="To"
@@ -21,6 +23,8 @@
         :options="options"
         v-on:change="storeInput"
       ></b-form-select>
+    </div>
+    </div>
     </div>
   </div>
 </template>
