@@ -1,46 +1,34 @@
-
  <template>
-  <div class="container">
-
-   
-      <div
-      v-for="route in savedRoutes" 
-      :key="route.from + '-' + route.to"
-      @click="selectSavedRoute(route.from, route.to)"
-      >
-      {{route.from + " to" + route.to }}
-
-      </div>
-    
-
-    <div class="row">
-        <div class="col">
-          <label>Start</label>
-          <b-form-select
-            type="text"
-            id="From"
-            v-model="selectedFrom"
-            :options="options"
-            v-on:change="storeInput"
-          ></b-form-select>
-        </div>
-
-        <div class="col">
-          <label>End</label>
-          <b-form-select
-            id="To"
-            name="routeSelect"
-            v-model="selectedTo"
-            :options="options"
-            v-on:change="storeInput"
-          ></b-form-select>
-        </div>
-      </div>
+  <div id="directions">
+    <div>
+      <div>
+      <label>Start</label>
+      <b-form-select
+        type="text"
+        id="From"
+        v-model="selectedFrom"
+        :options="options"
+        v-on:change="storeInput"
+      ></b-form-select>
+    </div>
+      <label>End</label>
+      <b-form-select
+        id="To"
+        name="routeSelect"
+        v-model="selectedTo"
+        :options="options"
+        v-on:change="storeInput"
+      ></b-form-select>
+    </div>
+     <div>
+      <button
+        @click="saveRoute"
+      >Save Route</button>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 export default {
   name: "modal",
   data() {
@@ -54,18 +42,17 @@ export default {
   mounted() {
     const data = [
       { room: "101A", floor: 1, coordinate1: 120, coordinate2: 300 },
-      { room: "101B", floor: 1, coordinate1: 160, coordinate2: 288 },
+      { room: "101B", floor: 1, coordinate1: 170, coordinate2: 300 },
       { room: "101C", floor: 1, coordinate1: 220, coordinate2: 300 },
-      { room: "101D", floor: 1, coordinate1: 240, coordinate2: 336 },
       { room: "101", floor: 1, coordinate1: 225, coordinate2: 330 },
       { room: "110A", floor: 1, coordinate1: 281, coordinate2: 288 },
       { room: "110B", floor: 1, coordinate1: 281, coordinate2: 242 },
       { room: "110C", floor: 1, coordinate1: 285, coordinate2: 182 },
-      { room: "110D", floor: 1, coordinate1: 288, coordinate2: 144 },
+      { room: "110D", floor: 1, coordinate1: 289, coordinate2: 150 },
       { room: "110E", floor: 1, coordinate1: 288, coordinate2: 84 },
       { room: "110F", floor: 1, coordinate1: 341, coordinate2: 56 },
       { room: "110G", floor: 1, coordinate1: 388, coordinate2: 65 },
-      { room: "110H", floor: 1, coordinate1: 432, coordinate2: 48 },
+      { room: "110H", floor: 1, coordinate1: 443, coordinate2: 69 },
       { room: "110J", floor: 1, coordinate1: 513, coordinate2: 100 },
       { room: "110K", floor: 1, coordinate1: 512, coordinate2: 160 },
       { room: "110M", floor: 1, coordinate1: 518, coordinate2: 222 },
@@ -75,32 +62,32 @@ export default {
       { room: "110R", floor: 1, coordinate1: 369, coordinate2: 174 },
       { room: "110S", floor: 1, coordinate1: 369, coordinate2: 245 },
       { room: "110", floor: 1, coordinate1: 385, coordinate2: 295 },
-      { room: "112", floor: 1, coordinate1: 480, coordinate2: 320 },
+      { room: "112", floor: 1, coordinate1: 481, coordinate2: 330 },
       { room: "114", floor: 1, coordinate1: 720, coordinate2: 314 },
       { room: "114.01", floor: 1, coordinate1: 674, coordinate2: 324 },
-      { room: "114.02", floor: 1, coordinate1: 735, coordinate2: 320 },
+      { room: "114.02", floor: 1, coordinate1: 755, coordinate2: 320 },
       { room: "114A", floor: 1, coordinate1: 616, coordinate2: 326 },
       { room: "114B", floor: 1, coordinate1: 627, coordinate2: 254 },
       { room: "114C", floor: 1, coordinate1: 691, coordinate2: 256 },
-      { room: "114D", floor: 1, coordinate1: 736, coordinate2: 256 },
+      { room: "114D", floor: 1, coordinate1: 749, coordinate2: 256 },
       { room: "115", floor: 1, coordinate1: 805, coordinate2: 322 },
       { room: "115A", floor: 1, coordinate1: 804, coordinate2: 262 },
       { room: "116", floor: 1, coordinate1: 897, coordinate2: 298 },
-      { room: "116A", floor: 1, coordinate1: 960, coordinate2: 320 },
+      { room: "116A", floor: 1, coordinate1: 968, coordinate2: 334 },
       { room: "119", floor: 1, coordinate1: 1184, coordinate2: 326 },
       { room: "119A", floor: 1, coordinate1: 1085, coordinate2: 320 },
       { room: "119B", floor: 1, coordinate1: 1085, coordinate2: 320 },
-      { room: "119C", floor: 1, coordinate1: 1184, coordinate2: 240 },
+      { room: "119C", floor: 1, coordinate1: 1196, coordinate2: 268 },
       { room: "120", floor: 1, coordinate1: 1285, coordinate2: 330 },
-      { room: "120A", floor: 1, coordinate1: 1232, coordinate2: 256 },
-      { room: "120B", floor: 1, coordinate1: 1280, coordinate2: 256 },
-      { room: "120C", floor: 1, coordinate1: 1360, coordinate2: 320 },
+      { room: "120A", floor: 1, coordinate1: 1256, coordinate2: 272 },
+      { room: "120B", floor: 1, coordinate1: 1309, coordinate2: 262 },
+      { room: "120C", floor: 1, coordinate1: 1361, coordinate2: 329 },
       { room: "120CA", floor: 1, coordinate1: 1361, coordinate2: 280 },
       { room: "121", floor: 1, coordinate1: 1409, coordinate2: 314 },
       { room: "121A", floor: 1, coordinate1: 1409, coordinate2: 252 },
       { room: "122", floor: 1, coordinate1: 1590, coordinate2: 317 },
-      { room: "123", floor: 1, coordinate1: 1520, coordinate2: 272 },
-      { room: "124", floor: 1, coordinate1: 1536, coordinate2: 224 },
+      { room: "123", floor: 1, coordinate1: 1520, coordinate2: 280 },
+      { room: "124", floor: 1, coordinate1: 1577, coordinate2: 282 },
       { room: "127", floor: 1, coordinate1: 1645, coordinate2: 163 },
       { room: "128", floor: 1, coordinate1: 1717, coordinate2: 247 },
       { room: "129", floor: 1, coordinate1: 1767, coordinate2: 245 },
@@ -114,7 +101,7 @@ export default {
       { room: "137DA", floor: 1, coordinate1: 1817, coordinate2: 435 },
       { room: "137DB", floor: 1, coordinate1: 1888, coordinate2: 420 },
       { room: "140", floor: 1, coordinate1: 1607, coordinate2: 491 },
-      { room: "140A", floor: 1, coordinate1: 1584, coordinate2: 432 },
+      { room: "140A", floor: 1, coordinate1: 1605, coordinate2: 450 },
       { room: "140B", floor: 1, coordinate1: 1610, coordinate2: 550 },
       { room: "143", floor: 1, coordinate1: 1525, coordinate2: 460 },
       { room: "144", floor: 1, coordinate1: 1420, coordinate2: 444 },
@@ -134,7 +121,7 @@ export default {
       { room: "147.01", floor: 1, coordinate1: 796, coordinate2: 514 },
       { room: "147.02", floor: 1, coordinate1: 835, coordinate2: 445 },
       { room: "147.03", floor: 1, coordinate1: 875, coordinate2: 445 },
-      { room: "147.04", floor: 1, coordinate1: 896, coordinate2: 448 },
+      { room: "147.04", floor: 1, coordinate1: 912, coordinate2: 445 },
       { room: "147A", floor: 1, coordinate1: 852, coordinate2: 510 },
       { room: "147B", floor: 1, coordinate1: 901, coordinate2: 504 },
       { room: "149", floor: 1, coordinate1: 694, coordinate2: 450 },
@@ -353,15 +340,8 @@ export default {
         text: `Room ${data[index].room}`,
       });
     });
-    
-  },
-  computed: {
-    savedRoutes(){
-      return this.$store.state.routes; 
-    }
   },
   methods: {
-    ...mapActions(['SET_DIRECTIONS']),
     displaySearch: function (event) {
       var block = document.getElementById("search-box");
       block.style.visibility = "visible";
@@ -378,9 +358,8 @@ export default {
      // alert(inputFrom);
       // update the state
       this.$store.commit("SET_DIRECTIONS", { from: inputFrom, to: inputTo });
-      
     },
-    saveRoute(event){
+ saveRoute(event){
             var inputTo = document.getElementById("To").value;
       var inputFrom = document.getElementById("From").value;
       this.$store.dispatch("SAVE_ROUTE", {userId: this.$store.state.user.data.email, from: inputFrom, to: inputTo })
