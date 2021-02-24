@@ -1,45 +1,20 @@
+
  <template>
-  <div id="directions">
-    <div>
-      <div>
-      <label>Start</label>
-      <b-form-select
-        type="text"
-        id="From"
-        v-model="selectedFrom"
-        :options="options"
-        v-on:change="storeInput"
-      ></b-form-select>
-    </div>
-      <label>End</label>
-      <b-form-select
-        id="To"
-        name="routeSelect"
-        v-model="selectedTo"
-        :options="options"
-        v-on:change="storeInput"
-      ></b-form-select>
-    </div>
-     <div>
-      <button
-        @click="saveRoute"
-      >Save Route</button>
-    </div>
+  <div class="container">
+    <div class="col">
+          <b-form-select
+            id="saved"
+            name="routeSelect"
+            v-model="selected"
+            :options="sortedOptions"
+            v-on:change="storeInput"
+          ></b-form-select>
+        </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "modal",
-  data() {
-    return {
-      selectedTo: null,
-      selectedFrom: null,
-      options: [],
-      inputTo: "",
-    };
-  },
-  mounted() {
+import { mapActions } from 'vuex';
     const data = [
       { room: "101A", floor: 1, coordinate1: 120, coordinate2: 300 },
       { room: "101B", floor: 1, coordinate1: 170, coordinate2: 300 },
@@ -322,6 +297,18 @@ export default {
       { room: "399", floor: 3, coordinate1: 1049, coordinate2: 2685 },
     ];
 
+export default {
+  name: "savedRoutes",
+  data() {
+    return {
+        selected: "",
+        selectedTo: null,
+        selectedFrom: null,
+        inputTo: "",
+    };
+  },
+  mounted() {
+
     var sortedTestCollection = Object.keys(data).sort(function (a, b) {
       a = data[a].room.substring(0, data[a].room.length);
       b = data[b].room.substring(0, data[b].room.length);
@@ -330,18 +317,45 @@ export default {
       return 0;
     });
 
-    sortedTestCollection.forEach((index) => {
-      this.options.push({
-        value: [
-          data[index].floor,
-          data[index].coordinate1,
-          data[index].coordinate2,
-        ],
-        text: `Room ${data[index].room}`,
-      });
-    });
+    
+  },
+  computed: {
+    savedRoutes(){      
+      return this.$store.state.routes.map(this.mapRoute); 
+    },
+    options(){
+        return this.savedRoutes.map(route => ({
+            value: route.from + '/' + route.to,
+        text: `Room ${route.fromRoom.room} to Room ${route.toRoom.room} `,
+        }));
+    },
+    sortedOptions(){
+        return [{value: "", text: "Select an Option"}].concat(this.options.sort((a, b) => {
+            if (a.text == b.text) return 0;
+            return a.text < b.text ? -1 : 1;
+        }))
+    }
   },
   methods: {
+    ...mapActions(['SET_DIRECTIONS']),
+    mapRoute(route){
+        var to = this.lookupRoom(...route.to.split(","));
+        var from = this.lookupRoom(...route.from.split(","));
+        return {
+            ...route, 
+                fromRoom: from,
+                toRoom: to
+        }
+    },
+    lookupRoom(floor, coordinate1, coordinate2){
+       return data.find(room => {
+                return room.floor == parseInt(floor) 
+                && room.coordinate1 == parseInt(coordinate1)
+                && room.coordinate2 == parseInt(coordinate2)
+            }
+        )
+    },
+
     displaySearch: function (event) {
       var block = document.getElementById("search-box");
       block.style.visibility = "visible";
@@ -350,23 +364,16 @@ export default {
       var newDiv = document.createElement("div");
     },
     storeInput(event) {
-      var inputTo = document.getElementById("To").value;
-      //debug only
-      //alert(inputTo);
-      var inputFrom = document.getElementById("From").value;
-      //debug only
-     // alert(inputFrom);
+      const [inputFrom, inputTo] = document.getElementById("saved").value.split("/");
+      console.log(inputFrom, inputTo);
+
       // update the state
       this.$store.commit("SET_DIRECTIONS", { from: inputFrom, to: inputTo });
-    },
- saveRoute(event){
-            var inputTo = document.getElementById("To").value;
-      var inputFrom = document.getElementById("From").value;
-      this.$store.dispatch("SAVE_ROUTE", {userId: this.$store.state.user.data.email, from: inputFrom, to: inputTo })
+      
     },
     selectSavedRoute(from, to){
-            this.$store.commit("SET_DIRECTIONS", { from: from, to: to });
-    }
+        this.$store.commit("SET_DIRECTIONS", { from: from, to: to });
+    },
   },
 };
 </script>

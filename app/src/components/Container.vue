@@ -6,25 +6,25 @@
   <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
      
      <template v-if="user.loggedIn">
-    <li class="nav-item">
-        <a class="nav-link active text-white font-weight-bold" id="directions-tab" data-toggle="tab" href="#directions" role="tab" aria-controls="directions" aria-selected="true">Directions</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link text-white font-weight-bold" id="savedroutes-tab" data-toggle="tab" href="#savedroutes" role="tab" aria-controls="savedroutes" aria-selected="false">Saved Routes</a>
-      </li>
-     </template>
+      <li class="nav-item">
+          <a class="nav-link active text-white font-weight-bold" id="directions-tab" data-toggle="tab" href="#directions" role="tab" aria-controls="directions" aria-selected="true">Directions</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link text-white font-weight-bold" id="savedroutes-tab" data-toggle="tab" href="#savedroutes" role="tab" aria-controls="savedroutes" aria-selected="false">Saved Routes</a>
+        </li>
+      </template>
 
-      <template v-else>
-            <li class="nav-item">
-        <a class="nav-link active text-white font-weight-bold" id="directions-tab" data-toggle="tab" href="#directions" role="tab" aria-controls="directions" aria-selected="true">Directions</a>
-      </li>
+        <template v-else>
+              <li class="nav-item">
+          <a class="nav-link active text-white font-weight-bold" id="directions-tab" data-toggle="tab" href="#directions" role="tab" aria-controls="directions" aria-selected="true">Directions</a>
+        </li>
       </template>
   </ul>
     </div>
-  <div class="card-body rounded bg-dark">
+  <div class="card-body rounded bg-dark" style="height:15em">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="directions" role="tabpanel" aria-labelledby="directions-tab"><Directions/></div>
-            <div class="tab-pane fade" id="savedroutes" role="tabpanel" aria-labelledby="savedroutes-tab">...</div>
+            <div class="tab-pane fade" id="savedroutes" role="tabpanel" aria-labelledby="savedroutes-tab"><SavedRoutes/></div>
         </div>
   </div>
 </div>
@@ -39,13 +39,15 @@ import { mapGetters } from "vuex";
 import firebase from "firebase";
 import Game from './Game.vue'
 import Directions from './directions.vue'
+import SavedRoutes from './savedRoutes.vue'
 
 
 export default {
   name: 'Map',
     components: {
     Game,
-    Directions
+    Directions,
+    SavedRoutes
 },
  computed: {
     ...mapGetters({

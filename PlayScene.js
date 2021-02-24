@@ -2,13 +2,112 @@ import { Scene } from 'phaser'
 import EasyStar from 'easystarjs'
 
 var Game = {};
-var graphics; var line;
 var canWalk = -1;
 var TilePixelCount = 16;
 var scalerSize = 0.15;
-var routeMarker1 = [[0,0]];
-var routeMarker2 = [[0,0]];
-
+var bathroomCoords = [[225, 420], [1125, 435] , [1520,280]]
+var testCoords = [[1645,  163 ],
+[ 1717,  247 ],
+[ 1767,  245 ],
+[ 1870,  315 ],
+[ 1708,  298 ],
+[ 1742,  498 ],
+[ 1742,  552 ],
+[ 1729,  440 ],
+[ 1782,  442 ],
+[ 1885,  468 ],
+[ 1817,  435 ],
+[ 1888,  420 ],
+[ 1607,  491 ],
+[ 1605,  450 ],
+ [ 1610,  550 ],
+[ 1420,  444 ],
+[ 1384,  449 ],
+[ 1350,  449 ],
+[ 1473,  506 ],
+[ 1401,  504 ],
+[ 1348,  504 ],
+[ 1271,  458 ],
+[ 1299,  500 ],
+[ 1252,  500 ],
+[ 1197,  445 ],
+[ 1197,  497 ],
+[ 1150,  483 ],
+[ 1125,  435 ],
+[ 796,  446 ],
+[ 796,  514 ],
+[ 835,  445 ],
+[ 875,  445 ],
+[ 912,  445 ],
+[ 852,  510 ],
+[ 901,  504 ],
+[ 694,  450 ],
+[ 749,  454 ],
+[ 636,  454 ],
+[ 744,  510 ],
+  [ 669,  504 ],
+   [ 617,  504 ],
+  [ 568,  504 ],
+     [ 507,  438 ],
+     [ 438,  470 ],
+    [ 425,  535 ],
+    [ 404,  465 ],
+  [ 250,  450 ],
+    [ 300,  530 ],
+     [ 130,  470 ],
+    [ 225,  420 ],
+    [ 130,  420 ],
+    [ 521,  330 ],
+ [ 1510,  330 ],
+   [ 130,  374 ],
+    [ 569,  344 ],
+    [ 1469,  336],
+    [ 1792,  383 ],
+[ 1082,  432 ],
+ [ 953,  440 ],
+[ 357,  388 ],
+[ 165,  1052 ],
+ [ 64,  1027 ],
+[ 105,  1166 ], [ 170,  1150 ],
+   [ 248,  1440 ],
+  [ 262,  929 ],
+    [ 250,  1034 ],
+  [ 384,  1296 ],
+   [ 497,  1275 ],
+   [ 500,  1241 ],
+   [ 435,  1224 ],
+ [ 370,  1229 ],
+   [ 490,  1382 ],
+  [ 459,  1455 ],
+  [ 407,  1509 ],
+    [ 460,  1515 ],
+ [ 630,  1496 ],
+  [ 740,  1487 ],
+  [ 885,  1487 ],
+   [ 1070,  1511 ],
+    [ 1008,  1510 ],
+   [ 1000,  1466 ],
+   [ 1047,  1452 ],
+     [ 1104,  1454 ],
+  [ 1154,  1490 ],
+ [ 1307,  1485 ],
+  [ 1445,  1477 ],
+ [ 1535,  1475 ],
+ [ 1715,  1507 ],
+ [ 1704,  1456 ],
+   [ 1732,  1249 ],
+   [ 1682,  1410 ],
+[ 1675,  1357 ],
+ [ 1667,  1305 ],
+ [ 1665,  1249 ],
+ [ 1665,  1205 ],
+ [ 1782,  1270 ],
+ [ 1832,  1266 ],
+ [ 1790,  1227 ],
+ [ 1868,  1202 ],
+[ 1864,  1267 ],
+ [ 1864,  1307 ],
+ [ 1820,  1319 ]];
 export default class PlayScene extends Scene {
   constructor () {
     super({ key: 'PlayScene' })
@@ -21,92 +120,31 @@ export default class PlayScene extends Scene {
   
 
   create = function(){
-    //load elevator icons one through six
-    var elevatorIcon = this.add.image(530,320, 'elevator').setScale(1);
-    elevatorIcon.setDepth(2);
+    var elevatorIcon = this.add.image(520,328, 'elevator').setScale(1.5);
+    elevatorIcon.setDepth(1);
     
-    var elevatorIconTwo = this.add.image(1495,324,'elevator').setScale(1);
-    elevatorIconTwo.setDepth(2);
+    var elevatorIconTwo = this.add.image(1512,328,'elevator').setScale(1.5);
+    elevatorIconTwo.setDepth(1);
 
-    var elevatorIconThree = this.add.image(508,1512,'elevator').setScale(1);
-    elevatorIconThree.setDepth(2);
+    //load restroom icon one, two, three, four and five
+    var restroom1 =this.add.image(224,420,'restroom').setScale(1);
+    restroom1.setDepth(1);
 
-    var elevatorIconFour = this.add.image(1642,1512,'elevator').setScale(1);
-    elevatorIconFour.setDepth(2);
+    var restroom2=this.add.image(1128,436,'restroom').setScale(1);
+    restroom2.setDepth(1);
 
-    var elevatorIconFive = this.add.image(514,2630,'elevator').setScale(1);
-    elevatorIconFive.setDepth(2);
-
-    var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1);
-    elevatorIconSix.setDepth(2);
-
-    var floor1PNG = this.add.image(1028,330,'floor1PNG').setScale(1);
-    floor1PNG.setDepth(1);
-
-    var floor2PNG = this.add.image(1090,1550,'floor2PNG').setScale(1);
-    floor2PNG.setDepth(1);
-
-    var floor3PNG = this.add.image(1028,2525,'floor3PNG').setScale(.9);
-    floor3PNG.setDepth(1);
-
-    var floor0PNG = this.add.image(1028,3850,'floor0PNG').setScale(1);
-    floor0PNG.setDepth(1);
+    var restroom3=this.add.image(1520,280,'restroom').setScale(1);
 
 
-    //var mapOverlay = this.add.image (750,2500,'mapOverlay').setScale(1);
-    //mapOverlay.setDepth(1);
-
-    //load restroom icon one through ten
-
-
-    var restroom1 =this.add.image(245,420,'restroom').setScale(1);
-    restroom1.setDepth(2);
-
-    var restroom2=this.add.image(1115,425,'restroom').setScale(1);
-    restroom2.setDepth(2);
-
-    var restroom3=this.add.image(1545,280,'restroom').setScale(1);
-    restroom3.setDepth(2);
-
-    var restroom4=this.add.image(248,1440,'restroom').setScale(1);
-    restroom4.setDepth(2);
-    
-    var restroom5=this.add.image(1704,1456,'restroom').setScale(1);
-    restroom5.setDepth(2);
-
-    var restroom6=this.add.image(320,2600,'restroom').setScale(1);
-    restroom6.setDepth(2);
-    
-    var restroom7=this.add.image(1768,2600,'restroom').setScale(1);
-    restroom7.setDepth(2);
-
-     
-    var restroom8=this.add.image(100,3450,'restroom').setScale(1);
-    restroom8.setDepth(2);
-
-    var restroom9=this.add.image(440,3400,'restroom').setScale(1);
-    restroom9.setDepth(2);
-
-    var restroom10=this.add.image(1475,3420,'restroom').setScale(1);
-    restroom10.setDepth(2);
-
-
-
+    restroom3.setDepth(1);
     var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
-    var mapOverlay = this.add.image(0,0,'mapOverlay').setOrigin(0).setInteractive().setScale(.95).setScrollFactor(0);
-    var floor0icon = this.add.sprite(15, 210, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var moveBTN = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
+    var floor0icon = this.add.sprite(50, 340, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
     var floor3icon = this.add.sprite(15, 30, 'floor3icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor2icon = this.add.sprite(15, 90, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floorGicon = this.add.sprite(15, 210, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var johnRouteIcon = this.add.sprite(40, 280, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var floor1PNG = this.add.sprite(0,0,'floor1PNG',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
-    var floor2PNG = this.add.image(0,0,'floor2PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
-    var floor3PNG = this.add.image(0,0,'floor3PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
-    var floor0PNG = this.add.image(0,0,'floor0PNG').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
-    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
-
+    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, floorGicon, johnRouteIcon]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
     this.input.setDraggable(demosContainer);
@@ -118,12 +156,12 @@ export default class PlayScene extends Scene {
       });
 
     floor3icon.on('pointerdown', function () {
-        phaserGuy.setPosition(133*8, 334*8);
+        phaserGuy.setPosition(133*8, 337*8);
 
     });
       
     floor2icon.on('pointerdown', function () {
-        phaserGuy.setPosition(141*8, 205*8);
+        phaserGuy.setPosition(141*8, 196*8);
 
 
     });
@@ -142,31 +180,18 @@ export default class PlayScene extends Scene {
         }
     });
 
-    floorGicon.on('pointerdown', function () {
-        var i = 0;
-        while(i < testCoords.length){
-        Game.scene.checkCollisionTester(testCoords[i]);
-        i++
-        }console.log(routeMarker1);
-    });
-
     floor0icon.on('pointerdown', function () {
-        phaserGuy.setPosition(120*8, 490*8);
-
-    });
-
-    moveBTN.on('pointerdown', function () {
        canWalk *= -1;
 
     });
-    line = new Phaser.Geom.Line( 0,0,678,678);
+
     johnRouteIcon.on('pointerdown', this.routeToRestroom );
     demosContainer.setDepth(1);
     demosContainer.setScrollFactor(0);
     
     var getRouteBTN = this.add.sprite(screen.width/2, scalerSize, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(scalerSize).setScrollFactor(0);
     getRouteBTN.on('pointerdown', this.routeToRestroom );
-    getRouteBTN.setDepth(2);
+    getRouteBTN.setDepth(1);
     getRouteBTN.setScrollFactor(0);
 
 
@@ -228,42 +253,25 @@ export default class PlayScene extends Scene {
         if(properties[i].cost) this.finder.setTileCost(i+1, properties[i].cost); // If there is a cost attached to the tile, let's register it
     }
     this.finder.setAcceptableTiles(acceptableTiles);
-    graphics = this.add.graphics({ lineStyle: { width: TilePixelCount, color: 0x0000FF } });//needs to be declared here to become visible on map, here specifically because it breaks earlier in the create function
-
 };
 
     update = function(){
         var worldPoint = this.input.activePointer.positionToCamera(Game.scene.cameras.main);
 
-        // Rounds down to nearest tile and marks it (for move on click mode only)
+        // Rounds down to nearest tile
         var pointerTileX = this.map.worldToTileX(worldPoint.x);
         var pointerTileY = this.map.worldToTileY(worldPoint.y);
         this.marker.x = this.map.tileToWorldX(pointerTileX);
         this.marker.y = this.map.tileToWorldY(pointerTileY);
-        this.marker.setVisible(true); 
-        //adds route lines after clearing 
-        graphics.clear();
-        graphics.beginPath();
-        graphics.moveTo(routeMarker1[0][0], routeMarker1[0][1]);
-        for(var i = 0; i < routeMarker1.length; i++){
-            graphics.lineTo(routeMarker1[i][0], routeMarker1[i][1]);
-        }
-        graphics.moveTo(routeMarker2[0][0], routeMarker2[0][1]);
-        for(var i = 0; i < routeMarker2.length; i++){
-            graphics.lineTo(routeMarker2[i][0], routeMarker2[i][1]);
-        }
-        graphics.strokePath(); 
-        graphics.setDepth(3);
+        this.marker.setVisible(true);
+
     };
     checkCollisionTester = function(item){
         var tile = this.map.getTileAt(Math.floor(item[0]/16), Math.floor(item[1]/16));
-        var testerDude = this.add.image( item[0], item[1],'dude').setScale(0.5).setDepth(1);
-        this.add.text(item[0], item[1], item[2], { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color:'#A52A2A', fontSize:16 });
         if(tile.properties.collide == true){
             console.log(tile.properties.collide+" : "+ item[0]+ " / " +item[1] );
-            testerDude.setTint(0xff0000);
+            this.add.image( item[0], item[1],'dude').setScale(0.5).setDepth(1);
         }
-
 
     };
     checkCollision = function(x,y){
@@ -320,7 +328,7 @@ export default class PlayScene extends Scene {
                     console.warn("Path was not found.");
                 } else {
                     console.log(path);
-                    Game.scene.moveCharacter(path, 1);
+                    Game.scene.moveCharacter(path);
                     console.log(path.length);
                 }
             });
@@ -336,8 +344,7 @@ export default class PlayScene extends Scene {
                     console.warn("Path was not found.");
                 } else {
                     console.log(path);
-                    //tweenNumbers = path;
-                    Game.scene.moveCharacter(path, 0);
+                    tweenNumbers = path;
                 }
             })
             var fromX2 = Math.floor(nearestElevator[parseInt(toData[0])][0]);
@@ -349,9 +356,9 @@ export default class PlayScene extends Scene {
                 if (path2 === null) {
                     console.warn("Path was not found.");
                 } else {
-                    console.log(path2 , 0);
-                    //tweenNumbers = tweenNumbers.concat(path2);
-                    Game.scene.moveCharacter(path2, routeMarker2);
+                    console.log(path2);
+                    tweenNumbers = tweenNumbers.concat(path2);
+                    Game.scene.moveCharacter(tweenNumbers);
                 }
             });
             this.scene.finder.calculate();
@@ -359,25 +366,28 @@ export default class PlayScene extends Scene {
     };
 
 
-    moveCharacter = function(path, booleanFlag){
-        var tempRouteMarker = [ [(path[0 ].x*TilePixelCount),(path[0].y*TilePixelCount)] ]
+    moveCharacter = function(path){
         // Sets up a list of tweens, one for each tile to walk, that will be chained by the timeline
         var tweens = [];
+        ///Game.scene.graphics.clear();// not sure what to actually clear with
         for(var i = 0; i < path.length-1; i++){
             var ex = path[i+1].x;
             var ey = path[i+1].y;
-            tempRouteMarker.push( [(path[i].x*TilePixelCount),(path[i].y*TilePixelCount)] );
+
+            
+            if(Math.abs(path[i+1].y - path[i].y) < 100 ){
+                var line = new Phaser.Geom.Line( (path[i].x*TilePixelCount),(path[i].y*TilePixelCount),  (path[i+1].x*TilePixelCount),(path[i+1].y*TilePixelCount));
+
+                Game.graphics = this.add.graphics({ lineStyle: { width: TilePixelCount, color: 0x0000FF } });//change line width and color here
+                Game.graphics.strokeLineShape(line);
+            }
+            
             tweens.push({
                 targets: this.player,
                 x: {value: ex*this.map.tileWidth, duration: 50},
                 y: {value: ey*this.map.tileHeight, duration: 50}
             });
         }
-        if(booleanFlag === 1){
-            routeMarker1 = tempRouteMarker;
-
-        }
-        routeMarker2 = tempRouteMarker;
         Game.scene.tweens.timeline({
             tweens: tweens
         });
