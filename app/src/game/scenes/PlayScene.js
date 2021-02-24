@@ -246,6 +246,7 @@ export default class PlayScene extends Scene {
             graphics.lineTo(routeMarker2[i][0], routeMarker2[i][1]);
         }
         graphics.strokePath(); 
+        graphics.setDepth(3);
 
         
             
