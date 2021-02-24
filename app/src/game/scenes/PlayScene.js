@@ -47,6 +47,10 @@ export default class PlayScene extends Scene {
     var floor3PNG = this.add.image(1028,2525,'floor3PNG').setScale(.9);
     floor3PNG.setDepth(1);
 
+    var floor0PNG = this.add.image(1028,3850,'floor0PNG').setScale(1);
+    floor0PNG.setDepth(1);
+
+
     //var mapOverlay = this.add.image (750,2500,'mapOverlay').setScale(1);
     //mapOverlay.setDepth(1);
 
@@ -97,6 +101,7 @@ export default class PlayScene extends Scene {
     var floor1PNG = this.add.sprite(0,0,'floor1PNG',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
     var floor2PNG = this.add.image(0,0,'floor2PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor3PNG = this.add.image(0,0,'floor3PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
+    var floor0PNG = this.add.image(0,0,'floor0PNG').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
     var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
@@ -111,12 +116,12 @@ export default class PlayScene extends Scene {
       });
 
     floor3icon.on('pointerdown', function () {
-        phaserGuy.setPosition(133*8, 337*8);
+        phaserGuy.setPosition(133*8, 334*8);
 
     });
       
     floor2icon.on('pointerdown', function () {
-        phaserGuy.setPosition(141*8, 196*8);
+        phaserGuy.setPosition(141*8, 205*8);
 
 
     });
@@ -128,7 +133,7 @@ export default class PlayScene extends Scene {
     });
 
     floor0icon.on('pointerdown', function () {
-        phaserGuy.setPosition(120*8, 445*8);
+        phaserGuy.setPosition(120*8, 490*8);
 
     });
 
