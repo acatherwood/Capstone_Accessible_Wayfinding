@@ -64,7 +64,9 @@ export default new Vuex.Store({
       firebase.firestore().collection("savedRoutes").get().then((snap)=>{
         const routes = snap.docs.map((docRef) => docRef.data())
         routes.forEach((route)=> {
+          if(this.getters.user.data.email == route.userId){
           commit("SET_SAVED_ROUTE", route);
+          }
         })
       })
     }
