@@ -6,6 +6,9 @@ var graphics; var line;
 var canWalk = -1;
 var TilePixelCount = 16;
 var scalerSize = 0.15;
+var routeMarker1 = [[0,0]];
+var routeMarker2 = [[0,0]];
+
 export default class PlayScene extends Scene {
   constructor () {
     super({ key: 'PlayScene' })
