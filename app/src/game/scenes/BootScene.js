@@ -14,6 +14,7 @@ import btnCont from '@/game/assets/btnCont.png'
 import stairs from '@/game/assets/stairs.png'
 import mapOverlay from '@/game/assets/Cropped Floors 0-3 Accessible Wayfinding extra copy.png'
 import floor1PNG from '@/game/assets/Floor 1.png'
+import floor2PNG from '@/game/assets/Floor 2.png'
 
 export default class BootScene extends Scene {
   constructor () {
@@ -38,6 +39,7 @@ export default class BootScene extends Scene {
       this.load.image('stairs', stairs);
       this.load.image('mapOverlay', mapOverlay);
       this.load.image('floor1PNG',floor1PNG);
+      this.load.image('floor2PNG',floor2PNG);
   }
 
   create () {
