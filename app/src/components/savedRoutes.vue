@@ -1,16 +1,16 @@
 
  <template>
-  <div class="container">
-    <div class="col">
-          <b-form-select
+  
+    <div class="form-group">
+    <select class="custom-select" multiple size="10"
             id="saved"
             name="routeSelect"
             v-model="selected"
             :options="sortedOptions"
-            v-on:change="storeInput"
-          ></b-form-select>
-        </div>
+            v-on:change="storeInput">      
+    </select>
   </div>
+  
 </template>
 
 <script>
@@ -377,3 +377,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+</style>
