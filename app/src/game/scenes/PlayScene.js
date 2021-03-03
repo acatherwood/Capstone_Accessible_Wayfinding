@@ -40,6 +40,9 @@ export default class PlayScene extends Scene {
     var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1);
     elevatorIconSix.setDepth(2);
 
+    
+    //load floor maps for 0-3
+
     var floor1PNG = this.add.image(1028,330,'floor1PNG').setScale(1);
     floor1PNG.setDepth(1);
 
@@ -52,9 +55,6 @@ export default class PlayScene extends Scene {
     var floor0PNG = this.add.image(1028,3850,'floor0PNG').setScale(1);
     floor0PNG.setDepth(1);
 
-
-    //var mapOverlay = this.add.image (750,2500,'mapOverlay').setScale(1);
-    //mapOverlay.setDepth(1);
 
     //load restroom icon one through ten
 
@@ -134,6 +134,12 @@ export default class PlayScene extends Scene {
 
     });
 
+    floor0icon.on('pointerdown', function () {
+        phaserGuy.setPosition(120*8, 490*8);
+
+    });
+
+
     floorGicon.on('pointerdown', function () {
         var i = 0;
         while(i < testCoords.length){
@@ -150,11 +156,7 @@ export default class PlayScene extends Scene {
         }console.log(routeMarker1);
     });
 
-    floor0icon.on('pointerdown', function () {
-        phaserGuy.setPosition(120*8, 490*8);
-
-    });
-
+   
     moveBTN.on('pointerdown', function () {
        canWalk *= -1;
 
