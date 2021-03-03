@@ -17,6 +17,7 @@ import floor0PNG from '@/game/assets/Floor 0.png'
 import floor1PNG from '@/game/assets/Floor 1.png'
 import floor2PNG from '@/game/assets/Floor 2.png'
 import floor3PNG from '@/game/assets/Floor 3.png'
+import floor0PNGv2 from '@/game/assets/Floor0-v2.png'
 
 export default class BootScene extends Scene {
   constructor () {
@@ -44,6 +45,7 @@ export default class BootScene extends Scene {
       this.load.image('floor2PNG',floor2PNG);
       this.load.image('floor3PNG',floor3PNG);
       this.load.image('floor0PNG',floor0PNG);
+      this.load.image('floor0PNGv2',floor0PNGv2);
   }
 
   create () {
