@@ -52,8 +52,8 @@ export default class PlayScene extends Scene {
     var floor3PNG = this.add.image(1028,2525,'floor3PNG').setScale(.9);
     floor3PNG.setDepth(1);
 
-    var floor0PNG = this.add.image(1028,3850,'floor0PNG').setScale(1);
-    floor0PNG.setDepth(1);
+    var floor0PNGv2 = this.add.image(1028,3850,'floor0PNGv2').setScale(1);
+    floor0PNGv2.setDepth(1);
 
 
     //load restroom icon one through ten
@@ -104,7 +104,7 @@ export default class PlayScene extends Scene {
     var floor1PNG = this.add.sprite(0,0,'floor1PNG',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
     var floor2PNG = this.add.image(0,0,'floor2PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor3PNG = this.add.image(0,0,'floor3PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
-    var floor0PNG = this.add.image(0,0,'floor0PNG').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
+    var floor0PNGv2 = this.add.image(0,0,'floor0PNGv2').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
     var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
 
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
