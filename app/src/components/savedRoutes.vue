@@ -226,7 +226,7 @@ import { mapActions } from 'vuex';
       { room: "310E", floor: 3, coordinate1: 827, coordinate2: 2567 },
       { room: "310F", floor: 3, coordinate1: 796, coordinate2: 2633 },
       { room: "310G", floor: 3, coordinate1: 833, coordinate2: 2628 },
-      { room: "315", floor: 3, coordinate1: 1288, coordinate2: 2576 },
+      { room: "315", floor: 3, coordinate1: 933, coordinate2: 2576 },
       { room: "320", floor: 3, coordinate1: 1076, coordinate2: 2622 },
       { room: "320A", floor: 3, coordinate1: 1025, coordinate2: 2627 },
       { room: "320B", floor: 3, coordinate1: 1004, coordinate2: 2588 },
