@@ -6,6 +6,48 @@ var graphics; var line;
 var canWalk = -1;
 var TilePixelCount = 16;
 var scalerSize = 0.15;
+var testCoords = [[1792, 1472, "244"],
+[1888, 1536, "245"],
+[1840, 1472, "245A "],
+[1888, 1488, "245B "],
+[1952, 1504, "245C "],
+[1586, 1648, "248"],
+[2084, 1436, "248A"],
+[1865, 1518, "249A "],
+[1912, 1515, "249B "],
+[1870, 1434, "249C "],
+[1760, 1688, "250"],
+[1658, 1437, "251"],
+[1544, 1461, "252"],
+[1415, 1448, "253"],
+[1256, 1672, "254"],
+[896, 1452, "255"],
+[758, 1449, "256"],
+[599, 1458, "257"],
+[494, 1424, "258"],
+[302, 1648, "259"],
+[425, 1472, "259A "],
+[364, 1506, "259B "],
+[320, 1513, "259C "],
+[269, 1428, "259D "],
+[279, 1508, "259E "],
+[225, 1440, "260"],
+[218, 1530, "260A "],
+[113, 1404, "261"],
+[164, 1469, "261A "],
+[122, 1461, "261B "],
+[68, 1464, "261C "],
+[508, 1512, "297A"],
+[1642, 1512, "297B"],
+[144, 1568, "298A"],
+[552, 1512, "298B"],
+[1592, 1507, "298C"],
+[2006, 1339, "298D"],
+[1148, 1458, "298E"],
+[1010, 1458, "298F"],
+[1059, 1458, "298G"],
+[1077, 1344, "299"],
+[178, 2633, "301"]];
 var routeMarker1 = [[0,0]];
 var routeMarker2 = [[0,0]];
 
@@ -21,92 +63,45 @@ export default class PlayScene extends Scene {
   
 
   create = function(){
-    //load elevator icons one through six
-    var elevatorIcon = this.add.image(530,320, 'elevator').setScale(1);
-    elevatorIcon.setDepth(2);
     
-    var elevatorIconTwo = this.add.image(1495,324,'elevator').setScale(1);
-    elevatorIconTwo.setDepth(2);
 
-    var elevatorIconThree = this.add.image(508,1512,'elevator').setScale(1);
-    elevatorIconThree.setDepth(2);
+    var elevatorIcon = this.add.image(520,328, 'elevator').setScale(1.5);
+    elevatorIcon.setDepth(1);
+    
+    var elevatorIconTwo = this.add.image(1512,328,'elevator').setScale(1.5);
+    elevatorIconTwo.setDepth(1);
 
-    var elevatorIconFour = this.add.image(1642,1512,'elevator').setScale(1);
-    elevatorIconFour.setDepth(2);
 
-    var elevatorIconFive = this.add.image(514,2630,'elevator').setScale(1);
-    elevatorIconFive.setDepth(2);
+    var restroom1 =this.add.image(224,420,'restroom').setScale(1);
+    restroom1.setDepth(1);
 
-    var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1);
-    elevatorIconSix.setDepth(2);
+    var restroom2=this.add.image(1128,436,'restroom').setScale(1);
+    restroom2.setDepth(1);
+
+    var restroom3=this.add.image(1520,280,'restroom').setScale(1);
+    restroom3.setDepth(1);
 
     var floor1PNG = this.add.image(1028,330,'floor1PNG').setScale(1);
     floor1PNG.setDepth(1);
 
-    var floor2PNG = this.add.image(1090,1550,'floor2PNG').setScale(1);
+    var floor2PNG = this.add.image(1044,1494,'floor2PNG').setScale(.9);
     floor2PNG.setDepth(1);
 
     var floor3PNG = this.add.image(1028,2525,'floor3PNG').setScale(.9);
     floor3PNG.setDepth(1);
+    floor2PNG.alpha = 0.5;
 
     var floor0PNG = this.add.image(1028,3850,'floor0PNG').setScale(1);
     floor0PNG.setDepth(1);
 
-
-    //var mapOverlay = this.add.image (750,2500,'mapOverlay').setScale(1);
-    //mapOverlay.setDepth(1);
-
-    //load restroom icon one through ten
-
-
-    var restroom1 =this.add.image(245,420,'restroom').setScale(1);
-    restroom1.setDepth(2);
-
-    var restroom2=this.add.image(1115,425,'restroom').setScale(1);
-    restroom2.setDepth(2);
-
-    var restroom3=this.add.image(1545,280,'restroom').setScale(1);
-    restroom3.setDepth(2);
-
-    var restroom4=this.add.image(248,1440,'restroom').setScale(1);
-    restroom4.setDepth(2);
-    
-    var restroom5=this.add.image(1704,1456,'restroom').setScale(1);
-    restroom5.setDepth(2);
-
-    var restroom6=this.add.image(320,2600,'restroom').setScale(1);
-    restroom6.setDepth(2);
-    
-    var restroom7=this.add.image(1768,2600,'restroom').setScale(1);
-    restroom7.setDepth(2);
-
-     
-    var restroom8=this.add.image(100,3450,'restroom').setScale(1);
-    restroom8.setDepth(2);
-
-    var restroom9=this.add.image(440,3400,'restroom').setScale(1);
-    restroom9.setDepth(2);
-
-    var restroom10=this.add.image(1475,3420,'restroom').setScale(1);
-    restroom10.setDepth(2);
-
-
-
     var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
-    var mapOverlay = this.add.image(0,0,'mapOverlay').setOrigin(0).setInteractive().setScale(.95).setScrollFactor(0);
-    var floor0icon = this.add.sprite(15, 210, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var moveBTN = this.add.sprite(50, 280, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
+    var floor0icon = this.add.sprite(50, 340, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
     var floor3icon = this.add.sprite(15, 30, 'floor3icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor2icon = this.add.sprite(15, 90, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floorGicon = this.add.sprite(15, 210, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var johnRouteIcon = this.add.sprite(40, 280, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var floor1PNG = this.add.sprite(0,0,'floor1PNG',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
-    var floor2PNG = this.add.image(0,0,'floor2PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
-    var floor3PNG = this.add.image(0,0,'floor3PNG').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
-    var floor0PNG = this.add.image(0,0,'floor0PNG').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
-    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
-
+    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, floorGicon, johnRouteIcon]);
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
     this.input.setDraggable(demosContainer);
@@ -118,12 +113,12 @@ export default class PlayScene extends Scene {
       });
 
     floor3icon.on('pointerdown', function () {
-        phaserGuy.setPosition(133*8, 334*8);
+        //phaserGuy.setPosition(133*8, 337*8);
 
     });
       
     floor2icon.on('pointerdown', function () {
-        phaserGuy.setPosition(141*8, 205*8);
+        phaserGuy.setPosition(141*8, 196*8);
 
 
     });
@@ -139,34 +134,26 @@ export default class PlayScene extends Scene {
         while(i < testCoords.length){
         Game.scene.checkCollisionTester(testCoords[i]);
         i++
-        }
-    });
-
-    floorGicon.on('pointerdown', function () {
-        var i = 0;
-        while(i < testCoords.length){
-        Game.scene.checkCollisionTester(testCoords[i]);
-        i++
         }console.log(routeMarker1);
+        //floor0icon.setVisible(false);
     });
 
     floor0icon.on('pointerdown', function () {
-        phaserGuy.setPosition(120*8, 490*8);
-
-    });
-
-    moveBTN.on('pointerdown', function () {
        canWalk *= -1;
 
     });
-    line = new Phaser.Geom.Line( 0,0,678,678);
+    
     johnRouteIcon.on('pointerdown', this.routeToRestroom );
     demosContainer.setDepth(1);
     demosContainer.setScrollFactor(0);
     
     var getRouteBTN = this.add.sprite(screen.width/2, scalerSize, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(scalerSize).setScrollFactor(0);
-    getRouteBTN.on('pointerdown', this.routeToRestroom );
-    getRouteBTN.setDepth(2);
+    getRouteBTN.on('pointerdown', function () {
+        floor0icon.setVisible(false);
+        Game.scene.routeToRestroom();
+     });
+    
+    getRouteBTN.setDepth(1);
     getRouteBTN.setScrollFactor(0);
 
 
@@ -254,11 +241,14 @@ export default class PlayScene extends Scene {
         }
         graphics.strokePath(); 
         graphics.setDepth(3);
+        
+            
     };
     checkCollisionTester = function(item){
         var tile = this.map.getTileAt(Math.floor(item[0]/16), Math.floor(item[1]/16));
-        var testerDude = this.add.image( item[0], item[1],'dude').setScale(0.5).setDepth(1);
-        this.add.text(item[0], item[1], item[2], { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color:'#A52A2A', fontSize:16 });
+        var testerDude = this.add.image( item[0], item[1],'dude').setScale(0.5).setDepth(2);
+        this.add.text(item[0], item[1], item[2], { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color:'#A52A2A', fontSize:16 }).setDepth(2);
+
         if(tile.properties.collide == true){
             console.log(tile.properties.collide+" : "+ item[0]+ " / " +item[1] );
             testerDude.setTint(0xff0000);
@@ -303,9 +293,10 @@ export default class PlayScene extends Scene {
     routeToRestroom = function(){
     var fromData = window.showFromLocation.split(',');
     var toData = window.showToLocation.split(',');
-    var nearestElevator = [[0,0], [64,40] , [64,188] , [64, 329]];
-    if(parseInt(fromData[1])/TilePixelCount > (127)){
-        nearestElevator = [[0,0], [190,40] , [205,188] , [204, 329]];
+    var pathCheck, path2Check;
+    var nearestElevator = [[64,40], [32,20] , [32, 94] , [32, 164]];// this takes the integer that is the floor number
+    if(parseInt(fromData[1])/TilePixelCount > (63)){
+        //nearestElevator = [[188,38], [188,38] , [205,188] , [204, 329]];
     }
     var tweenNumbers;
   
@@ -319,39 +310,39 @@ export default class PlayScene extends Scene {
                 if (path === null) {
                     console.warn("Path was not found.");
                 } else {
-                    console.log(path);
                     Game.scene.moveCharacter(path, 1);
                     console.log(path.length);
                 }
             });
-            this.scene.finder.calculate();
+            Game.scene.finder.calculate();
         }else{
             var toX = Math.floor(nearestElevator[parseInt(fromData[0])][0]);
             var toY = Math.floor(nearestElevator[parseInt(fromData[0])][1]);
             var fromX = Math.floor(parseInt(fromData[1])/TilePixelCount);
             var fromY = Math.floor(parseInt(fromData[2])/TilePixelCount);
-            console.log('going from ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
+            console.log('going from startpoint to elevator 1 ('+fromX+','+fromY+') to ('+toX+','+toY+')');//debugging and for map design
             Game.scene.finder.findPath(fromX, fromY, toX, toY, function( path ) {
                 if (path === null) {
                     console.warn("Path was not found.");
                 } else {
-                    console.log(path);
                     //tweenNumbers = path;
-                    Game.scene.moveCharacter(path, 0);
+                   pathCheck = path;
+
                 }
             })
             var fromX2 = Math.floor(nearestElevator[parseInt(toData[0])][0]);
             var fromY2 = Math.floor(nearestElevator[parseInt(toData[0])][1]);
             var toX2 = Math.floor(toData[1]/TilePixelCount);
             var toY2 = Math.floor(toData[2]/TilePixelCount);
-            console.log('going from ('+fromX2+','+fromY2+') to ('+toX2*16+ ','+toY2*16+')');//debugging and for map design
+            console.log('going from start to elevator 2 ('+fromX2+','+fromY2+') to ('+toX2+ ','+toY2+')');//debugging and for map design
             Game.scene.finder.findPath(fromX2, fromY2, toX2, toY2, function( path2 ) {
                 if (path2 === null) {
                     console.warn("Path was not found.");
                 } else {
-                    console.log(path2 , 0);
-                    //tweenNumbers = tweenNumbers.concat(path2);
-                    Game.scene.moveCharacter(path2, routeMarker2);
+                    //tweenNumbers = tweenNumbers.concat(path2); 
+                    Game.scene.moveCharacter(pathCheck, 1);
+                    Game.scene.moveCharacter(path2, 0);
+                    floor0icon.setVisible(false);
                 }
             });
             this.scene.finder.calculate();
@@ -360,6 +351,7 @@ export default class PlayScene extends Scene {
 
 
     moveCharacter = function(path, booleanFlag){
+        console.log(path);
         var tempRouteMarker = [ [(path[0 ].x*TilePixelCount),(path[0].y*TilePixelCount)] ]
         // Sets up a list of tweens, one for each tile to walk, that will be chained by the timeline
         var tweens = [];
@@ -373,7 +365,7 @@ export default class PlayScene extends Scene {
                 y: {value: ey*this.map.tileHeight, duration: 50}
             });
         }
-        if(booleanFlag === 1){
+        if(booleanFlag === 1){//should change the 
             routeMarker1 = tempRouteMarker;
 
         }
