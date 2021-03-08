@@ -49,8 +49,8 @@ export default class PlayScene extends Scene {
     var floor2PNGv2 = this.add.image(1090,1550,'floor2PNGv2').setScale(1);
     floor2PNGv2.setDepth(1);
 
-    var floor3PNGv2 = this.add.image(1028,2765,'floor3PNGv2').setScale(.9);
-    floor3PNGv2.setDepth(1);
+    var floor3PNGv3 = this.add.image(1028,2645,'floor3PNGv3').setScale(.9);
+    floor3PNGv3.setDepth(1);
 
     var floor0PNGv2 = this.add.image(1028,3850,'floor0PNGv2').setScale(1);
     floor0PNGv2.setDepth(1);
@@ -103,7 +103,7 @@ export default class PlayScene extends Scene {
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor1PNGv2 = this.add.sprite(0,0,'floor1PNGv2',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
     var floor2PNGv2 = this.add.image(0,0,'floor2PNGv2').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
-    var floor3PNGv2 = this.add.image(0,0,'floor3PNGv2').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
+    var floor3PNGv3 = this.add.image(0,0,'floor3PNGv3').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor0PNGv2 = this.add.image(0,0,'floor0PNGv2').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
     var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
 
