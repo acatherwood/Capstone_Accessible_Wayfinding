@@ -49,7 +49,7 @@ export default class PlayScene extends Scene {
     var floor2PNGv2 = this.add.image(1090,1550,'floor2PNGv2').setScale(1);
     floor2PNGv2.setDepth(1);
 
-    var floor3PNGv4 = this.add.image(1028,2645,'floor3PNGv4').setScale(.9);
+    var floor3PNGv4 = this.add.image(1090,2645,'floor3PNGv4').setScale(.9);
     floor3PNGv4.setDepth(1);
 
     var floor0PNGv2 = this.add.image(1028,3850,'floor0PNGv2').setScale(1);
