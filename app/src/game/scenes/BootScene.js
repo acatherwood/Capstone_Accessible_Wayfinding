@@ -22,6 +22,7 @@ import floor1PNGv2 from '@/game/assets/Floor1-v2.png'
 import floor2PNGv2 from '@/game/assets/Floor2-v2.png'
 import floor3PNGv2 from '@/game/assets/Floor3-v2.png'
 import floor3PNGv3 from '@/game/assets/Floor3-v3.png'
+import floor3PNGv4 from '@/game/assets/Floor3-v4.png'
 
 export default class BootScene extends Scene {
   constructor () {
