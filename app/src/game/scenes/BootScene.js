@@ -54,6 +54,7 @@ export default class BootScene extends Scene {
       this.load.image('floor2PNGv2',floor2PNGv2);
       this.load.image('floor3PNGv2',floor3PNGv2);
       this.load.image('floor3PNGv3',floor3PNGv3);
+      this.load.image('floor3PNGv4',floor3PNGv4);
      
   }
 
