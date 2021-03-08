@@ -43,11 +43,11 @@ export default class PlayScene extends Scene {
     
     //load floor maps for 0-3
 
-    var floor1PNGv2 = this.add.image(1028,330,'floor1PNGv2').setScale(1);
-    floor1PNGv2.setDepth(1);
+    var floor1PNGv3 = this.add.image(1090,450,'floor1PNGv3').setScale(.9);
+    floor1PNGv3.setDepth(1);
 
-    var floor2PNGv2 = this.add.image(1090,1550,'floor2PNGv2').setScale(1);
-    floor2PNGv2.setDepth(1);
+    var floor2PNGv3 = this.add.image(1090,1598,'floor2PNGv3').setScale(.9);
+    floor2PNGv3.setDepth(1);
 
     var floor3PNGv4 = this.add.image(1090,2645,'floor3PNGv4').setScale(.9);
     floor3PNGv4.setDepth(1);
@@ -101,8 +101,8 @@ export default class PlayScene extends Scene {
     var floorGicon = this.add.sprite(15, 210, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var johnRouteIcon = this.add.sprite(40, 280, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
-    var floor1PNGv2 = this.add.sprite(0,0,'floor1PNGv2',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
-    var floor2PNGv2 = this.add.image(0,0,'floor2PNGv2').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
+    var floor1PNGv3 = this.add.sprite(0,0,'floor1PNGv3',0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0);
+    var floor2PNGv3 = this.add.image(0,0,'floor2PNGv3').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor3PNGv4 = this.add.image(0,0,'floor3PNGv4').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor0PNGv2 = this.add.image(0,0,'floor0PNGv2').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
     var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
