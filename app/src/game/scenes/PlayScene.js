@@ -49,6 +49,8 @@ var testCoords = [[1792, 1472, "244"],
 [178, 2633, "301"]];	
 var routeMarker1 = [[0,0]];	
 var routeMarker2 = [[0,0]];	
+var fromData = "3,null,null";
+var toData = "text goes here";
 export default class PlayScene extends Scene {	
   constructor () {	
     super({ key: 'PlayScene' })	
@@ -120,7 +122,13 @@ export default class PlayScene extends Scene {
     var floorGicon = this.add.sprite(15, 210, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);	
     var johnRouteIcon = this.add.sprite(40, 280, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(0.15).setScrollFactor(0);	
     var floor1icon = this.add.sprite(15, 150, 'floor1icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);	
-    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);	
+    var wayPointerto1=this.add.image(55, 30,'restroom', 0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0).setVisible(false);
+    var wayPointerto2=this.add.image(55, 90,'restroom', 0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0).setVisible(false);
+    var wayPointerto3=this.add.image(55, 150,'restroom', 0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0).setVisible(false);
+    var wayPointerfrom1 = this.add.image(55, 30,'elevator', 0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0).setVisible(false);
+    var wayPointerfrom2 = this.add.image(55, 90,'elevator', 0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0).setVisible(false);
+    var wayPointerfrom3 = this.add.image(55, 150,'elevator', 0).setOrigin(0).setInteractive().setScale(1).setScrollFactor(0).setVisible(false);
+    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon, wayPointerfrom1, wayPointerfrom2 , wayPointerfrom3, wayPointerto1, wayPointerto2, wayPointerto3]);	
     	
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);	
     	
@@ -159,9 +167,54 @@ export default class PlayScene extends Scene {
     demosContainer.setScrollFactor(0);	
     	
     var getRouteBTN = this.add.sprite(screen.width/2, scalerSize, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(scalerSize).setScrollFactor(0);	
-    getRouteBTN.on('pointerdown', function () {	
-        floor0icon.setVisible(false);	
+    getRouteBTN.on('pointerdown', function () {		
         Game.scene.routeToRestroom();	
+        wayPointerfrom1.setVisible(false);
+        wayPointerfrom2.setVisible(false);
+        wayPointerfrom3.setVisible(false);
+        wayPointerto1.setVisible(false);
+        wayPointerto2.setVisible(false);
+        wayPointerto3.setVisible(false);
+        switch (parseInt(fromData[0])) {
+            case 0:
+                floor0icon.setVisible(false);
+                console.log(window.showToLocation);
+              break;
+            case 1:
+                wayPointerfrom1.setVisible(true);
+                console.log(window.showToLocation);
+              break;
+            case 2:
+                wayPointerfrom2.setVisible(true);
+                console.log("Start on floor 2");
+              break;
+            case 3:
+                wayPointerfrom3.setVisible(false);
+                window.alert("sometext");
+              break;
+          }
+          switch (parseInt(toData[0])) {
+            case 0:
+                wayPointerto1.setVisible(true);
+                console.log("Start on floor 0");
+              break;
+            case 1:
+                wayPointerto1.setVisible(true);
+
+                console.log("Start on floor 1");
+              break;
+            case 2:
+                wayPointerto2.setVisible(true);
+
+                console.log("Start on floor 2");
+              break;
+            case 3:
+                wayPointerto3.setVisible(true);
+
+                window.alert("sometext");
+              break;
+          }
+        
      });	
     	
     getRouteBTN.setDepth(1);	
@@ -287,8 +340,8 @@ export default class PlayScene extends Scene {
         }	
     };	
     routeToRestroom = function(){	
-    var fromData = window.showFromLocation.split(',');	
-    var toData = window.showToLocation.split(',');	
+    fromData = window.showFromLocation.split(',');	
+    toData = window.showToLocation.split(',');	
     var pathCheck, path2Check;	
     var nearestElevator = [[64,40], [32,20] , [32, 94] , [32, 164]];// this takes the integer that is the floor number	
     if(parseInt(fromData[1])/TilePixelCount > (63)){	
@@ -322,7 +375,6 @@ export default class PlayScene extends Scene {
                     console.warn("Path was not found.");	
                 } else {	
                     pathCheck = path;	
-                    //Game.scene.moveCharacter(path, 1);	
                 }	
             })	
             var fromX2 = Math.floor(nearestElevator[parseInt(toData[0])][0]);	
@@ -336,16 +388,14 @@ export default class PlayScene extends Scene {
                 } else {	
                     path2Check = path2;	
                     Game.scene.moveCharacter(pathCheck,path2Check);	
-                   // Game.scene.moveCharacter(path2, 0);	
                 }	
             });	
             Game.scene.finder.calculate();	
         }	
     };	
     moveCharacter = function(startPath, endPath){	
-        //var path = startPath.concat(endPath);	
         console.log(startPath);	
-        var tempRouteMarker = [ [(startPath[0 ].x*TilePixelCount),(startPath[0].y*TilePixelCount)] ]	
+        var tempRouteMarker = [ [(startPath[0].x*TilePixelCount),(startPath[0].y*TilePixelCount)] ]	
         // Sets up a list of tweens, one for each tile to walk, that will be chained by the timeline	
         var tweens = [];	
         for(var i = 0; i < startPath.length-1; i++){	
@@ -360,8 +410,8 @@ export default class PlayScene extends Scene {
         }	
         routeMarker1 = tempRouteMarker;	
         routeMarker2 = tempRouteMarker;	
-        if(endPath != 1){//elevators on anything but 1	
-            tempRouteMarker = [ [(endPath[0 ].x*TilePixelCount),(endPath[0].y*TilePixelCount)] ]	
+        if(endPath != 1){//elevators get called on anything but 1	
+            tempRouteMarker = [ [(endPath[0].x*TilePixelCount),(endPath[0].y*TilePixelCount)] ]	
             for(var i = 0; i < endPath.length-1; i++){	
                 var ex = endPath[i+1].x;	
                 var ey = endPath[i+1].y;	
