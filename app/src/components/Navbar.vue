@@ -37,7 +37,7 @@
             
               <a class="dropdown-item" href="About">About Us</a>
               <a class="dropdown-item" href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Report Issues</a>
-              
+              <a class="dropdown-item" href="Legend">Legend</a>
             
           </div>
           </div>
