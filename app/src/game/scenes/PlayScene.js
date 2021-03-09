@@ -91,11 +91,15 @@ export default class PlayScene extends Scene {
     var restroom8=this.add.image(100,3450,'restroom').setScale(1);
     restroom8.setDepth(2);
 
-    var restroom9=this.add.image(440,3400,'restroom').setScale(1);
+    var restroom9=this.add.image(138,3880,'restroom').setScale(1);
     restroom9.setDepth(2);
 
-    var restroom10=this.add.image(1475,3420,'restroom').setScale(1);
+    var restroom10=this.add.image(450,3790,'restroom').setScale(1);
     restroom10.setDepth(2);
+
+    var restroom11=this.add.image(1520,3845,'restroom').setScale(1);
+    restroom11.setDepth(2);
+
 
 
 
