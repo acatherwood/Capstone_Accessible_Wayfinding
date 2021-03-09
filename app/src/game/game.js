@@ -15,7 +15,7 @@ function launch(containerId) {
     },
     
     fps: {
-      target: 10,
+      target: 7,
       forceSetTimeOut: true
       },
     
