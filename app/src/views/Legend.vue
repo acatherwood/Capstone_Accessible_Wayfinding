@@ -2,11 +2,12 @@
   <div class='about'>
     <div class="container-fluid">
     <p>
-      Legend goes here.
+      <img :src="require('@/assets/Site Legend.png')"/>
     </p>
     </div>
   </div>
 </template>
+    
 <style scoped>
 
 .container-fluid{
