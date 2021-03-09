@@ -89,7 +89,6 @@ export default class PlayScene extends Scene {
 
     var floor3PNG = this.add.image(1028,2525,'floor3PNG').setScale(.9);
     floor3PNG.setDepth(1);
-    floor2PNG.alpha = 0.5;
 
     var floor0PNG = this.add.image(1028,3850,'floor0PNG').setScale(1);
     floor0PNG.setDepth(1);
