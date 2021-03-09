@@ -7,12 +7,10 @@ import tileset from '@/game/assets/bw2.png'
 import dude from '@/game/assets/phaserguy.png'
 import map from '@/game/assets/mapFinal.json'
 import moveBTN from '@/game/assets/MoveBTN.png'
-import elevator from '@/game/assets/elevator3.png'
-import restroom from '@/game/assets/restroom3.png'
+import elevator from '@/game/assets/elevator2.png'
+import restroom from '@/game/assets/restroom2.png'
 import restroomBTN from '@/game/assets/restroom.png'
 import btnCont from '@/game/assets/btnCont.png'
-import stairs from '@/game/assets/stairs.png'
-import mapOverlay from '@/game/assets/Cropped Floors 0-3 Accessible Wayfinding extra copy.png'
 import floor0PNG from '@/game/assets/Floor 0.png'
 import floor1PNG from '@/game/assets/Floor 1.png'
 import floor2PNG from '@/game/assets/Floor 2.png'
@@ -46,8 +44,6 @@ export default class BootScene extends Scene {
       this.load.image('restroomBTN', restroomBTN);
       this.load.image('restroomBTN', restroomBTN);
       this.load.image('btnWindow', btnCont);
-      this.load.image('stairs', stairs);
-      this.load.image('mapOverlay', mapOverlay);
       this.load.image('floor1PNG',floor1PNG);
       this.load.image('floor2PNG',floor2PNG);
       this.load.image('floor3PNG',floor3PNG);
