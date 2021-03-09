@@ -40,6 +40,14 @@ export default class PlayScene extends Scene {
     var elevatorIconSix = this.add.image(1528,2620,'elevator').setScale(1);
     elevatorIconSix.setDepth(2);
 
+    var elevatorIconSeven = this.add.image(510,3888,'elevator').setScale(1);
+    elevatorIconSeven.setDepth(2);
+    
+    var elevatorIconEight = this.add.image(1510,3888,'elevator').setScale(1);
+    elevatorIconEight.setDepth(2);
+
+    
+
     
     //load floor maps for 0-3
 
