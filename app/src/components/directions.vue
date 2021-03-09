@@ -1,7 +1,7 @@
- <template>
+<template>
   <div id="directions">
     <div>
-      <div>
+      <div class="mb-2">
       <label>Start</label>
       <b-form-select
         type="text"
@@ -21,7 +21,7 @@
       ></b-form-select>
     </div>
      <div>
-      <button
+      <button type="button" class="btn btn-danger font-weight-bold"
         @click="saveRoute"
       >Save Route</button>
     </div>
@@ -370,3 +370,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.btn {
+  width: 50%;
+  margin-top: 13px;
+}
+</style>
