@@ -67,16 +67,16 @@ export default class PlayScene extends Scene {
     //load restroom icon one through ten
 
 
-    var restroom1 =this.add.image(245,420,'restroom').setScale(1);
+    var restroom1 =this.add.image(272,420,'restroom').setScale(1);
     restroom1.setDepth(2);
 
-    var restroom2=this.add.image(1115,425,'restroom').setScale(1);
+    var restroom2=this.add.image(1092,430,'restroom').setScale(1);
     restroom2.setDepth(2);
 
-    var restroom3=this.add.image(1545,280,'restroom').setScale(1);
+    var restroom3=this.add.image(1510,295,'restroom').setScale(1);
     restroom3.setDepth(2);
 
-    var restroom4=this.add.image(248,1440,'restroom').setScale(1);
+    var restroom4=this.add.image(315,1440,'restroom').setScale(1);
     restroom4.setDepth(2);
     
     var restroom5=this.add.image(1704,1456,'restroom').setScale(1);
