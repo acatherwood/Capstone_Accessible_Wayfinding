@@ -342,7 +342,6 @@ export default class PlayScene extends Scene {
                     //tweenNumbers = tweenNumbers.concat(path2); 
                     Game.scene.moveCharacter(pathCheck, 1);
                     Game.scene.moveCharacter(path2, 0);
-                    floor0icon.setVisible(false);
                 }
             });
             this.scene.finder.calculate();
