@@ -8,7 +8,9 @@
             v-model="selected"
             :options="sortedOptions"
             v-on:change="storeInput"
+            :select-size="9"
           ></b-form-select>
+          
         </div>
   </div>
 </template>
