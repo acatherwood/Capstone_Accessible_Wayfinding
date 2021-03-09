@@ -22,22 +22,22 @@ export default class PlayScene extends Scene {
 
   create = function(){
     //load elevator icons one through six
-    var elevatorIcon = this.add.image(530,320, 'elevator').setScale(1);
+    var elevatorIcon = this.add.image(540,330, 'elevator').setScale(1);
     elevatorIcon.setDepth(2);
     
-    var elevatorIconTwo = this.add.image(1495,324,'elevator').setScale(1);
+    var elevatorIconTwo = this.add.image(1455,330,'elevator').setScale(1);
     elevatorIconTwo.setDepth(2);
 
-    var elevatorIconThree = this.add.image(508,1512,'elevator').setScale(1);
+    var elevatorIconThree = this.add.image(573,1495,'elevator').setScale(1);
     elevatorIconThree.setDepth(2);
 
-    var elevatorIconFour = this.add.image(1642,1512,'elevator').setScale(1);
+    var elevatorIconFour = this.add.image(1594,1495,'elevator').setScale(1);
     elevatorIconFour.setDepth(2);
 
-    var elevatorIconFive = this.add.image(514,2630,'elevator').setScale(1);
+    var elevatorIconFive = this.add.image(510,2620,'elevator').setScale(1);
     elevatorIconFive.setDepth(2);
 
-    var elevatorIconSix = this.add.image(1644,2630,'elevator').setScale(1);
+    var elevatorIconSix = this.add.image(1528,2620,'elevator').setScale(1);
     elevatorIconSix.setDepth(2);
 
     
