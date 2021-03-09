@@ -39,7 +39,6 @@ export default {
   // which is accessible anywhere in the application
   watch: {
     showFromLocation() {
-      console.log("hi")
       console.log(this.showFromLocation)
       window.showFromLocation = this.showFromLocation;
     },

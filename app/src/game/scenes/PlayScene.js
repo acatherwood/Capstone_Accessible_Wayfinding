@@ -196,7 +196,7 @@ export default class PlayScene extends Scene {
         //floor0icon.setVisible(false);
     });
 
-    moveBTN.on('pointerdown', function () {
+    floor0icon.on('pointerdown', function () {
 
        canWalk *= -1;
 
