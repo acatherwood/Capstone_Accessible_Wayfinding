@@ -1,18 +1,17 @@
-
- <template>
+  
+<template>
   <div id="directions">
     <div>
-      <div>
+      <div class="mb-2">
       <label>Start</label>
       <b-form-select
         type="text"
-       
         id="From"
         v-model="selectedFrom"
         :options="options"
         v-on:change="storeInput"
       ></b-form-select>
-</div>
+    </div>
       <label>End</label>
       <b-form-select
         id="To"
@@ -21,6 +20,11 @@
         :options="options"
         v-on:change="storeInput"
       ></b-form-select>
+    </div>
+     <div>
+      <button type="button" class="btn btn-danger font-weight-bold"
+        @click="saveRoute"
+      >Save Route</button>
     </div>
   </div>
 </template>
@@ -37,7 +41,8 @@ export default {
     };
   },
   mounted() {
-    const data = [{ room: "101A", floor: 1, coordinate1: 120, coordinate2: 300 },
+    const data = [
+      { room: "101A", floor: 1, coordinate1: 120, coordinate2: 300 },
 { room: "101B", floor: 1, coordinate1: 160, coordinate2: 288 },
 { room: "101C", floor: 1, coordinate1: 220, coordinate2: 300 },
 { room: "101D", floor: 1, coordinate1: 240, coordinate2: 336 },
@@ -225,7 +230,6 @@ export default {
 { room: "261C ", floor: 2, coordinate1: 128, coordinate2: 1648 },
 { room: "297A", floor: 2, coordinate1: 508, coordinate2: 1512 }
     ];
-
     var sortedTestCollection = Object.keys(data).sort(function (a, b) {
       a = data[a].room.substring(0, data[a].room.length);
       b = data[b].room.substring(0, data[b].room.length);
@@ -233,7 +237,6 @@ export default {
       if (a > b) return 1;
       return 0;
     });
-
     sortedTestCollection.forEach((index) => {
       this.options.push({
         value: [
@@ -249,7 +252,6 @@ export default {
     displaySearch: function (event) {
       var block = document.getElementById("search-box");
       block.style.visibility = "visible";
-
       /*change code to dynamically add div with textboxes*/
       var newDiv = document.createElement("div");
     },
@@ -263,6 +265,21 @@ export default {
       // update the state
       this.$store.commit("SET_DIRECTIONS", { from: inputFrom, to: inputTo });
     },
+ saveRoute(event){
+            var inputTo = document.getElementById("To").value;
+      var inputFrom = document.getElementById("From").value;
+      this.$store.dispatch("SAVE_ROUTE", {userId: this.$store.state.user.data.email, from: inputFrom, to: inputTo })
+    },
+    selectSavedRoute(from, to){
+            this.$store.commit("SET_DIRECTIONS", { from: from, to: to });
+    }
   },
 };
 </script>
+
+<style scoped>
+.btn {
+  width: 50%;
+  margin-top: 13px;
+}
+</style>
