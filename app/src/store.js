@@ -35,7 +35,9 @@ export default new Vuex.Store({
     },
     // this is the mutation that takes the data and updates the state
     SET_DIRECTIONS(state, data) {
-      var userEmail = this.getters.user.data.email;
+      if(this.getters.user.data != null){
+        var userEmail = this.getters.user.data.email;
+      }
     	state.directions.from = data.from;
       state.directions.to = data.to;
     },
