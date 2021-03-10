@@ -6,6 +6,7 @@
       <b-form-select
         type="text"
         id="From"
+        class="DirectionStyling"
         v-model="selectedFrom"
         :options="options"
         v-on:change="storeInput"
@@ -15,6 +16,7 @@
       <b-form-select
         id="To"
         name="routeSelect"
+        class="DirectionStyling"
         v-model="selectedTo"
         :options="options"
         v-on:change="storeInput"
@@ -376,4 +378,9 @@ export default {
   width: 50%;
   margin-top: 13px;
 }
+
+.DirectionStyling {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 </style>
