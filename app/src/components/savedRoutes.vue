@@ -5,10 +5,11 @@
           <b-form-select
             id="saved"
             name="routeSelect"
+            class="SavedRoutesStyling"
             v-model="selected"
             :options="sortedOptions"
             v-on:change="storeInput"
-            :select-size="9"
+            :select-size="8"
           ></b-form-select>
           
         </div>
@@ -379,3 +380,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+.SavedRoutesStyling {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  }
+
+</style>
