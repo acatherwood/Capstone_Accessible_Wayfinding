@@ -163,30 +163,19 @@ export default class PlayScene extends Scene {
         this.y = dragY;
 
       });
-
-    floor3icon.on('pointerdown', function () {
-        //phaserGuy.setPosition(133*8, 337*8);
-
-    });
-      
-    floor2icon.on('pointerdown', function () {
-        phaserGuy.setPosition(141*8, 196*8);
-
-
-    });
-
-    floor1icon.on('pointerdown', function () {
-        phaserGuy.setPosition(127*8, 47*8);
-
-
-    });
-
-    floor0icon.on('pointerdown', function () {
-        phaserGuy.setPosition(120*8, 490*8);
-
-    });
-
-
+    floor3icon.on('pointerdown', function () {	
+        phaserGuy.setPosition(133*8, 337*8);	
+    });	
+      	
+    floor2icon.on('pointerdown', function () {	
+        phaserGuy.setPosition(141*8, 196*8);	
+    });	
+    floor1icon.on('pointerdown', function () {	
+        phaserGuy.setPosition(127*8, 47*8);	
+    });	
+    floor0icon.on('pointerdown', function () {	
+        phaserGuy.setPosition(120*8, 490*8);	
+    });	
     floorGicon.on('pointerdown', function () {
         var i = 0;
         while(i < testCoords.length){
