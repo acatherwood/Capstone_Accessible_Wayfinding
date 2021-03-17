@@ -92,17 +92,21 @@ export default class PlayScene extends Scene {
 
     
     //load floor maps for 0-3
-    var floor1PNGv4 = this.add.image(1090,190,'floor1PNGv4').setScale(.9);
+    var floor1PNGv4 = this.add.image(1115,164,'floor1PNGv4').setScale(.98);
     floor1PNGv4.setDepth(1);
+    floor1PNGv4.alpha = 0.5;
 
-    var floor2PNGv4 = this.add.image(1090,1480,'floor2PNGv4').setScale(.9);
+    var floor2PNGv4 = this.add.image(1040,1495,'floor2PNGv4').setScale(.92);
     floor2PNGv4.setDepth(1);
+    floor2PNGv4.alpha = 0.5;
 
-    var floor3PNGv4 = this.add.image(1090,2645,'floor3PNGv4').setScale(.9);
+    var floor3PNGv4 = this.add.image(1075,2650,'floor3PNGv4').setScale(.88);
     floor3PNGv4.setDepth(1);
+    floor3PNGv4.alpha = 0.5;
 
     var floor0PNGv2 = this.add.image(1028,3850,'floor0PNGv2').setScale(1);
     floor0PNGv2.setDepth(1);
+    floor0PNGv2.alpha = 0.5;
 
 
     //load restroom icon one through ten
@@ -165,19 +169,17 @@ export default class PlayScene extends Scene {
       });
 
     floor3icon.on('pointerdown', function () {
-        //phaserGuy.setPosition(133*8, 337*8);
+        phaserGuy.setPosition(133*8, 337*8);
 
     });
       
     floor2icon.on('pointerdown', function () {
         phaserGuy.setPosition(141*8, 196*8);
 
-
     });
 
     floor1icon.on('pointerdown', function () {
         phaserGuy.setPosition(127*8, 47*8);
-
 
     });
 
