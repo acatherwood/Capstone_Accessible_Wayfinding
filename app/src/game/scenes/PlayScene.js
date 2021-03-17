@@ -186,7 +186,7 @@ export default class PlayScene extends Scene {
     });
 
     	
-    floor0icon.on('pointerdown', function () {
+    floorGicon.on('pointerdown', function () {
 
        canWalk *= -1;
 
