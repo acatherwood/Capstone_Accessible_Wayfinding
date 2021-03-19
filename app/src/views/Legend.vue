@@ -60,7 +60,7 @@
 </div>
       </div>
     </div>
-    <h4> Need additional assistance? <a href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Click Here</a></h4>
+    <h4><a href="https://github.com/acatherwood/Capstone_Accessible_Wayfinding/issues" target="_blank">Need more help?</a></h4>
     </div>
     </div>
   </div>
@@ -72,7 +72,7 @@ h4{
 margin-bottom: 20px;
 color: white;
 }
-h4 a { 
+h4 a{
 margin-bottom: 20px;
 color: white;
 }
