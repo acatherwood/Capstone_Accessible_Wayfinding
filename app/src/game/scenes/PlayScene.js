@@ -141,7 +141,7 @@ export default class PlayScene extends Scene {
     var restroom11=this.add.image(1520,3845,'restroom').setScale(1);
     restroom11.setDepth(2);
 
-    var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
+    var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.8);
     var floorGicon = this.add.sprite(50, 340, 'moveBTN', 0).setOrigin(0).setInteractive().setScale(.2).setScrollFactor(0);
     var floor3icon = this.add.sprite(15, 30, 'floor3icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
     var floor2icon = this.add.sprite(15, 90, 'floor2icon', 0).setOrigin(0).setInteractive().setScale(0.05).setScrollFactor(0);
@@ -152,7 +152,7 @@ export default class PlayScene extends Scene {
     var floor2PNGv4 = this.add.image(0,0,'floor2PNGv4').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor3PNGv4 = this.add.image(0,0,'floor3PNGv4').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor0PNGv2 = this.add.image(0,0,'floor0PNGv2').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
-    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
+    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon, floorGicon]);
     
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
