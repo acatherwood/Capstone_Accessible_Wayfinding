@@ -18,7 +18,7 @@
 </div>
 
       <div class="clearfix1">
-        <img class="img1" :src="require('@/assets/Input.png')" alt="Search for routes using the text fields" width="432" height="263"/>
+        <img class="img1" :src="require('@/assets/Inputs.png')" alt="Search for routes using the text fields" width="432" height="263"/>
         <div class="text-containter1">
   <h4>Start/End Route Text Field</h4>
    <h5>Search for routes using the text field.</h5>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="clearfix">
-  <img class="img2" :src="require('@/assets/Go.png')"  alt="Navigate to a designated route" width="260" height="83"/>
+  <img class="img2" :src="require('@/assets/GoBtn.png')"  alt="Navigate to a designated route" width="260" height="83"/>
   <div class="text-containter">
  <h4>Navigation Button</h4>
   <h5>Navigate to a designated route.</h5>
@@ -35,7 +35,7 @@
       </div>
       <div class="left">
 <div class="clearfix">
-  <img class="img2" :src="require('@/assets/RR.png')"  alt="Represents restroom loacations" width="90" height="72"/>
+  <img class="img2" :src="require('@/assets/RestRoom.png')"  alt="Represents restroom loacations" width="90" height="72"/>
   <div class="text-containter">
  <h4>Restroom Icon</h4>
   <h5>Represents restroom loacations.</h5>
@@ -44,7 +44,7 @@
 </div>      
 
 <div class="clearfix1">
-  <img class="img1" :src="require('@/assets/Saved.png')" alt="Displays routes saved by user" width="432" height="258"/>
+  <img class="img1" :src="require('@/assets/SavedRoute.png')" alt="Displays routes saved by user" width="432" height="258"/>
   <div class="text-containter1">
    <h4>Saved Routes Field</h4> 
     <h5>Displays routes saved by user.</h5>
@@ -52,7 +52,7 @@
 </div>
 
 <div class="clearfix">
-  <img class="img2" :src="require('@/assets/Save.png')"  alt="Click to save a designated path" width="261" height="66"/>
+  <img class="img2" :src="require('@/assets/Saves.png')"  alt="Click to save a designated path" width="261" height="66"/>
   <div class="text-containter">
   <h4>Save Route Button</h4>
    <h5>Click to save a designated path.</h5>
