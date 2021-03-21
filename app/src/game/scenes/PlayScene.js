@@ -101,9 +101,9 @@ export default class PlayScene extends Scene {
     var floor3PNGv4 = this.add.image(1075,2650,'floor3PNGv4').setScale(.88);
     floor3PNGv4.setDepth(1);
 
-    var floor0PNGv2 = this.add.image(1028,3850,'floor0PNGv2').setScale(1);
+    var floor0PNGv2 = this.add.image(1034,3834,'floor0PNGv2').setScale(1);
     floor0PNGv2.setDepth(1);
-
+    floor0PNGv2.alpha = 0.5;
 
     //load restroom icon one through ten
 
