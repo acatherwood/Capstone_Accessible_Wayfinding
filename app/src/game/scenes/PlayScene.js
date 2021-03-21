@@ -73,19 +73,19 @@ export default class PlayScene extends Scene {
     var elevatorIconThree = this.add.image(526,1510,'elevator').setScale(1);
     elevatorIconThree.setDepth(2);
 
-    var elevatorIconFour = this.add.image(1500,1510,'elevator').setScale(1);
+    var elevatorIconFour = this.add.image(1526,1510,'elevator').setScale(1);
     elevatorIconFour.setDepth(2);
 
     var elevatorIconFive = this.add.image(510,2620,'elevator').setScale(1);
     elevatorIconFive.setDepth(2);
 
-    var elevatorIconSix = this.add.image(1528,2620,'elevator').setScale(1);
+    var elevatorIconSix = this.add.image(1505,2620,'elevator').setScale(1);
     elevatorIconSix.setDepth(2);
 
-    var elevatorIconSeven = this.add.image(510,3888,'elevator').setScale(1);
+    var elevatorIconSeven = this.add.image(518,3870,'elevator').setScale(1);
     elevatorIconSeven.setDepth(2);
     
-    var elevatorIconEight = this.add.image(1510,3888,'elevator').setScale(1);
+    var elevatorIconEight = this.add.image(1515,3870,'elevator').setScale(1);
     elevatorIconEight.setDepth(2);
 
     
@@ -103,7 +103,7 @@ export default class PlayScene extends Scene {
 
     var floor0PNGv2 = this.add.image(1034,3834,'floor0PNGv2').setScale(1);
     floor0PNGv2.setDepth(1);
-    floor0PNGv2.alpha = 0.5;
+    
 
     //load restroom icon one through ten
 
@@ -129,16 +129,13 @@ export default class PlayScene extends Scene {
     var restroom7=this.add.image(1550,2578,'restroom').setScale(1);
     restroom7.setDepth(2);
 
-    var restroom8=this.add.image(100,3450,'restroom').setScale(1);
-    restroom8.setDepth(2);
-
-    var restroom9=this.add.image(138,3880,'restroom').setScale(1);
+    var restroom9=this.add.image(120,3868,'restroom').setScale(1);
     restroom9.setDepth(2);
 
-    var restroom10=this.add.image(450,3790,'restroom').setScale(1);
+    var restroom10=this.add.image(450,3782,'restroom').setScale(1);
     restroom10.setDepth(2);
 
-    var restroom11=this.add.image(1520,3845,'restroom').setScale(1);
+    var restroom11=this.add.image(1520,3824,'restroom').setScale(1);
     restroom11.setDepth(2);
 
     var demosWindow = this.add.image(0, 0, 'btnWindow').setOrigin(0).setScale(.6);
