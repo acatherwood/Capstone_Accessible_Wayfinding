@@ -5,7 +5,7 @@ import floor2iconBTN from '@/game/assets/Floor_2.png'
 import floor3iconBTN from '@/game/assets/Floor_3.png'
 import FloorMapIcon from '@/game/assets/McM1.jpg'
 import tileset from '@/game/assets/bw2.png'
-import dude from '@/game/assets/dude.png'//change
+import dude from '@/game/assets/phaserguy.png'//change
 import map from '@/game/assets/mapFinal.json'
 import moveBTN from '@/game/assets/MoveBTN.png'
 import elevator from '@/game/assets/elevator3.png'//change
