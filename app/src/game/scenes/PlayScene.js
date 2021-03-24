@@ -152,7 +152,7 @@ export default class PlayScene extends Scene {
     var floor2PNGv4 = this.add.image(0,0,'floor2PNGv4').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor3PNGv4 = this.add.image(0,0,'floor3PNGv4').setOrigin(0).setInteractive().setScale(.9).setScrollFactor(0);
     var floor0PNGv2 = this.add.image(0,0,'floor0PNGv2').setOrigin(0).setInteractive().setInteractive(1).setScrollFactor(0);
-    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon]);
+    var demosContainer = this.add.container(0, 0, [ demosWindow, floor0icon, floor1icon, floor2icon, floor3icon, johnRouteIcon, floorGicon]);
     
     demosContainer.setInteractive(new Phaser.Geom.Rectangle(0, 0, demosWindow.width, demosWindow.height), Phaser.Geom.Rectangle.Contains);
     
