@@ -389,7 +389,7 @@ export default {
       { room: "53A", floor: 0, coordinate1: 192, coordinate2: 4000 },
       { room: "53B", floor: 0, coordinate1: 128, coordinate2: 3984 },
       { room: "54", floor: 0, coordinate1: 112, coordinate2: 3920 },
-      { room: "54A", floor: 0, coordinate1: 176, coordinate2: 3936 },
+      { room: "54A", floor: 0, coordinate1: 176, coordinate2: 3936 }
     ];
 
     var sortedTestCollection = Object.keys(data).sort(function (a, b) {
