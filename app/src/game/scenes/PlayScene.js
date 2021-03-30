@@ -300,7 +300,7 @@ export default class PlayScene extends Scene {
     var pathCheck, path2Check;	
     var nearestElevator = [[64,40], [32,20] , [32, 94] , [32, 164]];// this takes the integer that is the floor number	to find the array value needed
     if(parseInt(fromData[1])/TilePixelCount > (63)){	
-        nearestElevator = [[188,38], [94,20] , [94,94] , [204, 329]];	
+        nearestElevator = [[94,244], [94,20] , [94,94] , [94, 164]];	
     }	  	
         if (parseInt(fromData[0]) === parseInt(toData[0])){	
             var toX = Math.floor(parseInt(toData[1])/TilePixelCount);	
