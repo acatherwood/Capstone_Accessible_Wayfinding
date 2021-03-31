@@ -138,6 +138,8 @@ export default class PlayScene extends Scene {
         wayPointerto1.setVisible(false);
         wayPointerto2.setVisible(false);
         wayPointerto3.setVisible(false);
+	wayPointerfrom0.setVisible(false);
+        wayPointerto0.setVisible(false);
         switch (parseInt(fromData[0])) {
             case 0:
                 wayPointerfrom0.setVisible(true);
@@ -298,7 +300,7 @@ export default class PlayScene extends Scene {
     fromData = window.showFromLocation.split(',');	
     toData = window.showToLocation.split(',');	
     var pathCheck, path2Check;	
-    var nearestElevator = [[64,40], [32,20] , [32, 94] , [32, 164]];// this takes the integer that is the floor number	to find the array value needed
+    var nearestElevator = [[32,241], [32,20] , [32, 94] , [32, 164]];// this takes the integer that is the floor number	to find the array value needed
     if(parseInt(fromData[1])/TilePixelCount > (63)){	
         nearestElevator = [[94,244], [94,20] , [94,94] , [94, 164]];	
     }	  	
