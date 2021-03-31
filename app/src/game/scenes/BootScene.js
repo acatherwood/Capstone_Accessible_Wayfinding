@@ -16,6 +16,8 @@ import floor0PNGv2 from '@/game/assets/Floor0-v2.png'
 import floor3PNGv4 from '@/game/assets/Floor3-v4.png'
 import floor1PNGv4 from '@/game/assets/Floor1-v4.png'
 import floor2PNGv4 from '@/game/assets/Floor2-v4.png'
+import toArrow from '@/game/assets/toArrow.png'
+import fromArrow from '@/game/assets/fromArrow.png'
 
 export default class BootScene extends Scene {
   constructor () {
@@ -42,6 +44,8 @@ export default class BootScene extends Scene {
       this.load.image('floor3PNGv4',floor3PNGv4);
       this.load.image('floor1PNGv4',floor1PNGv4);
       this.load.image('floor2PNGv4',floor2PNGv4);
+      this.load.image('fromArrow',fromArrow);
+      this.load.image('toArrow',toArrow);
   }
 
   create () {
