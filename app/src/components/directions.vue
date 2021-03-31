@@ -23,7 +23,7 @@
       ></b-form-select>
     </div>
      <div>
-      <button type="button" class="btn btn-danger font-weight-bold"
+      <button v-if="user.loggedIn" type="button" class="btn btn-danger font-weight-bold"
         @click="saveRoute"
       >Save Route</button>
     </div>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "modal",
   data() {
@@ -410,6 +412,12 @@ export default {
         text: `Room ${data[index].room}`,
       });
     });
+  },
+   computed: {
+    ...mapGetters({
+// map `this.user` to `this.$store.getters.user`
+      user: "user"
+    })
   },
   methods: {
     displaySearch: function (event) {
