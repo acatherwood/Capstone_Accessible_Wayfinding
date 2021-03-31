@@ -10,7 +10,7 @@ import map from '@/game/assets/mapFinal.json'
 import moveBTN from '@/game/assets/MoveBTN.png'
 import elevator from '@/game/assets/elevator3.png'//change
 import restroom from '@/game/assets/restroom3.png'//change
-import restroomBTN from '@/game/assets/restroom.png'
+import restroomBTN from '@/game/assets/routeBtn.png'
 import btnCont from '@/game/assets/phaserUIbox.png'
 import floor0PNGv2 from '@/game/assets/Floor0-v2.png'
 import floor3PNGv4 from '@/game/assets/Floor3-v4.png'

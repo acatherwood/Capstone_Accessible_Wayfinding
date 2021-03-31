@@ -6,7 +6,7 @@ var graphics;
 var canWalk = -1;	
 var TilePixelCount = 16;	
 var scalerSize = 0.135;
-var iconScaler = 0.03;	
+var iconScaler = 1;	
 var testCoords = [[160, 3824, "01A"]];	
 var routeMarker1 = [[0,0]];	
 var routeMarker2 = [[0,0]];	
@@ -129,7 +129,7 @@ export default class PlayScene extends Scene {
     demosContainer.setDepth(5);	
     demosContainer.setScrollFactor(0);	
 
-    var getRouteBTN = this.add.sprite(screen.width/2 - 3520/2*scalerSize, scalerSize, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(scalerSize).setScrollFactor(0);	
+    var getRouteBTN = this.add.sprite(screen.width/2 - 3520/2*scalerSize + 450, scalerSize, 'restroomBTN', 0).setOrigin(0).setInteractive().setScale(scalerSize).setScrollFactor(0);	
     getRouteBTN.on('pointerdown', function () {		
         Game.scene.routeToRestroom();	
         wayPointerfrom1.setVisible(false);
