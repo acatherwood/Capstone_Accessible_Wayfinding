@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
 
-    <div class = "mapContainer">
+    <div class = "mapContainer bg-dark">
       <h2>Map Legend</h2>
     <div class="div-container">
 
@@ -154,8 +154,7 @@ border: 4px solid black;
   border: 5px solid black;
   padding: 5px;
   text-align: center;
-background: #dc3545;
-margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 h2{
 font-weight: 700;
