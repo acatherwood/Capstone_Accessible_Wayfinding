@@ -176,7 +176,10 @@ export default class PlayScene extends Scene {
     getRouteBTN.setDepth(1);	
     getRouteBTN.setScrollFactor(0);	
 
-
+/**
+ * Set-up code was modified from work by Jerome Renoux's "A to Z guide to pathfinding with Easystar and Phaser 3"
+ * Created by Jerome Renaux (jerome.renaux@gmail.com) on 25-02-18.
+ */
 //This is needed setup and should not be changed
     // Handles the clicks on the map to make the character move	
     this.input.on('pointerup',this.handleClick);	
